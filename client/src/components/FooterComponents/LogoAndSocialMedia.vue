@@ -5,7 +5,7 @@ const iconArr = ['mynaui:facebook-solid', 'uil:twitter', 'mynaui:instagram-solid
 </script>
 
 <template>
-  <div class="mb-10 max-w-full grid grid-cols-1 gap-y-4">
+  <div class="mb-10 flex flex-col gap-y-4">
     <router-link to="home" class="">
       <div class="flex items-start gap-x-2">
         <iconify-icon
@@ -17,7 +17,7 @@ const iconArr = ['mynaui:facebook-solid', 'uil:twitter', 'mynaui:instagram-solid
         <span class="text-2xl font-bold">DemoCamp</span>
       </div>
     </router-link>
-    <p class="text-neutral-600 md:text-lg md:pb-6">Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+    <p class="text-neutral-600 md:text-lg md:pb-6 lg:p-0">Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
     <div class="flex gap-x-4">
       <div v-for="icon in iconArr" :key="icon">
         <a href="/">
