@@ -1,11 +1,18 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+  import 'iconify-icon'
+  import Button from 'primevue/button';
+
+  import TheHeader from './components/TheHeader.vue';
+  import TheFooter from './components/TheFooter.vue';
+</script>
 
 <template>
-  <h1>You did it!</h1>
-  <p>
-    Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-    documentation
-  </p>
+  <main class="font-DM-Sans">
+    <TheHeader />
+    <RouterView />
+    <TheFooter />
+  </main>
+
 </template>
 
 <style scoped></style>
