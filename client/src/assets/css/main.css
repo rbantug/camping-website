@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz@0,9..40;1,9..40&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --color-neutral-600: #5d5d5d;
+  --color-neutral-800: #191919;
+  --color-accent-primary: oklch(55.8% 0.288 302.3);
+  --color-accent-secondary: oklch(62.7% 0.265 303.9);
+  --color-accent-outline: oklch(82.7% 0.119 306.383);
+  --color-neutral-300: #eee;
+  --color-neutral-100: white;
+  --color-general--shadow-02: #14142b14;
+  --color-general--shadow-01: #14142b0f;
+  --color-neutral-200: #fcfcfc;
+  --color-secondary--color-1: #fff2f2;
+  --color-neutral-400: #d7d5d5;
+  --color-neutral-700: #3e3e3e;
+  --color-neutral-500: #8b8b8b;
+  --color-system--green-400: #11845b;
+  --color-system--blue-400: #086cd9;
+  --color-system--blue-300: #1d88fe;
+  --color-system--blue-200: #8fc3ff;
+  --color-system--blue-100: #eaf4ff;
+  --color-system--green-300: #05c168;
+  --color-system--green-200: #7fdca4;
+  --color-system--green-100: #def2e6;
+  --color-system--red-400: #dc2b2b;
+  --color-system--300: #ff5a65;
+  --color-system--red-200: #ffbec2;
+  --color-system--red-100: #ffeff0;
+  --color-system--orange-400: #d5691b;
+  --color-system--orange-300: #ff9e2c;
+  --color-system--orange-200: #ffd19b;
+  --color-system--orange-100: #fff3e4;
+  --color-button-shadow--white-01: #14142b0a;
+  --color-general--shadow-03: #14142b1a;
+  --color-general--shadow-04: #14142b24;
+  --color-general--shadow-05: #14142b29;
+  --color-general--shadow-06: #14142b3d;
+  --color-button-shadow--color-01: #ff3f3f0f;
+  --color-button-shadow--color-2: #ff3f3f14;
+  --color-button-shadow--white-02: #14142b0f;
+  --color-button-shadow--white-03: #14142b1a;
+
+  --font-DM-Sans: 'DM Sans', sans-serif;
+
+  --breakpoint-sm: 30rem;
+  --breakpoint-lg: 62rem;
+}
+
+@plugin "@tailwindcss/forms";
