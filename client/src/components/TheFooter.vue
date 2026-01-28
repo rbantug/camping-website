@@ -13,14 +13,14 @@ import SubscribeNewsletter from './FooterComponents/SubscribeNewsletter.vue';
       <div class="py-20 lg:py-30">
         <div class="grid grid-cols-1">
           <!-- Logo and social media icons -->
-          <div>
-            <LogoAndSocialMedia />
-            <div class="grid md:grid-cols-5">
+          <div class="lg:grid grid-cols-4 lg:gap-x-3">
+            <LogoAndSocialMedia class="lg:col-span-1"/>
+            <div class="grid md:grid-cols-5 lg:grid-cols-6 lg:col-span-3">
               <PagesLinks class="md:col-span-2"/>
-              <InstagramSection class="md:col-span-3"/>
+              <InstagramSection class="md:col-span-3 lg:col-span-4"/>
             </div>
-            <SubscribeNewsletter />
           </div>
+          <SubscribeNewsletter />
         </div>
       </div>
     </div>

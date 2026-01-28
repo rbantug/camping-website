@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import 'iconify-icon'
+
+const iconArr = ['mynaui:facebook-solid', 'uil:twitter', 'mynaui:instagram-solid', 'mynaui:youtube-solid']
 </script>
 
 <template>
   <div class="mb-10 max-w-full grid grid-cols-1 gap-y-4">
-    <router-link to="home" class="p-0">
+    <router-link to="home" class="">
       <div class="flex items-start gap-x-2">
         <iconify-icon
           icon="icon-park-outline:camp"
@@ -15,43 +17,20 @@ import 'iconify-icon'
         <span class="text-2xl font-bold">DemoCamp</span>
       </div>
     </router-link>
-    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+    <p class="text-neutral-600 md:text-lg md:pb-6">Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
     <div class="flex gap-x-4">
-      <a href="/">
-        <div class="w-8 h-8 rounded-full shadow-md/30 flex items-center justify-center">
-          <iconify-icon
-            icon="mynaui:facebook-solid"
-            width="18"
-            height="18"
-            class="text-accent-primary"
-          />
-        </div>
-      </a>
-      <a href="/">
-        <div class="w-8 h-8 rounded-full shadow-md/30 flex items-center justify-center">
-          <iconify-icon icon="uil:twitter" width="18" height="18" class="text-accent-primary" />
-        </div>
-      </a>
-      <a href="/">
-        <div class="w-8 h-8 rounded-full shadow-md/30 flex items-center justify-center">
-          <iconify-icon
-            icon="mynaui:instagram-solid"
-            width="18"
-            height="18"
-            class="text-accent-primary"
-          />
-        </div>
-      </a>
-      <a href="/">
-        <div class="w-8 h-8 rounded-full shadow-md/30 flex items-center justify-center">
-          <iconify-icon
-            icon="mynaui:youtube-solid"
-            width="18"
-            height="18"
-            class="text-accent-primary"
-          />
-        </div>
-      </a>
+      <div v-for="icon in iconArr" :key="icon">
+        <a href="/">
+          <div class="w-8 h-8 md:w-9 md:h-9 rounded-full shadow-md/20 flex items-center justify-center">
+            <iconify-icon
+              :icon="icon"
+              width="18"
+              height="18"
+              class="text-accent-primary md:scale-110"
+            />
+          </div>
+        </a>
+      </div>
     </div>
   </div>
 </template>
