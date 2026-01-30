@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import 'iconify-icon'
 
-import LogoAndSocialMedia from './FooterComponents/LogoAndSocialMedia.vue';
-import PagesLinks from './FooterComponents/PagesLinks.vue';
-import InstagramSection from './FooterComponents/InstagramSection.vue';
-import SubscribeNewsletter from './FooterComponents/SubscribeNewsletter.vue';
+import LogoAndSocialMedia from './FooterComponents/LogoAndSocialMedia.vue'
+import PagesLinks from './FooterComponents/PagesLinks.vue'
+import InstagramSection from './FooterComponents/InstagramSection.vue'
+import SubscribeNewsletter from './FooterComponents/SubscribeNewsletter.vue'
 </script>
 
 <template>
@@ -13,11 +13,11 @@ import SubscribeNewsletter from './FooterComponents/SubscribeNewsletter.vue';
       <div class="py-20 lg:py-30">
         <div class="grid grid-cols-1">
           <!-- Logo and social media icons -->
-          <div class="lg:grid lg:grid-cols-5 lg:gap-x-6 lg:pb-12">
-            <LogoAndSocialMedia class="lg:col-span-2"/>
-            <div class="grid md:grid-cols-5 lg:grid-cols-6 lg:col-span-3">
-              <PagesLinks class="md:col-span-2"/>
-              <InstagramSection class="md:col-span-3 lg:col-span-3"/>
+          <div class="lg:grid lg:grid-cols-6 lg:gap-x-6 lg:pb-12">
+            <LogoAndSocialMedia class="lg:col-span-2" />
+            <div class="grid md:grid-cols-6 lg:grid-cols-6 lg:col-span-4">
+              <PagesLinks class="md:col-span-2" />
+              <InstagramSection class="md:col-span-4 lg:col-span-3" />
             </div>
           </div>
           <SubscribeNewsletter />
