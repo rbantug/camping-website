@@ -51,7 +51,9 @@ function toggleMoreNavItems() {
           <router-link :to="route">{{ link }}</router-link>
         </div>
       </div>
-      <PrimaryButton size="default" label="Book now" />
+      <div class="w-full">
+        <PrimaryButton size="default" label="Book now" />
+      </div>
     </div>
   </transition>
 </template>
