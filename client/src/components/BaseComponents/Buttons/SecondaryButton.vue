@@ -15,7 +15,7 @@ const props = defineProps({
   },
 })
 
-const rootStyling = 'bg-accent-secondary rounded-full w-full cursor-pointer hover:bg-accent-primary hover:-translate-y-1 duration-200'
+const rootStyling = 'bg-white rounded-full w-full cursor-pointer hover:bg-accent-secondary hover:-translate-y-1 duration-200 group'
 
 const outputRootStyle = computed(() => {
   if (props.size === 'small') {
@@ -29,7 +29,7 @@ const outputRootStyle = computed(() => {
   return rootStyling + ' px-7 py-5'
 })
 
-const txtStyle = 'text-white font-semibold'
+const txtStyle = 'text-neutral-800 group-hover:text-white'
 
 const outputTxtStyle = computed(() => {
     if (props.size === 'small') {
