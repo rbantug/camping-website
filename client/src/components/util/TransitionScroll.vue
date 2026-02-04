@@ -16,7 +16,7 @@ watchEffect(() => {
 </script>
 
 <template>
-    <div ref="el" class="duration-900" :class="{ 'opacity-0 translate-y-8': isVisible === false && trueCount < 1, 'opacity-100 translate-y-0': isVisible === true && trueCount >= 1 }">
+    <div ref="el" class="mx-auto duration-900" :class="{ 'opacity-0 translate-y-8': isVisible === false && trueCount < 1, 'opacity-100 translate-y-0': isVisible === true && trueCount >= 1 }">
         <slot />
     </div>
 </template>
