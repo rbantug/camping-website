@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import Button from 'primevue/button'
 import { computed } from 'vue'
 
 const props = defineProps({
@@ -46,6 +45,8 @@ const outputTxtStyle = computed(() => {
 
 <template>
   <div>
-    <Button :label="props.label" :pt:root="outputRootStyle" :pt:label="outputTxtStyle" />
+    <button :class="outputRootStyle">
+      <span :class="outputTxtStyle">{{ props.label }}</span>
+    </button>
   </div>
 </template>
