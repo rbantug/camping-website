@@ -29,13 +29,12 @@ const outputBtnSize = computed(() => {
       Lorem ipsum dolor sit amet consectetur adipiscing elit. Consectetur adipiscing elit quisque
       faucibus ex sapien vitae. Ex sapien vitae pellentesque sem placerat in id.
     </p>
-    <div class="grid grid-cols-1 gap-y-4 md:grid-cols-8 md:gap-x-4">
+    <div class="flex flex-col gap-y-4 md:flex-row md:justify-center md:gap-x-8">
       <PrimaryButton
         :size="outputBtnSize"
         label="Explore camps"
-        class="w-full md:col-start-3 md:col-end-5"
       />
-      <SecondaryButton :size="outputBtnSize" label="About us" class="md:col-start-5 md:col-end-7" />
+      <SecondaryButton :size="outputBtnSize" label="About us"  />
     </div>
   </div>
 </template>
