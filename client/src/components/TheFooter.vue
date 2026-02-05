@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import 'iconify-icon'
-
 import LogoAndSocialMedia from './FooterComponents/LogoAndSocialMedia.vue'
 import PagesLinks from './FooterComponents/PagesLinks.vue'
 import InstagramSection from './FooterComponents/InstagramSection.vue'

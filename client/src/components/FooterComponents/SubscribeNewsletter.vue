@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import 'iconify-icon'
+import { Icon } from '@iconify/vue';
 import PrimaryButton from '../BaseComponents/Buttons/PrimaryButton.vue';
 </script>
 
@@ -8,7 +8,7 @@ import PrimaryButton from '../BaseComponents/Buttons/PrimaryButton.vue';
         <!-- mail icon and text -->
         <div class="flex flex-col md:flex-row gap-y-4 md:gap-x-4 mb-4 lg:col-span-2">
             <div class="h-15 w-15 bg-accent-outline rounded-full flex items-center justify-center lg:h-18 lg:w-18">
-                <iconify-icon icon="fluent:mail-copy-32-regular" height="40" width="40" class="text-accent-primary lg:scale-125"/>
+                <Icon icon="fluent:mail-copy-32-regular" height="40" width="40" class="text-accent-primary lg:scale-125"/>
             </div>
             <div class="flex flex-col justify-center gap-y-2">
                 <h3 class="font-semibold md:text-xl">Subscribe to our newsletter</h3>

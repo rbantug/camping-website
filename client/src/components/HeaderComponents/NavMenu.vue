@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, type PropType } from 'vue'
-import 'iconify-icon'
+import { Icon } from '@iconify/vue'
 
 import PrimaryButton from '../BaseComponents/Buttons/PrimaryButton.vue'
 import type { NavItems } from '../TheHeader.vue'
@@ -39,7 +39,7 @@ function toggleMoreNavItems() {
       </div>
       <div class="flex cursor-pointer pt-4 pb-2" @click="toggleMoreNavItems">
         <span>Pages</span>
-        <iconify-icon
+        <Icon
             icon="iconamoon:arrow-down-2"
             width="24"
             height="24"

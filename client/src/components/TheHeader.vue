@@ -5,7 +5,7 @@ import { useBreakpoints } from '@vueuse/core'
 import PrimaryButton from './BaseComponents/Buttons/PrimaryButton.vue'
 import HamburgerMenu from './HeaderComponents/HamburgerMenu.vue'
 import NavMenu from './HeaderComponents/NavMenu.vue'
-import 'iconify-icon'
+import { Icon } from '@iconify/vue'
 
 import { useMainStore } from '@/stores/mainStore'
 
@@ -50,7 +50,7 @@ const lgAndLarger = breakpoints.greater('lg')
           <!-- Logo -->
           <router-link to="home" class="p-0">
             <div class="flex justify-center items-center gap-x-2">
-              <iconify-icon
+              <Icon
                 icon="icon-park-outline:camp"
                 height="36"
                 width="36"
@@ -76,7 +76,7 @@ const lgAndLarger = breakpoints.greater('lg')
                 @click="togglePNBIO"
               >
                 <span>Pages</span>
-                <iconify-icon
+                <Icon
                   icon="iconamoon:arrow-down-2"
                   width="24"
                   height="24"
@@ -106,7 +106,7 @@ const lgAndLarger = breakpoints.greater('lg')
             <div
               class="relative cursor-pointer hover:scale-90 hover:bg-gray-200 hover:rounded-4xl duration-100 ease"
             >
-              <iconify-icon
+              <Icon
                 icon="solar:bag-line-duotone"
                 width="40"
                 height="40"

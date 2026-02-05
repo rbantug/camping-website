@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import 'iconify-icon'
+import { Icon } from '@iconify/vue';
 
 const iconArr = ['mynaui:facebook-solid', 'uil:twitter', 'mynaui:instagram-solid', 'mynaui:youtube-solid']
 </script>
@@ -8,7 +8,7 @@ const iconArr = ['mynaui:facebook-solid', 'uil:twitter', 'mynaui:instagram-solid
   <div class="mb-10 flex flex-col gap-y-4">
     <router-link to="home" class="">
       <div class="flex items-start gap-x-2">
-        <iconify-icon
+        <Icon
           icon="icon-park-outline:camp"
           height="36"
           width="36"
@@ -22,7 +22,7 @@ const iconArr = ['mynaui:facebook-solid', 'uil:twitter', 'mynaui:instagram-solid
       <div v-for="icon in iconArr" :key="icon">
         <a href="/">
           <div class="w-8 h-8 md:w-9 md:h-9 rounded-full shadow-md/20 flex items-center justify-center">
-            <iconify-icon
+            <Icon
               :icon="icon"
               width="18"
               height="18"
