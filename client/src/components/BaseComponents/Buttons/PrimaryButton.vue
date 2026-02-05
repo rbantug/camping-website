@@ -12,26 +12,54 @@ const props = defineProps({
     type: String,
     required: true,
   },
+  groupAnimate: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
+  disabled: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
 })
 
-const rootStyling = 'bg-accent-secondary rounded-full w-full cursor-pointer hover:bg-accent-primary hover:-translate-y-1 duration-200'
+const rootStyling =
+  'bg-accent-secondary rounded-full w-full cursor-pointer hover:bg-accent-primary hover:-translate-y-1 duration-200'
+
+function moreStyling(style: string) {
+  let newStyle = style
+
+  if (props.disabled) {
+    return 'bg-neutral-600 rounded-full w-full'
+  }
+
+  if (props.groupAnimate) {
+    newStyle = newStyle.replace(
+      'hover:bg-accent-primary hover:-translate-y-1',
+      'group-hover:bg-accent-primary group-hover:-translate-y-1',
+    )
+  }
+
+  return newStyle
+}
 
 const outputRootStyle = computed(() => {
   if (props.size === 'small') {
-    return rootStyling + ' px-3 py-2'
+    return moreStyling(rootStyling) + ' px-3 py-2'
   }
 
   if (props.size === 'default') {
-    return rootStyling + ' px-5 py-4'
+    return moreStyling(rootStyling) + ' px-5 py-4'
   }
 
-  return rootStyling + ' px-7 py-5'
+  return moreStyling(rootStyling) + ' px-7 py-5'
 })
 
 const txtStyle = 'text-white font-semibold'
 
 const outputTxtStyle = computed(() => {
-    if (props.size === 'small') {
+  if (props.size === 'small') {
     return txtStyle + ' text-sm'
   }
 
@@ -45,7 +73,7 @@ const outputTxtStyle = computed(() => {
 
 <template>
   <div>
-    <button :class="outputRootStyle">
+    <button :class="outputRootStyle" :disabled="props.disabled">
       <span :class="outputTxtStyle">{{ props.label }}</span>
     </button>
   </div>
