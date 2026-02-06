@@ -21,6 +21,8 @@ const badgeIcons = ref({
   electicHookup: { icon: 'ph:plug-charging', text: 'Electric Hookup' },
   wifiAccess: { icon: 'material-symbols:wifi', text: 'WIFI Access' },
   campStore: { icon: 'material-symbols:store-outline', text: 'Camp Store' },
+  hiking: { icon: 'material-symbols:hiking', text: 'Hiking Trail' },
+  fishing: { icon: 'game-icons:fishing-pole', text: 'Fishing' },
   test: { icon: 'iconoir:light-bulb', text: 'test' },
 })
 </script>
@@ -28,6 +30,6 @@ const badgeIcons = ref({
 <template>
   <div class="w-fit px-3 py-2 rounded-3xl border border-neutral-300 flex items-center gap-x-1">
     <Icon :icon="badgeIcons[props.name]['icon']" height="24" width="24" class="p-0" />
-    <div class="pr-1 text-sm">{{ badgeIcons[props.name]['text'] }}</div>
+    <div class="pr-1 text-sm" :class="{ 'text-xs': badgeIcons[props.name]['text'].length > 11 }">{{ badgeIcons[props.name]['text'] }}</div>
   </div>
 </template>
