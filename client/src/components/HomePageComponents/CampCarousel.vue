@@ -78,7 +78,7 @@ const testCamps = ref([
 </script>
 
 <template>
-  <div class="h-200 w-[90%] pt-40 mx-auto">
+  <div class="h-200 w-[90%] pt-40 mb-70 mx-auto md:w-[87%] lg:w-[85%]">
     <transition-scroll>
       <div class="flex flex-col justify-between w-full pb-10 md:flex-row md:items-center">
         <h1 class="text-3xl font-bold pb-10 md:pb-0">Explore our camps</h1>
@@ -97,7 +97,7 @@ const testCamps = ref([
           :loop="true"
         >
           <swiper-slide v-for="camp in testCamps" :key="camp.name">
-            <div class="max-w-90 mx-auto rounded-2xl group md:max-w-85 lg:max-w-100">
+            <div class="max-w-90 mx-auto rounded-2xl group md:max-w-85 lg:max-w-90">
               <div class="h-65 rounded-t-2xl overflow-hidden">
                 <img
                   :src="'/src/assets/images/' + camp.image"

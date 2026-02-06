@@ -21,7 +21,7 @@ const outputBtnSize = computed(() => {
 </script>
 
 <template>
-  <div class="w-[90%] mx-auto h-10 flex flex-col gap-y-4 justify-center text-center">
+  <div class="w-[90%] mx-auto h-10 flex flex-col gap-y-4 justify-center text-center md:w-[87%] lg:w-[85%]">
     <h1 class="text-white font-bold text-5xl md:text-6xl leading-16 md:leading-20">
       Camping good! Lorem ipsum stuff
     </h1>
