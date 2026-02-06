@@ -12,34 +12,59 @@ const props = defineProps({
     type: String,
     required: true,
   },
+  altColor: {
+    type: Boolean,
+    required: false,
+    default: false
+  }
 })
 
 const rootStyling = 'bg-white rounded-full inset-shadow-xs shadow-xs w-full cursor-pointer hover:bg-accent-secondary hover:-translate-y-1 duration-200 group'
 
+function moreRootStyling(style:string) {
+  let newStyle = style
+
+  if (props.altColor) {
+    newStyle = newStyle.replace('bg-white', 'bg-accent-secondary border border-white').replace('hover:bg-accent-secondary', 'hover:bg-white')
+  }
+
+  return newStyle
+}
+
 const outputRootStyle = computed(() => {
   if (props.size === 'small') {
-    return rootStyling + ' px-3 py-2'
+    return moreRootStyling(rootStyling) + ' px-3 py-2'
   }
 
   if (props.size === 'default') {
-    return rootStyling + ' px-5 py-4'
+    return moreRootStyling(rootStyling) + ' px-5 py-4'
   }
 
-  return rootStyling + ' px-7 py-5'
+  return moreRootStyling(rootStyling) + ' px-7 py-5'
 })
 
 const txtStyle = 'text-neutral-800 group-hover:text-white'
 
+function moreTxtStyling(style:string) {
+  let newStyle = style
+
+  if (props.altColor) {
+    return 'text-white group-hover:text-neutral-800'
+  }
+
+  return newStyle
+} 
+
 const outputTxtStyle = computed(() => {
     if (props.size === 'small') {
-    return txtStyle + ' text-sm'
+    return moreTxtStyling(txtStyle) + ' text-sm'
   }
 
   if (props.size === 'default') {
-    return txtStyle + ' text-md'
+    return moreTxtStyling(txtStyle) + ' text-md'
   }
 
-  return txtStyle + ' text-lg'
+  return moreTxtStyling(txtStyle) + ' text-lg'
 })
 </script>
 

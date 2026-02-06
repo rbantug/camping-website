@@ -22,16 +22,25 @@ const props = defineProps({
     required: false,
     default: false,
   },
+  altColor: {
+    type: Boolean,
+    required: false,
+    default: false
+  }
 })
 
 const rootStyling =
-  'bg-accent-secondary rounded-full w-full cursor-pointer hover:bg-accent-primary hover:-translate-y-1 duration-200'
+  'bg-accent-secondary rounded-full w-full cursor-pointer shadow hover:bg-accent-primary hover:-translate-y-1 duration-200 group'
 
 function moreStyling(style: string) {
   let newStyle = style
 
   if (props.disabled) {
     return 'bg-neutral-600 rounded-full w-full'
+  }
+
+  if (props.altColor) {
+    newStyle = newStyle.replace('bg-accent-secondary', 'bg-white').replace('hover:bg-accent-primary', 'hover:bg-white')
   }
 
   if (props.groupAnimate) {
@@ -58,16 +67,26 @@ const outputRootStyle = computed(() => {
 
 const txtStyle = 'text-white font-semibold'
 
+function moreTxtStyling(style:string) {
+  let newStyle = style
+
+  if (props.altColor) {
+    newStyle = newStyle.replace('text-white', 'text-accent-secondary group-hover:text-neutral-800')
+  }
+
+  return newStyle
+}
+
 const outputTxtStyle = computed(() => {
   if (props.size === 'small') {
-    return txtStyle + ' text-sm'
+    return moreTxtStyling(txtStyle) + ' text-sm'
   }
 
   if (props.size === 'default') {
-    return txtStyle + ' text-md'
+    return moreTxtStyling(txtStyle) + ' text-md'
   }
 
-  return txtStyle + ' text-lg'
+  return moreTxtStyling(txtStyle) + ' text-lg'
 })
 </script>
 
