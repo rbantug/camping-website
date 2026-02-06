@@ -3,7 +3,7 @@ import { useElementVisibility } from '@vueuse/core';
 import { ref, watchEffect } from 'vue';
 
 const el = ref(null)
-const isVisible = useElementVisibility(el)
+const isVisible = useElementVisibility(el, { threshold: 1 })
 const trueCount = ref(0)
 
 watchEffect(() => {
