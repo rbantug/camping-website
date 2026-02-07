@@ -95,6 +95,7 @@ const testCamps = ref([
           :space-between="20"
           :navigation="{ nextEl: '.next-btn', prevEl: '.prev-btn' }"
           :loop="true"
+          class="md:max-w-185 lg:min-w-230 lg:max-w-300"
         >
           <swiper-slide v-for="camp in testCamps" :key="camp.name">
             <div class="max-w-90 mx-auto rounded-2xl group md:max-w-85 lg:max-w-90">
