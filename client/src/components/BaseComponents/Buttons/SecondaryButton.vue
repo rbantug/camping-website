@@ -11,7 +11,7 @@ const props = withDefaults(defineProps<Props>(), {
   altColor: false
 })
 
-const rootStyling = 'bg-white rounded-full inset-shadow-xs shadow-xs w-full cursor-pointer hover:bg-accent-secondary hover:-translate-y-1 duration-200 group'
+const rootStyling = 'bg-white rounded-full inset-shadow-xs shadow-md w-full cursor-pointer hover:bg-accent-secondary hover:-translate-y-1 duration-200 group'
 
 function moreRootStyling(style:string) {
   let newStyle = style
