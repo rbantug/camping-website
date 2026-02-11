@@ -42,7 +42,7 @@ const mdAbove = breakpoints.greaterOrEqual('md')
         </p>
       </div>
     </TransitionScroll>
-    <TransitionScroll threshold>
+    <TransitionScroll :threshold="mdAbove ? true : false">
       <div class="flex flex-col gap-y-8 mb-10 md:flex-row md:gap-y-0 md:gap-x-7 lg:h-100">
         <div
           v-for="({ title, description, image }, index) in activities"
