@@ -1,13 +1,30 @@
 <script setup lang="ts">
 import { useElementVisibility } from '@vueuse/core';
-import { ref, watchEffect } from 'vue';
+import { computed, ref, watchEffect } from 'vue';
 
-const props = defineProps({
+interface Props {
+    threshold?: boolean;
+    transitionDirection?: 'top-bottom' | 'bottom-top';
+
+}
+
+/* const props = defineProps({
     threshold: {
         type: Boolean,
         required: false,
         default: false
+    },
+    transitionDirection: {
+        type: String,
+        validator(value:string) {
+            return ['top-bottom', 'bottom-top'].includes(value)
+        }
     }
+}) */
+
+const props = withDefaults(defineProps<Props>(), {
+    threshold: false,
+    transitionDirection: 'top-bottom'
 })
 
 const el = ref(null)
@@ -19,10 +36,34 @@ watchEffect(() => {
         trueCount.value++
     }
 })
+
+const outputDir0 = computed(() => {
+    if (props.transitionDirection === 'top-bottom') {
+        return 'opacity-0 translate-y-8'
+    }
+
+    if (props.transitionDirection === 'bottom-top') {
+        return 'opacity-0 translate-y-0'
+    }
+
+    return ''
+})
+
+const outputDir1 = computed(() => {
+    if (props.transitionDirection === 'top-bottom') {
+        return 'opacity-100 translate-y-0'
+    }
+
+    if (props.transitionDirection === 'bottom-top') {
+        return 'opacity-100 translate-y-8'
+    }
+
+    return ''
+})
 </script>
 
 <template>
-    <div ref="el" class="mx-auto duration-900" :class="{ 'opacity-0 translate-y-8': trueCount < 1 && isVisible === false, 'opacity-100 translate-y-0': trueCount >= 1 && isVisible === true }">
+    <div ref="el" class="mx-auto duration-900" :class="{ [outputDir0]: trueCount < 1 && isVisible === false, [outputDir1]: trueCount >= 1 && isVisible === true }">
         <slot />
     </div>
 </template>
