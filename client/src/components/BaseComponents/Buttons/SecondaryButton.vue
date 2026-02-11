@@ -1,22 +1,14 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
-const props = defineProps({
-  size: {
-    validator: function (value: string) {
-      return ['small', 'default', 'large'].includes(value)
-    },
-    required: true,
-  },
-  label: {
-    type: String,
-    required: true,
-  },
-  altColor: {
-    type: Boolean,
-    required: false,
-    default: false
-  }
+interface Props {
+  size: 'small' | 'default' | 'large';
+  label: string;
+  altColor?: boolean;
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  altColor: false
 })
 
 const rootStyling = 'bg-white rounded-full inset-shadow-xs shadow-xs w-full cursor-pointer hover:bg-accent-secondary hover:-translate-y-1 duration-200 group'
