@@ -17,7 +17,7 @@ const greaterEqualMd = breakpoints.greaterOrEqual('md')
   <div class="h-150 w-[90%] mx-auto md:w-[87%] lg:w-[85%] relative">
     <TransitionScroll threshold class="relative">
       <div
-        class="h-115 bg-accent-secondary rounded-4xl bg-[url(@/assets/images/CTAPattern.jpg)] bg-cover bg-blend-color-burn"
+        class="h-115 bg-accent-secondary rounded-4xl bg-[url(@/assets/images/CTAPattern.avif)] bg-cover bg-blend-color-burn"
       >
         <div class="h-115 bg-accent-secondary rounded-4xl mask-y-from-90% mask-y-to-90% md:mask-y-from-80% md:mask-y-to-80%"></div>
       </div>

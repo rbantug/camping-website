@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import img1 from '@/assets/images/pexels-dtanpt-9551192.jpg'
-import img2 from '@/assets/images/pexels-faysonmerege-5627347.jpg'
-import img3 from '@/assets/images/pexels-gantas-4484242.jpg'
-import img4 from '@/assets/images/pexels-himanshu-raj-175406597-11091486.jpg'
-import img5 from '@/assets/images/pexels-kampveyaban-16034782.jpg'
-import img6 from '@/assets/images/pexels-rhys-abel-2233101-9711099.jpg'
+import img1 from '@/assets/images/pexels-dtanpt-9551192.avif'
+import img2 from '@/assets/images/pexels-faysonmerege-5627347.avif'
+import img3 from '@/assets/images/pexels-gantas-4484242.avif'
+import img4 from '@/assets/images/pexels-himanshu-raj-175406597-11091486.avif'
+import img5 from '@/assets/images/pexels-kampveyaban-16034782.avif'
+import img6 from '@/assets/images/pexels-rhys-abel-2233101-9711099.avif'
 
 const imgArr = [img1, img2, img3, img4, img5, img6]
 </script>

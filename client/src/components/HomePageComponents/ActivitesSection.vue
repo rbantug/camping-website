@@ -9,17 +9,17 @@ const activities = ref([
   {
     title: 'Hiking',
     description: 'Pretium tellus duis convallis tempus leo eu aenean.',
-    image: 'activities-hiking.jpg',
+    image: 'activities-hiking.avif',
   },
   {
     title: 'Fishing',
     description: 'Pretium tellus duis convallis tempus leo eu aenean.',
-    image: 'activities-fishing.jpg',
+    image: 'activities-fishing.avif',
   },
   {
     title: 'Campfire Areas',
     description: 'Pretium tellus duis convallis tempus leo eu aenean.',
-    image: 'activities-campfire.jpg',
+    image: 'activities-campfire.avif',
   },
 ])
 
