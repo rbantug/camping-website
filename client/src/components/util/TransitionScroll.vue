@@ -5,26 +5,11 @@ import { computed, ref, watchEffect } from 'vue';
 interface Props {
     threshold?: boolean;
     transitionDirection?: 'top-bottom' | 'bottom-top';
-
 }
-
-/* const props = defineProps({
-    threshold: {
-        type: Boolean,
-        required: false,
-        default: false
-    },
-    transitionDirection: {
-        type: String,
-        validator(value:string) {
-            return ['top-bottom', 'bottom-top'].includes(value)
-        }
-    }
-}) */
 
 const props = withDefaults(defineProps<Props>(), {
     threshold: false,
-    transitionDirection: 'top-bottom'
+    transitionDirection: 'top-bottom',
 })
 
 const el = ref(null)
@@ -63,7 +48,7 @@ const outputDir1 = computed(() => {
 </script>
 
 <template>
-    <div ref="el" class="mx-auto duration-900" :class="{ [outputDir0]: trueCount < 1 && isVisible === false, [outputDir1]: trueCount >= 1 && isVisible === true }">
+    <div ref="el" class="mx-auto duration-900 delay-200" :class="{ [outputDir0]: trueCount < 1 && isVisible === false, [outputDir1]: trueCount >= 1 && isVisible === true }">
         <slot />
     </div>
 </template>
