@@ -5,11 +5,15 @@ import { computed, ref, watchEffect } from 'vue';
 interface Props {
     threshold?: boolean;
     transitionDirection?: 'top-bottom' | 'bottom-top';
+    zIndex?: number;
+    relative?: boolean;
 }
 
 const props = withDefaults(defineProps<Props>(), {
     threshold: false,
     transitionDirection: 'top-bottom',
+    zIndex: 0,
+    relative: false
 })
 
 const el = ref(null)
@@ -23,27 +27,39 @@ watchEffect(() => {
 })
 
 const outputDir0 = computed(() => {
+    let style = `opacity-0 z-${props.zIndex}`
+
     if (props.transitionDirection === 'top-bottom') {
-        return 'opacity-0 translate-y-8'
+        style = style + ' translate-y-8'
     }
 
     if (props.transitionDirection === 'bottom-top') {
-        return 'opacity-0 translate-y-0'
+        style = style + ' translate-y-0'
     }
 
-    return ''
+    if (props.relative) {
+        style = style + ' relative'
+    }
+
+    return style
 })
 
 const outputDir1 = computed(() => {
+    let style = `opacity-100 z-${props.zIndex}`
+
     if (props.transitionDirection === 'top-bottom') {
-        return 'opacity-100 translate-y-0'
+        style = style + ' translate-y-0'
     }
 
     if (props.transitionDirection === 'bottom-top') {
-        return 'opacity-100 translate-y-8'
+        style = style + ' translate-y-8'
     }
 
-    return ''
+    if (props.relative) {
+        style = style + ' relative'
+    }
+    
+    return style
 })
 </script>
 
