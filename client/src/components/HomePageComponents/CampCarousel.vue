@@ -29,7 +29,7 @@ const testCamps = ref([
       "Quiet Ember Campground is a tucked-away forest retreat where slow mornings and crackling campfires set the pace. Surrounded by tall pines, soft moss trails, and the distant sound of a flowing creek, it's a place designed for people who come to the woods to truly unplug. Evenings glow with lantern light and warm embers, while the night sky opens wide above the treetops.",
     price: '12',
     image:
-      'https://dl.dropboxusercontent.com/scl/fi/vs6m3oqhmcg15k29c4abl/forest-1.avif?rlkey=k1ir2zbdvkmm6lpq5khlt8ync',
+      'https://dl.dropboxusercontent.com/scl/fi/b1w3ybugfyq8c9thb0si1/forest-1.avif?rlkey=gd4vdo8y30jpj3ics9uecxevd',
     blurryImg:
       'https://dl.dropboxusercontent.com/scl/fi/18wqydf0v7hu4i1tgldn7/forest-1.avif?rlkey=8kkubpmzyj0twcrc7yrapgmc7',
     status: 'available',
@@ -40,7 +40,7 @@ const testCamps = ref([
     shortDescription: 'lorem something is flying over the chasm',
     price: '34',
     image:
-      'https://dl.dropboxusercontent.com/scl/fi/g7hj5b9llmvylbk5hteu3/forest-2.avif?rlkey=gsss0rau4h3f5zmn9o8kxdpry',
+      'https://dl.dropboxusercontent.com/scl/fi/mlej6lktl7222u7yqt8xr/forest-2.avif?rlkey=c3kttwp5119rt1wu940hakfno',
     blurryImg:
       'https://dl.dropboxusercontent.com/scl/fi/7meuc2pir0mtsjp1e92lr/forest-2.avif?rlkey=ueavpt1nftp432cw20632jyy9',
     status: 'full',
@@ -51,7 +51,7 @@ const testCamps = ref([
     shortDescription: 'lorem something is flying over the chasm',
     price: '56',
     image:
-      'https://dl.dropboxusercontent.com/scl/fi/a98dt0ok40v6phxftgosf/beach-1.avif?rlkey=sawva7carwysyog0llhty5q8o',
+      'https://dl.dropboxusercontent.com/scl/fi/xt0kr8kv85bgerfk6ohhh/beach-1.avif?rlkey=sxkf3kr4xdxze5byzvvzkb0ug',
     blurryImg: '/client/src/assets/images/lowres/beach-1.avif',
     status: 'available',
     amenities: ['shower', 'waterSupply', 'wifiAccess'],
@@ -61,7 +61,7 @@ const testCamps = ref([
     shortDescription: 'lorem something is flying over the chasm',
     price: '78',
     image:
-      'https://dl.dropboxusercontent.com/scl/fi/vhz4qoprawj5r958mpcrs/mountain-1.avif?rlkey=iuqe9lmx7z0c8sbhdmm1sly47',
+      'https://dl.dropboxusercontent.com/scl/fi/s8q8u7tnnudy8j6ed5z75/mountain-1.avif?rlkey=u8724riknpoc464vekmk3xgqe',
     blurryImg:
       'https://dl.dropboxusercontent.com/scl/fi/5tkk1iht2isx7rqxwaroq/mountain-1.avif?rlkey=16v6idbvlocetszbq3hbuhw2g',
     status: 'available',
@@ -72,7 +72,7 @@ const testCamps = ref([
     shortDescription: 'lorem something is flying over the chasm',
     price: '90',
     image:
-      'https://dl.dropboxusercontent.com/scl/fi/oe05i0x0hl6g2ccrnuzp8/mountain-2.avif?rlkey=eccdghu9s2orasjki5o5r61nf',
+      'https://dl.dropboxusercontent.com/scl/fi/bxicpr9ysg35d6gc8cwh5/mountain-2.avif?rlkey=k0c890ridekn13qfgwi9j2ft7',
     blurryImg:
       'https://dl.dropboxusercontent.com/scl/fi/vvzdhi7m7cj8duk3qv14f/mountain-2.avif?rlkey=njz2ki0bnp6kepnev06rkisho',
     status: 'available',
@@ -83,7 +83,7 @@ const testCamps = ref([
     shortDescription: 'lorem something is flying over the chasm',
     price: '14',
     image:
-      'https://dl.dropboxusercontent.com/scl/fi/myp1wanzu83o7hzmiglmj/mountain-3.avif?rlkey=krxjdeetz1hj7j6jr6jqzf0go',
+      'https://dl.dropboxusercontent.com/scl/fi/apars1hjdyqr5efk8myps/mountain-3.avif?rlkey=8dhggk1z3p0qevjgvig0a8w31',
     blurryImg:
       'https://dl.dropboxusercontent.com/scl/fi/j9opfda1c2szjcdq5qbeo/mountain-3.avif?rlkey=qwwery67yeedwvwd8wzglhx0u',
     status: 'available',

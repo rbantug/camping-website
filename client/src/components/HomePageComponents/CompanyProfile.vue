@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { useBreakpoints } from '@vueuse/core'
-import { ref, onMounted } from 'vue'
+import { ref } from 'vue'
+import { useHead } from '@unhead/vue'
 
 import SecondaryButton from '../BaseComponents/Buttons/SecondaryButton.vue'
 import TransitionScroll from '../util/TransitionScroll.vue'
-import { preloadImages } from '@/utils/preloadImages'
+import LazyLoadImage from '../util/LazyLoadImage.vue'
 
 const breakpoints = useBreakpoints({
   md: 768,
@@ -15,28 +16,32 @@ const MDandUp = breakpoints.greaterOrEqual('md')
 
 const images = ref([
   {
-    path: 'src/assets/images/company-profile-1.avif',
+    path: 'https://dl.dropboxusercontent.com/scl/fi/yfkjtzwv60vlt4ij9rgr1/company-profile-1.avif?rlkey=9o7l26b5jqxba4675jpkkflks',
+    blurryPath: 'https://dl.dropboxusercontent.com/scl/fi/tqc6rdjkqgv7odhro32j7/company-profile-1.avif?rlkey=9ukctd1txrn8l14hd8gbzcxkv',
     altText: 'camping tents 1',
     gridStyle:
       'col-start-1 col-end-3 row-start-1 row-end-3',
     imgStyle: 'object-cover rounded-xl h-60 w-60 md:h-100 md:w-100'
   },
   {
-    path: 'src/assets/images/company-profile-2.avif',
+    path: 'https://dl.dropboxusercontent.com/scl/fi/7sd3rtg9paruptvulpdp6/company-profile-2.avif?rlkey=xitiacsxf6xtp9ts4g1wdvb70',
+    blurryPath: 'https://dl.dropboxusercontent.com/scl/fi/ve5qcx7jf035c574vxgy6/company-profile-2.avif?rlkey=yc4t7a82mohfu9ev04z4qjomp',
     altText: 'camping tents 2',
     gridStyle:
       'col-start-3 col-end-5 row-start-1 row-end-2',
     imgStyle: 'object-cover rounded-xl h-30 w-50 md:h-60 md:w-100'
   },
   {
-    path: 'src/assets/images/company-profile-3.avif',
+    path: 'https://dl.dropboxusercontent.com/scl/fi/rux4htg0w7eqilntylr1a/company-profile-3.avif?rlkey=sw73dvip6mlo9v753lf27igmo',
+    blurryPath: 'https://dl.dropboxusercontent.com/scl/fi/k1jokxz04jd0iehzh27mo/company-profile-3.avif?rlkey=r1jpu19ud4utq7359f2bbhjkw',
     altText: 'camping tents 3',
     gridStyle:
       'col-start-1 col-end-3 row-start-3 row-end-5',
     imgStyle: 'object-cover rounded-xl h-30 w-50 -mt-3 md:h-60 md:w-100 md:-mt-25'  
   },
   {
-    path: 'src/assets/images/company-profile-4.avif',
+    path: 'https://dl.dropboxusercontent.com/scl/fi/8lxobo3jpq8so83nn4acb/company-profile-4.avif?rlkey=m33zzk62q0wukjswcsyqxlnpg',
+    blurryPath: 'https://dl.dropboxusercontent.com/scl/fi/3tqhg69hn5dcj302qq841/company-profile-4.avif?rlkey=wxzme40rj5f20l3lnsfxzc8l1',
     altText: 'camping tents 4',
     gridStyle:
       'col-start-3 col-end-5 row-start-2 row-end-5',
@@ -44,11 +49,11 @@ const images = ref([
   },
 ])
 
-/* onMounted(async () => {
-  const imageUrl = images.value.map(x => x.path)
-  console.log(imageUrl)
-  await preloadImages(imageUrl)
-}) */
+const testScroll = ref(false)
+
+function testEmit(val:boolean) {
+  testScroll.value = val
+}
 </script>
 
 <template>
@@ -82,15 +87,11 @@ const images = ref([
       </TransitionScroll>
     </div>
     <div class="lg:order-1">
-      <TransitionScroll :threshold="true">
+      <TransitionScroll :threshold="true" :image-loading-done="testScroll">
         <div class="mt-12 h-80 max-w-100 mx-auto md:max-w-210 lg:mt-0 lg:h-160">
           <div class="grid grid-cols-4 grid-rows-4 gap-3 justify-center md:gap-6">
-            <div v-for="{ path, altText, gridStyle, imgStyle } in images" :key="altText" :class="gridStyle">
-              <img
-                :src="path"
-                :alt="altText"
-                :class="imgStyle"
-              />
+            <div v-for="{ path, blurryPath, altText, gridStyle, imgStyle } in images" :key="altText" :class="gridStyle">
+              <LazyLoadImage :img-path="path" :blurry-img-path="blurryPath" :class="imgStyle" @loading-is-done="testEmit" />
             </div>
           </div>
         </div>
