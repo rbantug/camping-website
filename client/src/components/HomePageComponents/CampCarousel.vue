@@ -3,17 +3,15 @@ import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Navigation, A11y } from 'swiper/modules'
 import { useBreakpoints } from '@vueuse/core'
 import { ref } from 'vue'
+import { useHead } from '@unhead/vue'
 
 import 'swiper/css'
-//import 'swiper/css/navigation'
-//import 'swiper/css/scrollbar'
-
-import { Icon } from '@iconify/vue'
 
 import SecondaryButton from '../BaseComponents/Buttons/SecondaryButton.vue'
 import TransitionScroll from '../util/TransitionScroll.vue'
 import BaseBadge from '../BaseComponents/Buttons/BaseBadge.vue'
 import PrimaryButton from '../BaseComponents/Buttons/PrimaryButton.vue'
+import LazyLoadImage from '../util/LazyLoadImage.vue'
 
 const breakpoints = useBreakpoints({
   md: 768,
@@ -30,7 +28,10 @@ const testCamps = ref([
     fullDescription:
       "Quiet Ember Campground is a tucked-away forest retreat where slow mornings and crackling campfires set the pace. Surrounded by tall pines, soft moss trails, and the distant sound of a flowing creek, it's a place designed for people who come to the woods to truly unplug. Evenings glow with lantern light and warm embers, while the night sky opens wide above the treetops.",
     price: '12',
-    image: 'forest-1.avif',
+    image:
+      'https://dl.dropboxusercontent.com/scl/fi/vs6m3oqhmcg15k29c4abl/forest-1.avif?rlkey=k1ir2zbdvkmm6lpq5khlt8ync',
+    blurryImg:
+      'https://dl.dropboxusercontent.com/scl/fi/18wqydf0v7hu4i1tgldn7/forest-1.avif?rlkey=8kkubpmzyj0twcrc7yrapgmc7',
     status: 'available',
     amenities: ['toilet', 'firePit', 'waterSupply', 'campStore'],
   },
@@ -38,7 +39,10 @@ const testCamps = ref([
     name: 'Cedar Ridge Outpost',
     shortDescription: 'lorem something is flying over the chasm',
     price: '34',
-    image: 'forest-2.avif',
+    image:
+      'https://dl.dropboxusercontent.com/scl/fi/g7hj5b9llmvylbk5hteu3/forest-2.avif?rlkey=gsss0rau4h3f5zmn9o8kxdpry',
+    blurryImg:
+      'https://dl.dropboxusercontent.com/scl/fi/7meuc2pir0mtsjp1e92lr/forest-2.avif?rlkey=ueavpt1nftp432cw20632jyy9',
     status: 'full',
     amenities: ['grill', 'trashBins', 'picnicTable'],
   },
@@ -46,7 +50,9 @@ const testCamps = ref([
     name: 'Breakline Beach Camp',
     shortDescription: 'lorem something is flying over the chasm',
     price: '56',
-    image: 'beach-1.avif',
+    image:
+      'https://dl.dropboxusercontent.com/scl/fi/a98dt0ok40v6phxftgosf/beach-1.avif?rlkey=sawva7carwysyog0llhty5q8o',
+    blurryImg: '/client/src/assets/images/lowres/beach-1.avif',
     status: 'available',
     amenities: ['shower', 'waterSupply', 'wifiAccess'],
   },
@@ -54,7 +60,10 @@ const testCamps = ref([
     name: 'Highpass Outpost',
     shortDescription: 'lorem something is flying over the chasm',
     price: '78',
-    image: 'mountain-1.avif',
+    image:
+      'https://dl.dropboxusercontent.com/scl/fi/vhz4qoprawj5r958mpcrs/mountain-1.avif?rlkey=iuqe9lmx7z0c8sbhdmm1sly47',
+    blurryImg:
+      'https://dl.dropboxusercontent.com/scl/fi/5tkk1iht2isx7rqxwaroq/mountain-1.avif?rlkey=16v6idbvlocetszbq3hbuhw2g',
     status: 'available',
     amenities: ['shower', 'waterSupply', 'wifiAccess'],
   },
@@ -62,7 +71,10 @@ const testCamps = ref([
     name: 'North Summit Camp',
     shortDescription: 'lorem something is flying over the chasm',
     price: '90',
-    image: 'mountain-2.avif',
+    image:
+      'https://dl.dropboxusercontent.com/scl/fi/oe05i0x0hl6g2ccrnuzp8/mountain-2.avif?rlkey=eccdghu9s2orasjki5o5r61nf',
+    blurryImg:
+      'https://dl.dropboxusercontent.com/scl/fi/vvzdhi7m7cj8duk3qv14f/mountain-2.avif?rlkey=njz2ki0bnp6kepnev06rkisho',
     status: 'available',
     amenities: ['grill', 'trashBins', 'picnicTable'],
   },
@@ -70,7 +82,10 @@ const testCamps = ref([
     name: 'Cloudrest Campground',
     shortDescription: 'lorem something is flying over the chasm',
     price: '14',
-    image: 'mountain-3.avif',
+    image:
+      'https://dl.dropboxusercontent.com/scl/fi/myp1wanzu83o7hzmiglmj/mountain-3.avif?rlkey=krxjdeetz1hj7j6jr6jqzf0go',
+    blurryImg:
+      'https://dl.dropboxusercontent.com/scl/fi/j9opfda1c2szjcdq5qbeo/mountain-3.avif?rlkey=qwwery67yeedwvwd8wzglhx0u',
     status: 'available',
     amenities: ['grill', 'trashBins', 'picnicTable'],
   },
@@ -100,12 +115,20 @@ const testCamps = ref([
           <swiper-slide v-for="camp in testCamps" :key="camp.name">
             <div class="max-w-90 mx-auto rounded-2xl group md:max-w-85 lg:max-w-90">
               <div class="h-65 rounded-t-2xl overflow-hidden">
-                <img
-                  :src="'/src/assets/images/' + camp.image"
-                  :alt="camp.name"
+                <LazyLoadImage
+                  :alt-name="camp.name"
+                  :img-path="camp.image"
+                  :blurry-img-path="camp.image"
                   class="object-cover object-center h-65 w-100 rounded-t-2xl group-hover:scale-120 duration-300"
                   :class="{ grayscale: camp.status === 'full' }"
                 />
+                <!-- <img
+                  :src="camp.image"
+                  :alt="camp.name"
+                  class="object-cover object-center h-65 w-100 rounded-t-2xl group-hover:scale-120 duration-300"
+                  :class="{ grayscale: camp.status === 'full' }"
+                  loading="lazy"
+                /> -->
               </div>
               <div
                 class="h-90 max-w-100 bg-white rounded-b-2xl -translate-y-2 group-hover:-translate-y-4 duration-300 md:shadow"
@@ -154,14 +177,36 @@ const testCamps = ref([
           <button
             class="prev-btn absolute -left-5 bottom-85 z-1 w-15 h-15 rounded-full flex items-center justify-center bg-accent-secondary duration-300 hover:bg-accent-primary hover:cursor-pointer hover:scale-90"
           >
-            <Icon icon="line-md:arrow-left" width="24" height="24" class="text-white scale-150" />
+            <div class="text-white scale-150">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <path
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="m12 19l-7-7l7-7m7 7H5"
+                />
+              </svg>
+            </div>
           </button>
 
           <!-- custom next button -->
           <button
             class="next-btn absolute -right-4.5 bottom-85 z-1 w-15 h-15 rounded-full flex items-center justify-center bg-accent-secondary duration-300 hover:bg-accent-primary hover:cursor-pointer hover:scale-90"
           >
-            <Icon icon="line-md:arrow-right" width="24" height="24" class="text-white scale-150" />
+            <div class="text-white scale-150">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <path
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 12h14m-7-7l7 7l-7 7"
+                />
+              </svg>
+            </div>
           </button>
         </div>
       </div>

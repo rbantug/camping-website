@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref, type PropType } from 'vue'
-import { Icon } from '@iconify/vue'
 
 import PrimaryButton from '../BaseComponents/Buttons/PrimaryButton.vue'
 import type { NavItems } from '../TheHeader.vue'
@@ -30,7 +29,7 @@ function toggleMoreNavItems() {
   <transition name="nav">
     <div
       v-if="props.isOpen"
-      class="w-full bg-white pl-6.5 pr-6.5 rounded-[30px] justify-between items-start pt-5.5 pb-5.5 flex flex-col"
+      class="w-full bg-white pl-6.5 pr-6.5 rounded-[30px] justify-between items-start pt-5.5 pb-5.5 flex flex-col z-10"
     >
       <div class="flex flex-col gap-y-4">
         <div v-for="{ link, route } in navItems" :key="link">
@@ -39,12 +38,10 @@ function toggleMoreNavItems() {
       </div>
       <div class="flex cursor-pointer pt-4 pb-2" @click="toggleMoreNavItems">
         <span>Pages</span>
-        <Icon
-            icon="iconamoon:arrow-down-2"
-            width="24"
-            height="24"
-            :class="{ 'rotate-180 duration-200 ease': moreNavItems, 'duration-200 ease': !moreNavItems }"
-        />
+        <!-- iconamoon:arrow-down-2 -->
+        <div :class="{ 'rotate-180 duration-200 ease': moreNavItems, 'duration-200 ease': !moreNavItems }">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 10l5 5m0 0l5-5"/></svg>
+        </div>
       </div>
       <div v-if="moreNavItems" class="flex flex-col gap-2 translate-x-4 pb-4">
         <div v-for="{ link, route } in additionalNavItems" :key="link">
