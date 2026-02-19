@@ -61,11 +61,6 @@ const mdAbove = breakpoints.greaterOrEqual('md')
         >
           <div>
             <div class="flex justify-center relative">
-              <!-- <img
-                :src="'/src/assets/images/' + image"
-                :alt="title"
-                class="h-120 w-90 rounded-3xl object-cover md:h-95"
-              /> -->
               <LazyLoadImage
                 :img-path="image"
                 :alt-name="title"
@@ -87,7 +82,7 @@ const mdAbove = breakpoints.greaterOrEqual('md')
       <SecondaryButton
         :size="mdAbove ? 'large' : 'default'"
         label="More activities"
-        class="md:w-[20%] md:mx-auto"
+        class="md:w-[30%] md:mx-auto"
       />
     </TransitionScroll>
   </div>
