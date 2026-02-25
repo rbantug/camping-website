@@ -92,124 +92,128 @@ const testCamps = ref([
 </script>
 
 <template>
-  <div class="h-200 w-[90%] pt-40 mb-70 mx-auto md:w-[87%] lg:w-[85%]">
-    <transition-scroll>
-      <div class="flex flex-col justify-between w-full pb-10 md:flex-row md:items-center">
-        <h1 class="text-3xl font-bold pb-10 md:pb-0">Explore our camps</h1>
-        <div class="w-full md:w-fit">
-          <secondary-button label="Browse all" size="large" />
+  <div class="dark:bg-neutral-900 transition-color duration-300">
+    <div class="h-280 w-[90%] pt-40 mb-70 mx-auto md:w-[87%] lg:w-[85%]">
+      <transition-scroll>
+        <div class="flex flex-col justify-between w-full pb-10 md:flex-row md:items-center md:h-30">
+          <h1
+            class="text-3xl font-bold pb-10 text-black md:pb-0 dark:text-white transition-color duration-300"
+          >
+            Explore our camps
+          </h1>
+          <div class="w-full md:w-fit">
+            <secondary-button label="Browse all" size="large" />
+          </div>
         </div>
-      </div>
-    </transition-scroll>
-    <transition-scroll>
-      <div class="h-160 mb-10 mx-auto hover:cursor-pointer hover:h-157 duration-300">
-        <swiper
-          :slides-per-view="mdTolg ? 2 : greaterEqualLG ? 3 : 1"
-          :modules="[Navigation, A11y]"
-          :space-between="20"
-          :navigation="{ nextEl: '.next-btn', prevEl: '.prev-btn' }"
-          :loop="true"
-          class="md:max-w-185 lg:min-w-230 lg:max-w-300"
-        >
-          <swiper-slide v-for="camp in testCamps" :key="camp.name">
-            <div class="max-w-90 mx-auto rounded-2xl group md:max-w-85 lg:max-w-90">
-              <div class="h-65 rounded-t-2xl overflow-hidden">
-                <LazyLoadImage
-                  :alt-name="camp.name"
-                  :img-path="camp.image"
-                  :blurry-img-path="camp.image"
-                  class="object-cover object-center h-65 w-100 rounded-t-2xl group-hover:scale-120 duration-300"
-                  :class="{ grayscale: camp.status === 'full' }"
-                />
-                <!-- <img
-                  :src="camp.image"
-                  :alt="camp.name"
-                  class="object-cover object-center h-65 w-100 rounded-t-2xl group-hover:scale-120 duration-300"
-                  :class="{ grayscale: camp.status === 'full' }"
-                  loading="lazy"
-                /> -->
-              </div>
-              <div
-                class="h-90 max-w-100 bg-white rounded-b-2xl -translate-y-2 group-hover:-translate-y-4 duration-300 md:shadow"
-              >
-                <div class="w-[90%] mx-auto flex flex-col">
-                  <!-- Camp name and description -->
-                  <h3
-                    class="text-2xl font-semibold pt-8 group-hover:text-accent-primary duration-200"
-                    :class="{ 'text-xl': camp.name.length > 20, 'pb-1': camp.name.length > 20 }"
-                  >
-                    {{ camp.name }}
-                  </h3>
-                  <p class="pt-2 text-neutral-600">{{ camp.shortDescription }}</p>
-                  <!-- Amenities Badge -->
-                  <div class="flex gap-x-2 pt-4">
-                    <div v-for="n in 2" :key="n">
-                      <base-badge :name="camp.amenities[n]" class="" />
+      </transition-scroll>
+      <transition-scroll>
+        <div class="h-160 mb-10 mx-auto hover:cursor-pointer hover:h-157 duration-300">
+          <swiper
+            :slides-per-view="mdTolg ? 2 : greaterEqualLG ? 3 : 1"
+            :modules="[Navigation, A11y]"
+            :space-between="20"
+            :navigation="{ nextEl: '.next-btn', prevEl: '.prev-btn' }"
+            :loop="true"
+            class="md:max-w-185 lg:min-w-230 lg:max-w-300"
+          >
+            <swiper-slide v-for="camp in testCamps" :key="camp.name">
+              <div class="max-w-90 mx-auto rounded-2xl group md:max-w-85 lg:max-w-90">
+                <div class="h-65 rounded-t-2xl overflow-hidden">
+                  <LazyLoadImage
+                    :alt-name="camp.name"
+                    :img-path="camp.image"
+                    :blurry-img-path="camp.image"
+                    class="object-cover object-center h-65 w-100 rounded-t-2xl group-hover:scale-120 duration-300"
+                    :class="{ grayscale: camp.status === 'full' }"
+                  />
+                </div>
+                <div
+                  class="h-90 max-w-100 rounded-b-2xl -translate-y-2 group-hover:-translate-y-4 duration-300 md:shadow bg-white dark:bg-neutral-800"
+                >
+                  <div class="w-[90%] mx-auto flex flex-col">
+                    <!-- Camp name and description -->
+                    <h3
+                      class="text-2xl font-semibold pt-8 group-hover:text-accent-primary duration-200 dark:text-white dark:group-hover:text-accent-secondary transition-colors"
+                      :class="{ 'text-xl': camp.name.length > 20, 'pb-1': camp.name.length > 20 }"
+                    >
+                      {{ camp.name }}
+                    </h3>
+                    <p class="pt-2 text-neutral-600 dark:text-neutral-500 transition-colors">
+                      {{ camp.shortDescription }}
+                    </p>
+                    <!-- Amenities Badge -->
+                    <div class="flex gap-x-2 pt-4">
+                      <div v-for="n in 2" :key="n">
+                        <base-badge :name="camp.amenities[n]" class="" />
+                      </div>
                     </div>
-                  </div>
-                  <div v-if="camp.amenities?.length > 2" class="pl-2 pt-1">
-                    Plus {{ camp.amenities.length - 2 }} more
-                  </div>
-                  <hr class="text-neutral-400 font-bold mt-8" />
-                  <!-- Price -->
-                  <div class="mt-6 flex flex-col md:flex-row md:justify-between md:items-center">
-                    <div>
-                      <span class="text-xl font-semibold tracking-wider">${{ camp.price }}</span>
-                      <span class="text-sm text-neutral-500"> /night</span>
+                    <div
+                      v-if="camp.amenities?.length > 2"
+                      class="pl-2 pt-1 dark:text-neutral-300 transition-colors duration-300"
+                    >
+                      Plus {{ camp.amenities.length - 2 }} more
                     </div>
-                    <PrimaryButton
-                      size="default"
-                      :label="camp.status === 'available' ? 'Book now' : 'Full'"
-                      :group-animate="true"
-                      class="mt-4 md:mt-0"
-                      :disabled="camp.status === 'available' ? false : true"
-                    />
+                    <hr class="text-neutral-400 font-bold mt-8" />
+                    <!-- Price -->
+                    <div class="mt-6 flex flex-col md:flex-row md:justify-between md:items-center">
+                      <div>
+                        <span class="text-xl font-semibold tracking-wider dark:text-white">${{ camp.price }}</span>
+                        <span class="text-sm text-neutral-500"> /night</span>
+                      </div>
+                      <PrimaryButton
+                        size="default"
+                        :label="camp.status === 'available' ? 'Book now' : 'Full'"
+                        :group-animate="true"
+                        class="mt-4 md:mt-0"
+                        :disabled="camp.status === 'available' ? false : true"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </swiper-slide>
-        </swiper>
+            </swiper-slide>
+          </swiper>
 
-        <div class="relative">
-          <!-- custom previous button -->
-          <button
-            class="prev-btn absolute -left-5 bottom-85 z-1 w-15 h-15 rounded-full flex items-center justify-center bg-accent-secondary duration-300 hover:bg-accent-primary hover:cursor-pointer hover:scale-90"
-          >
-            <div class="text-white scale-150">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                <path
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="m12 19l-7-7l7-7m7 7H5"
-                />
-              </svg>
-            </div>
-          </button>
+          <div class="relative">
+            <!-- custom previous button -->
+            <button
+              class="prev-btn absolute -left-5 bottom-85 z-1 w-15 h-15 rounded-full flex items-center justify-center bg-accent-secondary duration-300 hover:bg-accent-primary hover:cursor-pointer hover:scale-90"
+            >
+              <div class="text-white scale-150">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                  <path
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="m12 19l-7-7l7-7m7 7H5"
+                  />
+                </svg>
+              </div>
+            </button>
 
-          <!-- custom next button -->
-          <button
-            class="next-btn absolute -right-4.5 bottom-85 z-1 w-15 h-15 rounded-full flex items-center justify-center bg-accent-secondary duration-300 hover:bg-accent-primary hover:cursor-pointer hover:scale-90"
-          >
-            <div class="text-white scale-150">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                <path
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M5 12h14m-7-7l7 7l-7 7"
-                />
-              </svg>
-            </div>
-          </button>
+            <!-- custom next button -->
+            <button
+              class="next-btn absolute -right-4.5 bottom-85 z-1 w-15 h-15 rounded-full flex items-center justify-center bg-accent-secondary duration-300 hover:bg-accent-primary hover:cursor-pointer hover:scale-90"
+            >
+              <div class="text-white scale-150">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                  <path
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 12h14m-7-7l7 7l-7 7"
+                  />
+                </svg>
+              </div>
+            </button>
+          </div>
         </div>
-      </div>
-    </transition-scroll>
+      </transition-scroll>
+    </div>
   </div>
 </template>
 
