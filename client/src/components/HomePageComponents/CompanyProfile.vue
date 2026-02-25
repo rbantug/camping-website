@@ -51,21 +51,21 @@ const images = ref([
 
 <template>
   <div
-    class="bg-neutral-200 h-250 pt-40"
+    class="bg-neutral-200 h-300 pt-40 dark:bg-neutral-800 transition-colors duration-300 md:h-350 lg:h-270 lg:pt-50"
   >
   <div class="w-[90%] mx-auto flex flex-col md:w-[92%] lg:w-[95%] lg:flex-row lg:gap-x-15 lg:items-center lg:max-w-300">
     <div class="lg:order-2">
       <TransitionScroll :threshold="true">
         <div class="flex flex-col gap-y-4 lg:w-120">
-          <h2 class="text-2xl font-bold text-neutral-800 md:text-3xl lg:text-4xl">
+          <h2 class="text-2xl font-bold text-neutral-800 md:text-3xl lg:text-4xl dark:text-white">
             What makes us different?
           </h2>
-          <p class="text-neutral-600 leading-7 md:text-lg">
+          <p class="text-neutral-600 leading-7 md:text-lg dark:text-neutral-500">
             Amet consectetur adipiscing elit quisque faucibus ex sapien. Quisque faucibus ex sapien
             vitae pellentesque sem placerat. Vitae pellentesque sem placerat in id cursus mi.
           </p>
-          <hr class="text-neutral-600 my-2" />
-          <p class="text-neutral-600 leading-7 md:text-lg md:mb-5">
+          <hr class="text-neutral-600 my-2 dark:text-neutral-500" />
+          <p class="text-neutral-600 leading-7 md:text-lg md:mb-5 dark:text-neutral-500">
             Lorem ipsum dolor sit amet consectetur adipiscing elit. Amet consectetur adipiscing elit
             quisque faucibus ex sapien. Quisque faucibus ex sapien vitae pellentesque sem placerat.
             Vitae pellentesque sem placerat in id cursus mi.
