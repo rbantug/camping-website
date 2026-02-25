@@ -83,110 +83,112 @@ const clientArr = [
 </script>
 
 <template>
-  <div class="h-150 w-[90%] pt-40 mb-70 mx-auto md:pt-100 lg:w-full lg:pt-30">
-    <TransitionScroll threshold>
-      <div class="flex flex-col items-center text-center gap-y-4 lg:px-20">
-        <h2 class="font-bold text-2xl lg:text-4xl">What our past clients say</h2>
-        <p class="text-neutral-600 leading-8 md:text-lg">
-          Consectetur adipiscing elit quisque faucibus ex sapien vitae. Ex sapien vitae pellentesque
-          sem placerat in id. Placerat in id cursus mi pretium tellus duis.
-        </p>
-      </div>
-    </TransitionScroll>
-    <div class="h-160 mb-10 mx-auto md:h-120">
-      <swiper
-        :slides-per-view="greaterEqualLG ? 1.5 : 1"
-        :modules="[Navigation, A11y]"
-        :space-between="0"
-        :centered-slides="true"
-        :navigation="{ nextEl: '.next-btn', prevEl: '.prev-btn' }"
-        :loop="true"
-        class="md:max-w-250 lg:min-w-230 lg:max-w-400"
-      >
-        <swiper-slide
-          v-for="{ name, review, location, imgPath, blurryImg } in clientArr"
-          :key="name"
-          class="my-10"
+  <div class="bg-white dark:bg-neutral-900 transition-colors duration-300">
+    <div class="h-330 w-[90%] pt-40 mb-70 mx-auto md:pt-40 md:h-260 lg:h-250 lg:w-full lg:pt-40">
+      <TransitionScroll threshold>
+        <div class="flex flex-col items-center text-center gap-y-4 lg:px-20">
+          <h2 class="font-bold text-2xl lg:text-4xl dark:text-white">What our past clients say</h2>
+          <p class="text-neutral-600 leading-8 md:text-lg dark:text-neutral-500">
+            Consectetur adipiscing elit quisque faucibus ex sapien vitae. Ex sapien vitae
+            pellentesque sem placerat in id. Placerat in id cursus mi pretium tellus duis.
+          </p>
+        </div>
+      </TransitionScroll>
+      <div class="h-160 mb-10 mx-auto md:h-120">
+        <swiper
+          :slides-per-view="greaterEqualLG ? 1.5 : 1"
+          :modules="[Navigation, A11y]"
+          :space-between="0"
+          :centered-slides="true"
+          :navigation="{ nextEl: '.next-btn', prevEl: '.prev-btn' }"
+          :loop="true"
+          class="md:max-w-250 lg:min-w-230 lg:max-w-400"
         >
-          <div
-            class="max-w-90 mx-auto w-[90%] rounded-2xl shadow-lg flex flex-col md:flex-row md:items-center md:py-10 md:max-w-250 lg:max-w-300 lg:min-w-150 lg:w-[95%]"
+          <swiper-slide
+            v-for="{ name, review, location, imgPath, blurryImg } in clientArr"
+            :key="name"
+            class="my-10"
           >
             <div
-              class="h-90 rounded-full overflow-hidden flex justify-center items-center md:w-150"
-            >
-              <LazyLoadImage
-                :alt-name="name"
-                :img-path="imgPath"
-                :blurry-img-path="blurryImg"
-                class="object-cover object-center h-70 rounded-full md:h-60 lg:h-80"
-              />
-            </div>
-            <div
-              class="pb-10 w-full max-w-100 mx-2 md:h-70 md:pb-0 md:flex md:flex-col md:justify-center lg:max-w-120"
+              class="max-w-90 mx-auto w-[90%] rounded-2xl shadow-lg flex flex-col md:flex-row md:items-center md:py-10 md:max-w-250 lg:max-w-300 lg:min-w-150 lg:w-[95%] lg:px-8 lg:gap-x-2 dark:ring dark:ring-neutral-600 dark:shadow-none"
             >
               <div
-                class="w-[90%] mx-auto flex flex-col md:justify-center md:w-80 md:mx-0 md:mr-10 lg:w-full lg:pr-10"
+                class="h-90 rounded-full overflow-hidden flex justify-center items-center md:w-150"
               >
-                <!-- Camp name and description -->
-                <p class="text-neutral-600 md:text-lg">{{ review }}</p>
-                <h3 class="text-2xl font-semibold pt-2 md:text-3xl">
-                  {{ name }}
-                </h3>
-                <p class="md:text-lg">{{ location }}</p>
-                <!-- Price -->
+                <LazyLoadImage
+                  :alt-name="name"
+                  :img-path="imgPath"
+                  :blurry-img-path="blurryImg"
+                  class="object-cover object-center h-70 rounded-full md:h-60 lg:h-80"
+                />
+              </div>
+              <div
+                class="pb-10 w-full max-w-100 mx-2 md:h-70 md:pb-0 md:flex md:flex-col md:justify-center lg:max-w-120"
+              >
+                <div
+                  class="w-[90%] mx-auto flex flex-col md:justify-center md:w-80 md:mx-0 md:mr-10 lg:w-full lg:pr-0"
+                >
+                  <!-- Camp name and description -->
+                  <p class="text-neutral-600 md:text-lg dark:text-neutral-500">{{ review }}</p>
+                  <h3 class="text-2xl font-semibold pt-2 md:text-3xl dark:text-white">
+                    {{ name }}
+                  </h3>
+                  <p class="md:text-lg dark:text-white">{{ location }}</p>
+                  <!-- Price -->
+                </div>
               </div>
             </div>
-          </div>
-        </swiper-slide>
-      </swiper>
+          </swiper-slide>
+        </swiper>
 
-      <div class="relative">
-        <!-- custom previous button -->
-        <button
-          class="prev-btn absolute -left-5 bottom-85 z-1 w-15 h-15 rounded-full flex items-center justify-center bg-accent-secondary duration-300 hover:bg-accent-primary hover:cursor-pointer hover:scale-90 md:bottom-55 lg:left-15"
-        >
-          <div class="text-white scale-150">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-              <path
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="m12 19l-7-7l7-7m7 7H5"
-              />
-            </svg>
-          </div>
-        </button>
+        <div class="relative">
+          <!-- custom previous button -->
+          <button
+            class="prev-btn absolute -left-5 bottom-85 z-1 w-15 h-15 rounded-full flex items-center justify-center bg-accent-secondary duration-300 hover:bg-accent-primary hover:cursor-pointer hover:scale-90 md:bottom-55 lg:left-15"
+          >
+            <div class="text-white scale-150">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <path
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="m12 19l-7-7l7-7m7 7H5"
+                />
+              </svg>
+            </div>
+          </button>
 
-        <!-- custom next button -->
-        <button
-          class="next-btn absolute -right-4.5 bottom-85 z-1 w-15 h-15 rounded-full flex items-center justify-center bg-accent-secondary duration-300 hover:bg-accent-primary hover:cursor-pointer hover:scale-90 md:bottom-55 lg:right-15"
-        >
-          <div class="text-white scale-150">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-              <path
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M5 12h14m-7-7l7 7l-7 7"
-              />
-            </svg>
-          </div>
-        </button>
+          <!-- custom next button -->
+          <button
+            class="next-btn absolute -right-4.5 bottom-85 z-1 w-15 h-15 rounded-full flex items-center justify-center bg-accent-secondary duration-300 hover:bg-accent-primary hover:cursor-pointer hover:scale-90 md:bottom-55 lg:right-15"
+          >
+            <div class="text-white scale-150">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <path
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 12h14m-7-7l7 7l-7 7"
+                />
+              </svg>
+            </div>
+          </button>
+        </div>
       </div>
+      <!-- Buttons -->
+      <TransitionScroll threshold>
+        <div
+          class="flex flex-col gap-y-5 pt-20 md:flex-row md:gap-y-0 md:gap-x-5 md:pt-0 md:justify-center"
+        >
+          <PrimaryButton label="Book now" :size="greaterEqualMD ? 'large' : 'default'" />
+          <SecondaryButton label="Explore cabins" :size="greaterEqualMD ? 'large' : 'default'" :white-ring="false" />
+        </div>
+      </TransitionScroll>
     </div>
-    <!-- Buttons -->
-    <TransitionScroll threshold>
-      <div
-        class="flex flex-col gap-y-5 pt-20 md:flex-row md:gap-y-0 md:gap-x-5 md:pt-0 md:justify-center"
-      >
-        <PrimaryButton label="Book now" :size="greaterEqualMD ? 'large' : 'default'" />
-        <SecondaryButton label="Explore cabins" :size="greaterEqualMD ? 'large' : 'default'" />
-      </div>
-    </TransitionScroll>
   </div>
 </template>
 
