@@ -13,7 +13,7 @@ const props = withDefaults(defineProps<Props>(), {
     threshold: false,
     transitionDirection: 'top-bottom',
     zIndex: 0,
-    relative: false
+    relative: false,
 })
 
 const el = ref(null)
