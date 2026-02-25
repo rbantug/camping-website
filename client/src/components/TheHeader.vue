@@ -46,12 +46,12 @@ const lgAndLarger = breakpoints.greater('lg')
     <div class="z-6 bg-transparent absolute top-7.5 inset-x-0 bottom-auto pt-0 pb-0">
       <div class="pl-4 pr-4 max-w-317 ml-auto mr-auto flex flex-col gap-2">
         <div
-          class="pl-6.5 pr-6.5 bg-white rounded-[132px] justify-between items-center pt-5.5 pb-5.5 flex"
+          class="pl-6.5 pr-6.5 bg-white rounded-[132px] justify-between items-center pt-5.5 pb-5.5 flex dark:bg-neutral-900 transition-color duration-300"
         >
           <!-- Logo -->
           <router-link to="home" class="p-0">
             <div class="flex justify-center items-center gap-x-2">
-              <div class="text-accent-primary">
+              <div class="text-accent-primary dark:text-accent-secondary transition-color duration-300">
                 <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
                   <g
                     fill="none"
@@ -67,7 +67,7 @@ const lgAndLarger = breakpoints.greater('lg')
                   </g>
                 </svg>
               </div>
-              <span class="text-2xl font-bold">DemoCamp</span>
+              <span class="text-2xl font-bold dark:text-white transition-color duration-300">DemoCamp</span>
             </div>
           </router-link>
           <div class="justify-end items-center flex gap-x-4">
@@ -78,12 +78,12 @@ const lgAndLarger = breakpoints.greater('lg')
             <!-- Header links -->
             <div v-else class="flex gap-x-8 text-lg">
               <div v-for="{ link, route } in navItems" :key="link">
-                <router-link :to="route" class="hover:text-accent-primary duration-100 ease">{{
+                <router-link :to="route" class="hover:text-accent-primary duration-100 ease dark:text-white transition-color">{{
                   link
                 }}</router-link>
               </div>
               <div
-                class="flex items-center cursor-pointer hover:text-accent-primary duration-100 ease"
+                class="flex items-center cursor-pointer hover:text-accent-primary duration-100 ease dark:text-white transition-color"
                 @click="togglePNBIO"
               >
                 <span>Pages</span>
@@ -115,12 +115,12 @@ const lgAndLarger = breakpoints.greater('lg')
               <transition name="pagesNav">
                 <div
                   v-show="pagesNavBarIsOpen"
-                  class="absolute top-17 right-60 bg-white px-10 py-2 shadow-lg shadow-neutral-800/50 rounded-xl z-2 flex flex-col gap-y-4"
+                  class="absolute top-17 right-60 bg-white px-10 py-2 shadow-lg shadow-neutral-800/50 rounded-xl z-2 flex flex-col gap-y-4 dark:bg-neutral-700 transition-color duration-300"
                 >
                   <div
                     v-for="{ link, route } in additionalNavItems"
                     :key="link"
-                    class="justify-start hover:text-accent-primary duration-100 ease"
+                    class="justify-start hover:text-accent-primary duration-100 ease dark:text-white transition-color" 
                   >
                     <router-link :to="route">{{ link }}</router-link>
                   </div>
@@ -129,10 +129,10 @@ const lgAndLarger = breakpoints.greater('lg')
             </div>
             <!-- Cart -->
             <div
-              class="relative cursor-pointer hover:scale-90 hover:bg-gray-200 hover:rounded-4xl duration-100 ease"
+              class="relative cursor-pointer hover:scale-90 hover:bg-gray-200 hover:rounded-4xl duration-100 ease dark:hover:bg-black transition-color"
             >
               
-               <div class="text-neutral-800 scale-150">
+               <div class="text-neutral-800 scale-150 dark:text-neutral-200 transition-color duration-300">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3.742 20.555C4.942 22 7.174 22 11.639 22h.722c4.465 0 6.698 0 7.897-1.445m-16.516 0c-1.2-1.446-.789-3.64.034-8.03c.586-3.12.878-4.681 1.99-5.603M3.741 20.555Zm16.516 0c1.2-1.446.788-3.64-.034-8.03c-.586-3.12-.878-4.681-1.99-5.603m2.024 13.633ZM18.235 6.922C17.124 6 15.536 6 12.36 6h-.722c-3.175 0-4.763 0-5.874.922m12.47 0Zm-12.47 0Z"/><path stroke-linecap="round" d="M9 6V5a3 3 0 1 1 6 0v1" opacity="0.5"/></g></svg>
                </div>
               <div class="absolute top-3 -left-2">

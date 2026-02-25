@@ -29,14 +29,14 @@ function toggleMoreNavItems() {
   <transition name="nav">
     <div
       v-if="props.isOpen"
-      class="w-full bg-white pl-6.5 pr-6.5 rounded-[30px] justify-between items-start pt-5.5 pb-5.5 flex flex-col z-10"
+      class="w-full bg-white pl-6.5 pr-6.5 rounded-[30px] justify-between items-start pt-5.5 pb-5.5 flex flex-col z-10 dark:bg-neutral-900 transition-color duration-300"
     >
       <div class="flex flex-col gap-y-4">
         <div v-for="{ link, route } in navItems" :key="link">
-          <router-link :to="route">{{ link }}</router-link>
+          <router-link :to="route" class="text-black dark:text-white transition-color duration-300">{{ link }}</router-link>
         </div>
       </div>
-      <div class="flex cursor-pointer pt-4 pb-2" @click="toggleMoreNavItems">
+      <div class="flex cursor-pointer pt-4 pb-2 text-black dark:text-white transition-color duration-300" @click="toggleMoreNavItems">
         <span>Pages</span>
         <!-- iconamoon:arrow-down-2 -->
         <div :class="{ 'rotate-180 duration-200 ease': moreNavItems, 'duration-200 ease': !moreNavItems }">
@@ -45,7 +45,7 @@ function toggleMoreNavItems() {
       </div>
       <div v-if="moreNavItems" class="flex flex-col gap-2 translate-x-4 pb-4">
         <div v-for="{ link, route } in additionalNavItems" :key="link">
-          <router-link :to="route">{{ link }}</router-link>
+          <router-link :to="route" class="text-black dark:text-white transition-color duration-300">{{ link }}</router-link>
         </div>
       </div>
       <div class="w-full md:w-[20%]">

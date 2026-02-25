@@ -22,9 +22,9 @@ onMounted(() => {
     aria-label="Toggle menu"
     :aria-expanded="props.isOpen"
   >
-    <span class="bg-neutral-800 rounded-[20px] w-full h-0.75"/>
-    <span class="bg-neutral-800 rounded-[20px] w-full h-0.75"/>
-    <span class="bg-neutral-800 rounded-[20px] w-full h-0.75"/>
+    <span class="bg-neutral-800 rounded-[20px] w-full h-0.75 dark:bg-white transition-color duration-300"/>
+    <span class="bg-neutral-800 rounded-[20px] w-full h-0.75 dark:bg-white transition-color duration-300"/>
+    <span class="bg-neutral-800 rounded-[20px] w-full h-0.75 dark:bg-white transition-color duration-300"/>
   </button>
 </template>
 
@@ -48,7 +48,6 @@ onMounted(() => {
   display: block;
   height: 3px;
   width: 100%;
-  background: #000;
   border-radius: 2px;
 }
 
