@@ -5,19 +5,31 @@ interface Props {
   size: 'small' | 'default' | 'large';
   label: string;
   altColor?: boolean;
+  darkModeNoRing?: boolean;
+  noRing?: boolean;
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  altColor: false
+  altColor: false,
+  darkModeNoRing: false,
+  noRing: false,
 })
 
-const rootStyling = 'bg-white rounded-full ring-2 w-full cursor-pointer hover:bg-accent-secondary hover:ring-transparent hover:-translate-y-1 duration-200 group dark:bg-neutral-900 dark:ring-2 dark:ring-white dark:hover:ring-transparent transition-color'
+const rootStyling = 'bg-white rounded-full w-full cursor-pointer hover:bg-accent-secondary hover:ring-transparent hover:-translate-y-1 duration-200 group dark:bg-neutral-900 transition-color'
 
 function moreRootStyling(style:string) {
   let newStyle = style
 
   if (props.altColor) {
-    newStyle = newStyle.replace('bg-white', 'bg-accent-secondary border border-white').replace('hover:bg-accent-secondary', 'hover:bg-white')
+    newStyle = newStyle.replace('bg-white', 'bg-transparent').replace('hover:bg-accent-secondary', 'hover:bg-white')
+  }
+
+   if (!props.darkModeNoRing) {
+    newStyle = newStyle + ' dark:ring-2 dark:ring-white dark:hover:ring-transparent'
+  }
+  
+  if (!props.noRing) {
+    newStyle += ' ring-2 ring-white'
   }
 
   return newStyle
