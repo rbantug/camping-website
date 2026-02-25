@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { useBreakpoints } from '@vueuse/core'
 import { ref } from 'vue'
-import { useHead } from '@unhead/vue'
 
 import SecondaryButton from '../BaseComponents/Buttons/SecondaryButton.vue'
 import TransitionScroll from '../util/TransitionScroll.vue'
@@ -37,7 +36,7 @@ const images = ref([
     altText: 'camping tents 3',
     gridStyle:
       'col-start-1 col-end-3 row-start-3 row-end-5',
-    imgStyle: 'object-cover rounded-xl h-30 w-50 -mt-3 md:h-60 md:w-100 md:-mt-25'  
+    imgStyle: 'object-cover rounded-xl h-30 w-50 -mt-3 md:h-60 md:w-100 md:-mt-26'  
   },
   {
     path: 'https://dl.dropboxusercontent.com/scl/fi/8lxobo3jpq8so83nn4acb/company-profile-4.avif?rlkey=m33zzk62q0wukjswcsyqxlnpg',
@@ -48,18 +47,13 @@ const images = ref([
     imgStyle: 'object-cover rounded-xl h-60 w-60 md:h-100 md:w-100'
   },
 ])
-
-const testScroll = ref(false)
-
-function testEmit(val:boolean) {
-  testScroll.value = val
-}
 </script>
 
 <template>
   <div
-    class="w-[90%] h-200 mx-auto flex flex-col md:w-[92%] lg:w-[95%] lg:flex-row lg:gap-x-15 lg:items-center lg:max-w-300"
+    class="bg-neutral-200 h-250 pt-40"
   >
+  <div class="w-[90%] mx-auto flex flex-col md:w-[92%] lg:w-[95%] lg:flex-row lg:gap-x-15 lg:items-center lg:max-w-300">
     <div class="lg:order-2">
       <TransitionScroll :threshold="true">
         <div class="flex flex-col gap-y-4 lg:w-120">
@@ -87,15 +81,16 @@ function testEmit(val:boolean) {
       </TransitionScroll>
     </div>
     <div class="lg:order-1">
-      <TransitionScroll :threshold="true" :image-loading-done="testScroll">
+      <TransitionScroll :threshold="true">
         <div class="mt-12 h-80 max-w-100 mx-auto md:max-w-210 lg:mt-0 lg:h-160">
           <div class="grid grid-cols-4 grid-rows-4 gap-3 justify-center md:gap-6">
             <div v-for="{ path, blurryPath, altText, gridStyle, imgStyle } in images" :key="altText" :class="gridStyle">
-              <LazyLoadImage :img-path="path" :blurry-img-path="blurryPath" :class="imgStyle" @loading-is-done="testEmit" />
+              <LazyLoadImage :img-path="path" :blurry-img-path="blurryPath" :class="imgStyle" />
             </div>
           </div>
         </div>
       </TransitionScroll>
     </div>
+  </div>
   </div>
 </template>
