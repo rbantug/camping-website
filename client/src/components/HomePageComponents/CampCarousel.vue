@@ -3,7 +3,6 @@ import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Navigation, A11y } from 'swiper/modules'
 import { useBreakpoints } from '@vueuse/core'
 import { ref } from 'vue'
-import { useHead } from '@unhead/vue'
 
 import 'swiper/css'
 
