@@ -11,7 +11,7 @@ const props = withDefaults(defineProps<Props>(), {
   altColor: false
 })
 
-const rootStyling = 'bg-white rounded-full inset-shadow-xs shadow-md w-full cursor-pointer hover:bg-accent-secondary hover:-translate-y-1 duration-200 group'
+const rootStyling = 'bg-white rounded-full ring-2 w-full cursor-pointer hover:bg-accent-secondary hover:ring-transparent hover:-translate-y-1 duration-200 group dark:bg-neutral-900 dark:ring-2 dark:ring-white dark:hover:ring-transparent transition-color'
 
 function moreRootStyling(style:string) {
   let newStyle = style
@@ -35,7 +35,7 @@ const outputRootStyle = computed(() => {
   return moreRootStyling(rootStyling) + ' px-7 py-5'
 })
 
-const txtStyle = 'text-neutral-800 group-hover:text-white'
+const txtStyle = 'text-neutral-800 group-hover:text-white dark:text-white dark:group-hover:text-neutral-900'
 
 function moreTxtStyling(style:string) {
   let newStyle = style
