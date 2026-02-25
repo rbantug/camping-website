@@ -42,7 +42,7 @@ const mdAbove = breakpoints.greaterOrEqual('md')
 </script>
 
 <template>
-  <div class="dark:bg-neutral-800 transition-colors duration-300">
+  <div class="bg-neutral-200 dark:bg-neutral-800 transition-colors duration-300">
     <div class="h-520 w-[95%] mx-auto pt-40 md:h-260 lg:w-[85%] lg:h-265">
       <TransitionScroll>
         <div class="flex flex-col justify-center mb-10 md:mb-5 md:w-[90%] md:mx-auto">
