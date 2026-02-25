@@ -42,29 +42,32 @@ const mdAbove = breakpoints.greaterOrEqual('md')
 </script>
 
 <template>
-  <div class="h-480 w-[95%] mx-auto md:h-200 lg:w-[85%] lg:h-220">
-    <TransitionScroll>
-      <div class="flex flex-col justify-center mb-10 md:mb-5 md:w-[90%] md:mx-auto">
-        <h1 class="text-2xl font-bold text-center mb-4 md:text-3xl">Explore our activities</h1>
-        <p class="text-center text-neutral-600 leading-8 md:text-lg">
-          Lorem ipsum dolor sit amet consectetur adipiscing elit. Ex sapien vitae pellentesque sem
-          placerat in id.
-        </p>
-      </div>
-    </TransitionScroll>
-    <TransitionScroll :threshold="mdAbove ? true : false">
-      <div class="flex flex-col justify-center gap-y-8 mb-10 md:flex-row md:gap-y-0 md:gap-x-7 lg:h-100">
+  <div class="dark:bg-neutral-800 transition-colors duration-300">
+    <div class="h-520 w-[95%] mx-auto pt-40 md:h-260 lg:w-[85%] lg:h-265">
+      <TransitionScroll>
+        <div class="flex flex-col justify-center mb-10 md:mb-5 md:w-[90%] md:mx-auto">
+          <h1 class="text-2xl font-bold text-center mb-4 md:text-3xl dark:text-white">Explore our activities</h1>
+          <p class="text-center text-neutral-600 leading-8 md:text-lg dark:text-neutral-500">
+            Lorem ipsum dolor sit amet consectetur adipiscing elit. Ex sapien vitae pellentesque sem
+            placerat in id.
+          </p>
+        </div>
+      </TransitionScroll>
+      <TransitionScroll :threshold="mdAbove ? true : false">
         <div
-          v-for="({ title, description, image, blurryImg }, index) in activities"
-          :key="title"
-          :data-index="index"
+          class="flex flex-col justify-center gap-y-8 mb-10 md:flex-row md:gap-y-0 md:gap-x-7 md:h-120"
         >
-            <div class="flex relative h-120 w-90 mx-auto md:h-90 md:w-60">
+          <div
+            v-for="({ title, description, image, blurryImg }, index) in activities"
+            :key="title"
+            :data-index="index"
+          >
+            <div class="flex relative h-120 w-90 mx-auto md:h-100 md:w-60 lg:h-120 lg:w-90">
               <LazyLoadImage
                 :img-path="image"
                 :alt-name="title"
                 :blurry-img-path="blurryImg"
-                class="h-120 w-90 rounded-3xl object-cover md:h-90"
+                class="h-120 w-90 rounded-3xl object-cover"
               />
               <div class="absolute bottom-10 left-10 w-65 md:left-5 md:top-10 md:w-55">
                 <h2 class="text-xl text-white font-semibold text-shadow-lg md:text-2xl">
@@ -73,15 +76,16 @@ const mdAbove = breakpoints.greaterOrEqual('md')
                 <p class="text-white text-shadow-3xl md:text-lg">{{ description }}</p>
               </div>
             </div>
+          </div>
         </div>
-      </div>
-    </TransitionScroll>
-    <TransitionScroll>
-      <SecondaryButton
-        :size="mdAbove ? 'large' : 'default'"
-        label="More activities"
-        class="md:w-[30%] md:mx-auto"
-      />
-    </TransitionScroll>
+      </TransitionScroll>
+      <TransitionScroll>
+        <SecondaryButton
+          :size="mdAbove ? 'large' : 'default'"
+          label="More activities"
+          class="md:w-[30%] md:mx-auto"
+        />
+      </TransitionScroll>
+    </div>
   </div>
 </template>
