@@ -15,7 +15,7 @@ useHead({
     {
       rel: 'preload',
       as: 'image',
-      href: 'https://dl.dropboxusercontent.com/scl/fi/jims4srpwojzy4w57cnq1/camping-stars-2.avif?rlkey=zbeqyx8fu9hyej729k1ds45zq'
+      href: 'https://dl.dropboxusercontent.com/scl/fi/a1q1m6i4529oba7ls4kh6/camping-stars-2.avif?rlkey=14kkjyab0xaii38ns6pz5f0jy'
     }
   ]
 })
@@ -27,9 +27,9 @@ const breakpoints = useBreakpoints({
 </script>
 
 <template>
-  <div class="max-w-screen h-1600">
+  <div class="max-w-screen h-1800 lg:h-1400">
     <div
-      class="flex items-center bg-[url(https://dl.dropboxusercontent.com/scl/fi/jims4srpwojzy4w57cnq1/camping-stars-2.avif?rlkey=zbeqyx8fu9hyej729k1ds45zq)] bg-cover bg-center h-200 md:h-screen"
+      class="flex items-center bg-[url(https://dl.dropboxusercontent.com/scl/fi/a1q1m6i4529oba7ls4kh6/camping-stars-2.avif?rlkey=14kkjyab0xaii38ns6pz5f0jy)] bg-cover bg-center h-200 md:h-screen"
     >
       <TransitionScroll>
         <HeroSection />
