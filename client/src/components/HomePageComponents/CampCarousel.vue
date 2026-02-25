@@ -102,7 +102,7 @@ const testCamps = ref([
             Explore our camps
           </h1>
           <div class="w-full md:w-fit">
-            <secondary-button label="Browse all" size="large" />
+            <secondary-button label="Browse all" size="large" :white-ring="false" />
           </div>
         </div>
       </transition-scroll>

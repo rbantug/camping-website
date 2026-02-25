@@ -84,6 +84,7 @@ const mdAbove = breakpoints.greaterOrEqual('md')
           :size="mdAbove ? 'large' : 'default'"
           label="More activities"
           class="md:w-[30%] md:mx-auto"
+          :white-ring="false"
         />
       </TransitionScroll>
     </div>

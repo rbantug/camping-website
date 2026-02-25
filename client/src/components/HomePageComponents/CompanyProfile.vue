@@ -75,6 +75,7 @@ const images = ref([
               :size="MDandUp ? 'large' : 'default'"
               label="About us"
               class="md:w-[20%] lg:w-[30%]"
+              :white-ring= false
             />
           </div>
         </div>
