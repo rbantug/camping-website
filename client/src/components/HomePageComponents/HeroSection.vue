@@ -34,7 +34,7 @@ const outputBtnSize = computed(() => {
         :size="outputBtnSize"
         label="Explore camps"
       />
-      <SecondaryButton :size="outputBtnSize" label="About us"  />
+      <SecondaryButton :size="outputBtnSize" label="About us" dark-mode-no-ring  />
     </div>
   </div>
 </template>
