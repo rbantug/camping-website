@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { useBreakpoints } from '@vueuse/core'
 import { useHead } from '@unhead/vue'
 
 import TransitionScroll from '../util/TransitionScroll.vue'
@@ -19,15 +18,10 @@ useHead({
     }
   ]
 })
-
-const breakpoints = useBreakpoints({
-  md: 768,
-  lg: 994,
-})
 </script>
 
 <template>
-  <div class="max-w-screen h-1800 lg:h-1400">
+  <div class="max-w-screen h-1830 md:h-1660 lg:h-1545">
     <div
       class="flex items-center bg-[url(https://dl.dropboxusercontent.com/scl/fi/a1q1m6i4529oba7ls4kh6/camping-stars-2.avif?rlkey=14kkjyab0xaii38ns6pz5f0jy)] bg-cover bg-center h-200 md:h-screen"
     >
