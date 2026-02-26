@@ -11,13 +11,13 @@ interface Props {
 
 const props = withDefaults(defineProps<Props>(), {
     threshold: false,
-    transitionDirection: 'top-bottom',
+    transitionDirection: 'bottom-top',
     zIndex: 0,
     relative: false,
 })
 
 const el = ref(null)
-const isVisible = useElementVisibility(el, { threshold: props.threshold ? 1 : 0 })
+const isVisible = useElementVisibility(el, { threshold: props.threshold ? 1 : 0, once: true })
 const trueCount = ref(0)
 
 watchEffect(() => {
@@ -30,11 +30,11 @@ const outputDir0 = computed(() => {
     let style = `opacity-0 z-${props.zIndex}`
 
     if (props.transitionDirection === 'top-bottom') {
-        style = style + ' translate-y-8'
+        style = style + ' translate-y-0'
     }
 
     if (props.transitionDirection === 'bottom-top') {
-        style = style + ' translate-y-0'
+        style = style + ' translate-y-8'
     }
 
     if (props.relative) {
@@ -48,11 +48,11 @@ const outputDir1 = computed(() => {
     let style = `opacity-100 z-${props.zIndex}`
 
     if (props.transitionDirection === 'top-bottom') {
-        style = style + ' translate-y-0'
+        style = style + ' translate-y-8'
     }
 
     if (props.transitionDirection === 'bottom-top') {
-        style = style + ' translate-y-8'
+        style = style + ' translate-y-0'
     }
 
     if (props.relative) {
