@@ -13,13 +13,13 @@ import PrimaryButton from '../BaseComponents/Buttons/PrimaryButton.vue';
                 </div>
             </div>
             <div class="flex flex-col justify-center gap-y-2">
-                <h3 class="font-semibold md:text-xl">Subscribe to our newsletter</h3>
-                <p class="text-neutral-600 md:text-lg">Stay updated with the newest camps</p>
+                <h3 class="text-black font-semibold md:text-xl dark:text-neutral-200">Subscribe to our newsletter</h3>
+                <p class="text-neutral-600 md:text-lg dark:text-neutral-500">Stay updated with the newest camps</p>
             </div>
         </div>
-        <div class="md:grid md:grid-cols-9 md:gap-x-4 lg:col-span-3 lg:items-center">
+        <div class="md:grid md:grid-cols-9 md:gap-x-4 lg:col-span-3 md:items-center">
             <!-- input field -->
-            <input type="email" placeholder="Enter your email" class="rounded-full w-full py-4 pl-6 mb-4 border-0 inset-shadow-sm shadow-lg focus:ring focus:ring-accent-secondary md:col-span-7 lg:col-start-4 lg:col-end-8 lg:mb-0"/>
+            <input type="email" placeholder="Enter your email" class="rounded-full w-full py-4 pl-6 mb-4 border-0 inset-shadow-sm shadow-lg focus:ring-2 focus:ring-accent-secondary md:mb-0 md:col-span-7 lg:col-start-4 lg:col-end-8 lg:mb-0 dark:bg-neutral-500 dark:ring-2 dark:ring-neutral-200 dark:placeholder:text-neutral-200 dark:shadow-none"/>
             <!-- btn -->
             <PrimaryButton size="large" label="Subscribe" class="md:col-span-2"/>
         </div>

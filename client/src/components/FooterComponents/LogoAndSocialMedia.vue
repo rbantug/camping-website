@@ -23,8 +23,8 @@ const iconArr = [
 <template>
   <div class="mb-10 flex flex-col gap-y-4">
     <router-link to="home" class="">
-      <div class="flex items-start gap-x-2">
-        <div class="text-accent-primary">
+      <div class="flex items-center gap-x-2">
+        <div class="text-accent-primary dark:text-accent-secondary">
           <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
             <g
               fill="none"
@@ -40,19 +40,19 @@ const iconArr = [
             </g>
           </svg>
         </div>
-        <span class="text-2xl font-bold">DemoCamp</span>
+        <span class="text-2xl font-bold text-black dark:text-neutral-200">DemoCamp</span>
       </div>
     </router-link>
-    <p class="text-neutral-600 md:text-lg md:pb-6 lg:p-0">
+    <p class="text-neutral-600 md:text-lg md:pb-6 lg:p-0 dark:text-neutral-500">
       Lorem ipsum dolor sit amet consectetur adipiscing elit.
     </p>
     <div class="flex gap-x-4">
       <div v-for="{ name, svg } in iconArr" :key="name">
         <a href="/">
           <div
-            class="w-8 h-8 md:w-9 md:h-9 rounded-full shadow-md/20 flex items-center justify-center"
+            class="w-8 h-8 md:w-9 md:h-9 rounded-full bg-transparent shadow-md/20 flex items-center justify-center dark:shadow-none dark:ring-2 dark:ring-neutral-500"
           >
-            <div v-html="svg" class="text-accent-primary md:scale-110"></div>
+            <div v-html="svg" class="text-accent-primary md:scale-110 dark:text-accent-secondary"></div>
           </div>
         </a>
       </div>

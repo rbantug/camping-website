@@ -8,10 +8,10 @@ const pages = mainStore.getAllPages
 
 <template>
     <div class="mb-12">
-        <div class="font-semibold mb-4 md:text-lg">Pages</div>
+        <div class="font-semibold mb-4 text-black md:text-lg dark:text-neutral-200">Pages</div>
         <div class="flex flex-col gap-y-2 md:gap-y-4">
             <div v-for="{ link, route } in pages" :key="route">
-                <router-link :to="route" class="text-neutral-600 md:text-lg">{{ link }}</router-link>
+                <router-link :to="route" class="text-neutral-600 md:text-lg dark:text-neutral-500">{{ link }}</router-link>
             </div>
         </div>
     </div>

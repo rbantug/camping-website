@@ -6,7 +6,7 @@ import SubscribeNewsletter from './FooterComponents/SubscribeNewsletter.vue'
 </script>
 
 <template>
-  <div class="border-t border-neutral-300 bg-neutral-100">
+  <div class="border-t border-neutral-300 bg-neutral-100 dark:bg-neutral-700 transition-color duration-300">
     <div class="px-4 md:px-8 lg:max-w-317 lg:px-6 lg:mx-auto">
       <div class="py-20 lg:py-30">
         <div class="grid grid-cols-1">
