@@ -7,6 +7,8 @@ const showScrollToTopBtn = ref(false)
 function toggleDarkMode() {
     isDarkMode.value = !isDarkMode.value
     document.documentElement.classList.toggle('dark')
+
+    localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light')
 }
 
 function handleScroll() {
@@ -15,6 +17,12 @@ function handleScroll() {
 
 onMounted(() => {
   window.addEventListener('scroll', handleScroll)
+  const saved = localStorage.getItem('theme')
+
+  if (saved === 'dark') {
+    document.documentElement.classList.add('dark')
+    isDarkMode.value = true
+  }
 })
 
 onUnmounted(() => window.removeEventListener('scroll', handleScroll))
