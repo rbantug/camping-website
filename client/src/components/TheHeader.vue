@@ -122,7 +122,7 @@ const lgAndLarger = breakpoints.greater('lg')
                     :key="link"
                     class="justify-start hover:text-accent-primary duration-100 ease dark:text-white transition-color" 
                   >
-                    <router-link :to="route">{{ link }}</router-link>
+                    <router-link :to="route" @click="togglePNBIO">{{ link }}</router-link>
                   </div>
                 </div>
               </transition>
