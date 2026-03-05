@@ -24,10 +24,10 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
 
 <template>
   <div
-    class="fixed w-15 h-15 bg-accent-secondary rounded-full bottom-10 right-5 flex items-center justify-center cursor-pointer hover:-translate-y-2 hover:bg-accent-primary duration-300 z-10" :class="{ 'opacity-0': !showScrollToTopBtn && !notAtTopOfWebpage, 'opacity-100': showScrollToTopBtn || notAtTopOfWebpage }"
+    class="fixed w-10 h-10 bg-accent-secondary rounded-full bottom-5 right-5 flex items-center justify-center cursor-pointer hover:-translate-y-2 hover:bg-accent-primary duration-300 z-10" :class="{ 'opacity-0': !showScrollToTopBtn && !notAtTopOfWebpage, 'opacity-100': showScrollToTopBtn || notAtTopOfWebpage }"
     @click="scrollToTop"
   >
-    <div class="text-white scale-200">
+    <div class="text-white">
       <!-- mdi:arrow-up -->
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
         <path
