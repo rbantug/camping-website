@@ -8,9 +8,7 @@ import 'swiper/css'
 
 import SecondaryButton from '../BaseComponents/Buttons/SecondaryButton.vue'
 import TransitionScroll from '../util/TransitionScroll.vue'
-import BaseBadge from '../BaseComponents/Buttons/BaseBadge.vue'
-import PrimaryButton from '../BaseComponents/Buttons/PrimaryButton.vue'
-import LazyLoadImage from '../util/LazyLoadImage.vue'
+import CampCard from '../BaseComponents/CampCard.vue'
 
 const mainStore = useMainStore()
 
@@ -23,77 +21,6 @@ const mdTolg = breakpoints.between('md', 'lg')
 const greaterEqualLG = breakpoints.greaterOrEqual('lg')
 
 const campList = mainStore.getAllCamps
-
-/* const testCamps = ref([
-  {
-    name: 'Quiet Ember Campground',
-    shortDescription: 'lorem something is flying over the chasm',
-    fullDescription:
-      "Quiet Ember Campground is a tucked-away forest retreat where slow mornings and crackling campfires set the pace. Surrounded by tall pines, soft moss trails, and the distant sound of a flowing creek, it's a place designed for people who come to the woods to truly unplug. Evenings glow with lantern light and warm embers, while the night sky opens wide above the treetops.",
-    price: '12',
-    image:
-      'https://dl.dropboxusercontent.com/scl/fi/b1w3ybugfyq8c9thb0si1/forest-1.avif?rlkey=gd4vdo8y30jpj3ics9uecxevd',
-    blurryImg:
-      'https://dl.dropboxusercontent.com/scl/fi/18wqydf0v7hu4i1tgldn7/forest-1.avif?rlkey=8kkubpmzyj0twcrc7yrapgmc7',
-    status: 'available',
-    amenities: ['toilet', 'firePit', 'waterSupply', 'campStore'],
-  },
-  {
-    name: 'Cedar Ridge Outpost',
-    shortDescription: 'lorem something is flying over the chasm',
-    price: '34',
-    image:
-      'https://dl.dropboxusercontent.com/scl/fi/mlej6lktl7222u7yqt8xr/forest-2.avif?rlkey=c3kttwp5119rt1wu940hakfno',
-    blurryImg:
-      'https://dl.dropboxusercontent.com/scl/fi/7meuc2pir0mtsjp1e92lr/forest-2.avif?rlkey=ueavpt1nftp432cw20632jyy9',
-    status: 'full',
-    amenities: ['grill', 'trashBins', 'picnicTable'],
-  },
-  {
-    name: 'Breakline Beach Camp',
-    shortDescription: 'lorem something is flying over the chasm',
-    price: '56',
-    image:
-      'https://dl.dropboxusercontent.com/scl/fi/xt0kr8kv85bgerfk6ohhh/beach-1.avif?rlkey=sxkf3kr4xdxze5byzvvzkb0ug',
-    blurryImg: '/client/src/assets/images/lowres/beach-1.avif',
-    status: 'available',
-    amenities: ['shower', 'waterSupply', 'wifiAccess'],
-  },
-  {
-    name: 'Highpass Outpost',
-    shortDescription: 'lorem something is flying over the chasm',
-    price: '78',
-    image:
-      'https://dl.dropboxusercontent.com/scl/fi/s8q8u7tnnudy8j6ed5z75/mountain-1.avif?rlkey=u8724riknpoc464vekmk3xgqe',
-    blurryImg:
-      'https://dl.dropboxusercontent.com/scl/fi/5tkk1iht2isx7rqxwaroq/mountain-1.avif?rlkey=16v6idbvlocetszbq3hbuhw2g',
-    status: 'available',
-    amenities: ['shower', 'waterSupply', 'wifiAccess'],
-  },
-  {
-    name: 'North Summit Camp',
-    shortDescription: 'lorem something is flying over the chasm',
-    price: '90',
-    image:
-      'https://dl.dropboxusercontent.com/scl/fi/bxicpr9ysg35d6gc8cwh5/mountain-2.avif?rlkey=k0c890ridekn13qfgwi9j2ft7',
-    blurryImg:
-      'https://dl.dropboxusercontent.com/scl/fi/vvzdhi7m7cj8duk3qv14f/mountain-2.avif?rlkey=njz2ki0bnp6kepnev06rkisho',
-    status: 'available',
-    amenities: ['grill', 'trashBins', 'picnicTable'],
-  },
-  {
-    name: 'Cloudrest Campground',
-    shortDescription: 'lorem something is flying over the chasm',
-    price: '14',
-    image:
-      'https://dl.dropboxusercontent.com/scl/fi/apars1hjdyqr5efk8myps/mountain-3.avif?rlkey=8dhggk1z3p0qevjgvig0a8w31',
-    blurryImg:
-      'https://dl.dropboxusercontent.com/scl/fi/j9opfda1c2szjcdq5qbeo/mountain-3.avif?rlkey=qwwery67yeedwvwd8wzglhx0u',
-    status: 'available',
-    amenities: ['grill', 'trashBins', 'picnicTable'],
-  },
-]) */
-
 </script>
 
 <template>
@@ -122,60 +49,16 @@ const campList = mainStore.getAllCamps
             class="md:max-w-185 lg:min-w-230 lg:max-w-300"
           >
             <swiper-slide v-for="camp in campList" :key="camp.name">
-              <div class="max-w-90 mx-auto rounded-2xl group md:max-w-85 lg:max-w-90">
-                <div class="h-65 rounded-t-2xl overflow-hidden">
-                  <LazyLoadImage
-                    :alt-name="camp.name"
-                    :img-path="camp.image"
-                    :blurry-img-path="camp.image"
-                    class="object-cover object-center h-65 w-100 rounded-t-2xl group-hover:scale-120 duration-300"
-                    :class="{ grayscale: camp.status === 'full' }"
-                  />
-                </div>
-                <div
-                  class="h-90 max-w-100 rounded-b-2xl -translate-y-2 group-hover:-translate-y-4 duration-300 md:shadow bg-white dark:bg-neutral-800"
-                >
-                  <div class="w-[90%] mx-auto flex flex-col">
-                    <!-- Camp name and description -->
-                    <h3
-                      class="text-2xl font-semibold pt-8 group-hover:text-accent-primary duration-200 dark:text-white dark:group-hover:text-accent-secondary transition-colors"
-                      :class="{ 'text-xl': camp.name.length > 20, 'pb-1': camp.name.length > 20 }"
-                    >
-                      {{ camp.name }}
-                    </h3>
-                    <p class="pt-2 text-neutral-600 dark:text-neutral-500 transition-colors">
-                      {{ camp.shortDescription }}
-                    </p>
-                    <!-- Amenities Badge -->
-                    <div class="flex gap-x-2 pt-4">
-                      <div v-for="n in 2" :key="n">
-                        <base-badge :name="camp.amenities[n]" class="" />
-                      </div>
-                    </div>
-                    <div
-                      v-if="camp.amenities?.length > 2"
-                      class="pl-2 pt-1 dark:text-neutral-300 transition-colors duration-300"
-                    >
-                      Plus {{ camp.amenities.length - 2 }} more
-                    </div>
-                    <hr class="text-neutral-400 font-bold mt-8" />
-                    <!-- Price -->
-                    <div class="mt-6 flex flex-col md:flex-row md:justify-between md:items-center">
-                      <div>
-                        <span class="text-xl font-semibold tracking-wider dark:text-white">${{ camp.price }}</span>
-                        <span class="text-sm text-neutral-500"> /night</span>
-                      </div>
-                      <PrimaryButton
-                        size="default"
-                        :label="camp.status === 'available' ? 'Book now' : 'Full'"
-                        :group-animate="true"
-                        class="mt-4 md:mt-0"
-                        :disabled="camp.status === 'available' ? false : true"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <CampCard
+                :name="camp.name"
+                :short-description="camp.shortDescription"
+                :full-description="camp.fullDescription"
+                :price="camp.price"
+                :image="camp.image"
+                :blurry-img="camp.blurryImg"
+                :status="camp.status"
+                :amenities="camp.amenities"
+              />
             </swiper-slide>
           </swiper>
 
