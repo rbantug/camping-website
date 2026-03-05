@@ -2,7 +2,7 @@
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Navigation, A11y } from 'swiper/modules'
 import { useBreakpoints } from '@vueuse/core'
-import { ref } from 'vue'
+import { useMainStore } from '@/stores/mainStore'
 
 import 'swiper/css'
 
@@ -12,6 +12,8 @@ import BaseBadge from '../BaseComponents/Buttons/BaseBadge.vue'
 import PrimaryButton from '../BaseComponents/Buttons/PrimaryButton.vue'
 import LazyLoadImage from '../util/LazyLoadImage.vue'
 
+const mainStore = useMainStore()
+
 const breakpoints = useBreakpoints({
   md: 768,
   lg: 994,
@@ -20,7 +22,9 @@ const breakpoints = useBreakpoints({
 const mdTolg = breakpoints.between('md', 'lg')
 const greaterEqualLG = breakpoints.greaterOrEqual('lg')
 
-const testCamps = ref([
+const campList = mainStore.getAllCamps
+
+/* const testCamps = ref([
   {
     name: 'Quiet Ember Campground',
     shortDescription: 'lorem something is flying over the chasm',
@@ -88,7 +92,8 @@ const testCamps = ref([
     status: 'available',
     amenities: ['grill', 'trashBins', 'picnicTable'],
   },
-])
+]) */
+
 </script>
 
 <template>
@@ -116,7 +121,7 @@ const testCamps = ref([
             :loop="true"
             class="md:max-w-185 lg:min-w-230 lg:max-w-300"
           >
-            <swiper-slide v-for="camp in testCamps" :key="camp.name">
+            <swiper-slide v-for="camp in campList" :key="camp.name">
               <div class="max-w-90 mx-auto rounded-2xl group md:max-w-85 lg:max-w-90">
                 <div class="h-65 rounded-t-2xl overflow-hidden">
                   <LazyLoadImage
