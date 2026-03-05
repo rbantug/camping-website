@@ -5,7 +5,7 @@ import PrimaryButton from '../BaseComponents/Buttons/PrimaryButton.vue';
 <template>
     <div class="grid grid-cols-1 lg:grid-cols-5">
         <!-- mail icon and text -->
-        <div class="flex flex-col md:flex-row gap-y-4 md:gap-x-4 mb-4 lg:col-span-2">
+        <div class="flex flex-col md:flex-row gap-y-4 md:gap-x-4 mb-4 lg:mb-0 lg:col-span-2">
             <div class="h-15 w-15 bg-accent-outline rounded-full flex items-center justify-center lg:h-18 lg:w-18">
                 <!-- fluent:mail-copy-32-regular -->
                 <div class="text-accent-primary lg:scale-125">

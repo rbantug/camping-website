@@ -12,21 +12,21 @@ import TransitionScroll from './util/TransitionScroll.vue'
   >
     <div class="px-4 md:px-8 lg:max-w-317 lg:px-6 lg:mx-auto">
       <div class="py-20 lg:py-30">
+        <TransitionScroll transition-direction="top-bottom">
         <div class="grid grid-cols-1">
-          <TransitionScroll transition-direction="top-bottom" threshold>
             <!-- Logo and social media icons -->
             <div class="lg:grid lg:grid-cols-6 lg:gap-x-6 lg:pb-12">
               <LogoAndSocialMedia class="lg:col-span-2" />
-              <div class="grid md:grid-cols-6 lg:grid-cols-6 lg:col-span-4">
+              <div class="grid md:grid-cols-6 lg:grid-cols-6 pb-10 lg:pb-0 lg:col-span-4">
                 <PagesLinks class="md:col-span-2" />
                 <InstagramSection class="md:col-span-4 lg:col-span-3" />
               </div>
             </div>
-          </TransitionScroll>
-          <TransitionScroll>
+        </div>
+        </TransitionScroll>
+        <TransitionScroll threshold>
             <SubscribeNewsletter />
           </TransitionScroll>
-        </div>
       </div>
     </div>
   </div>
