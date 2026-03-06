@@ -1,8 +1,13 @@
 <script setup lang="ts">
-import { ref, onMounted, onBeforeMount } from 'vue'
+import { ref, onMounted, onBeforeMount, watch } from 'vue'
 import { useHead } from '@unhead/vue'
+import { useBreakpoints } from '@vueuse/core'
 
+import { useMainStore } from '@/stores/mainStore'
 import TransitionScroll from '../util/TransitionScroll.vue'
+import CampCard from '../BaseComponents/CampCard.vue'
+
+import type { Camps } from '../../../interface'
 
 useHead({
   link: [
@@ -14,13 +19,22 @@ useHead({
   ],
 })
 
-const itemList = ref([1, 2, 3, 4, 5, 6, 7, 8, 9])
+const mainStore = useMainStore()
 
-const currentPage = ref<number>(1)
-const itemsPerPage = ref(6)
-const currentList = ref<null | number[]>(null)
+const breakpoints = useBreakpoints({
+  md: 768,
+  lg: 994,
+})
+
+const md = breakpoints.greaterOrEqual('md')
+
+const itemList = mainStore.getAllCamps
+
+const currentPage = ref(1)
+const itemsPerPage = ref(3)
+const currentList = ref<Camps[]>([])
 const totalPages = ref(1)
-const refArray = ref([])
+const refArray = ref<HTMLElement[]>([])
 
 function paginateList() {
   const page = currentPage.value - 1
@@ -35,19 +49,29 @@ function createPageBtn() {
 }
 
 function activeBtn(el: HTMLElement) {
-  const currentBtnIndex = refArray.value.findIndex((x:HTMLElement) => x.classList.contains('bg-accent-secondary'))
+  const currentBtnIndex = refArray.value.findIndex((x: HTMLElement) =>
+    x.classList.contains('bg-accent-secondary'),
+  )
   refArray.value[currentBtnIndex].classList.remove('bg-accent-secondary')
-  refArray.value[currentBtnIndex].classList.add('bg-neutral-300')
+  refArray.value[currentBtnIndex].classList.add('bg-neutral-500')
 
-  el.classList.remove('bg-neutral-300')
+  el.classList.remove('bg-neutral-500')
   el.classList.add('bg-accent-secondary')
+}
+
+function scrollToTopCamp() {
+  const el = document.getElementById('topCamp')
+  el?.scrollIntoView({ behavior: 'smooth' })
 }
 
 function changePage(event: Event) {
   const target = event.target as HTMLInputElement
+  if (currentPage.value === parseInt(target.textContent)) return
+
   activeBtn(target)
   currentPage.value = parseInt(target.textContent)
   paginateList()
+  scrollToTopCamp()
 }
 
 function nextPage() {
@@ -56,22 +80,39 @@ function nextPage() {
   currentPage.value++
   activeBtn(refArray.value[currentPage.value - 1])
   paginateList()
+  scrollToTopCamp()
 }
 
 function previousPage() {
   if (currentPage.value === 1) return
-  
+
   currentPage.value--
   activeBtn(refArray.value[currentPage.value - 1])
   paginateList()
+  scrollToTopCamp()
 }
 
+watch(
+  md,
+  (newVal, oldVal) => {
+    if (newVal === true) {
+      itemsPerPage.value = 6
+    } else {
+      itemsPerPage.value = 3
+    }
+    paginateList()
+    createPageBtn()
+  },
+  { immediate: true },
+)
+
 onMounted(() => {
+  itemsPerPage.value = md.value ? 6 : 3
   paginateList()
   createPageBtn()
   console.log(refArray.value)
-  refArray.value[0].classList.remove("bg-neutral-300")
-  refArray.value[0].classList.add("bg-accent-secondary")
+  refArray.value[0].classList.remove('bg-neutral-500')
+  refArray.value[0].classList.add('bg-accent-secondary')
 })
 
 onBeforeMount(() => {
@@ -80,7 +121,7 @@ onBeforeMount(() => {
 </script>
 
 <template>
-  <div class="h-1000">
+  <div class="h-650 bg-neutral-100 dark:bg-neutral-900 lg:h-525 flex flex-col">
     <div
       class="h-130 bg-[url(https://dl.dropboxusercontent.com/scl/fi/26jjsubwisadujxc1ye60/title-1.avif?rlkey=6gxgj5ndtv8r7cg251ea3m5g9)] bg-bottom bg-cover flex flex-col md:h-140"
     >
@@ -96,18 +137,30 @@ onBeforeMount(() => {
         </div>
       </TransitionScroll>
     </div>
-    <div class="">
-      <div class="bg-red-200 h-300 grid grid-cols-3 gap-x-2 gap-y-8">
-        <div v-for="n in currentList" :key="n" class="">
-          <div class="h-140 w-90 rounded-2xl border-2 mx-auto">
-            {{ n }}
-          </div>
+    <div class="pt-10">
+      <div
+        class="h-490 max-w-300 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-2 gap-y-2 lg:h-330"
+        id="topCamp"
+      >
+        <div v-for="camp in currentList" :key="camp.name" class="pb-10">
+          <CampCard
+            :name="camp.name"
+            :shortDescription="camp.shortDescription"
+            :fullDescription="camp.fullDescription"
+            :price="camp.price"
+            :image="camp.image"
+            :blurryImg="camp.blurryImg"
+            :status="camp.status"
+            :amenities="camp.amenities"
+          />
         </div>
       </div>
-      <!-- Pagination buttons -->
-      <div class="flex gap-x-5">
+    </div>
+    <!-- Pagination buttons -->
+    <div class="py-10">
+      <div class="flex gap-x-5 items-center justify-center">
         <!-- Previous button -->
-        <button class="cursor-pointer" @click="previousPage">
+        <button class="cursor-pointer dark:text-white" @click="previousPage">
           <!-- simple-line-icons:arrow-left -->
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 1024 1024">
             <path
@@ -120,14 +173,14 @@ onBeforeMount(() => {
         <button
           v-for="(page, index) of totalPages"
           :key="page"
-          class="h-10 w-10 rounded-full outline-none bg-neutral-300 cursor-pointer hover:bg-accent-outline"
+          class="h-10 w-10 rounded-full outline-none text-white bg-neutral-500 cursor-pointer hover:bg-accent-outline"
           :ref="(el) => (refArray[index] = el)"
           @click.self="changePage"
         >
           {{ page }}
         </button>
         <!-- next button -->
-        <button class="cursor-pointer" @click="nextPage">
+        <button class="cursor-pointer dark:text-white" @click="nextPage">
           <!-- simple-line-icons:arrow-right -->
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 1024 1024">
             <path
