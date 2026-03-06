@@ -19,9 +19,14 @@ const props = defineProps({
   },
 })
 
+const emits = defineEmits(['emit1'])
+
 const moreNavItems = ref(false)
 function toggleMoreNavItems() {
   moreNavItems.value = !moreNavItems.value
+}
+function closeNavMenu() {
+  emits('emit1')
 }
 </script>
 
@@ -33,7 +38,7 @@ function toggleMoreNavItems() {
     >
       <div class="flex flex-col gap-y-4">
         <div v-for="{ link, route } in navItems" :key="link">
-          <router-link :to="route" class="text-black dark:text-white transition-color duration-300">{{ link }}</router-link>
+          <router-link :to="route" class="text-black dark:text-white transition-color duration-300" @click="closeNavMenu">{{ link }}</router-link>
         </div>
       </div>
       <div class="flex cursor-pointer pt-4 pb-2 text-black dark:text-white transition-color duration-300" @click="toggleMoreNavItems">
@@ -45,7 +50,7 @@ function toggleMoreNavItems() {
       </div>
       <div v-if="moreNavItems" class="flex flex-col gap-2 translate-x-4 pb-4">
         <div v-for="{ link, route } in additionalNavItems" :key="link">
-          <router-link :to="route" class="text-black dark:text-white transition-color duration-300">{{ link }}</router-link>
+          <router-link :to="route" class="text-black dark:text-white transition-color duration-300" @click="closeNavMenu">{{ link }}</router-link>
         </div>
       </div>
       <div class="w-full md:w-[20%]">

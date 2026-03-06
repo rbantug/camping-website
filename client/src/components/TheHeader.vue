@@ -19,8 +19,15 @@ const navBarsAnimation = ref(false)
 function toggleNavBarsAnimation() {
   navBarsAnimation.value = !navBarsAnimation.value
 }
+function forceCloseNavBar() {
+  navBarsAnimation.value = false
+}
 
 const pagesNavBarIsOpen = ref(false)
+
+function forceClosePNBIO() {
+  pagesNavBarIsOpen.value = false
+}
 function togglePNBIO() {
   pagesNavBarIsOpen.value = !pagesNavBarIsOpen.value
 }
@@ -78,7 +85,7 @@ const lgAndLarger = breakpoints.greater('lg')
             <!-- Header links -->
             <div v-else class="flex gap-x-8 text-lg">
               <div v-for="{ link, route } in navItems" :key="link">
-                <router-link :to="route" class="hover:text-accent-primary duration-100 ease dark:text-white transition-color">{{
+                <router-link :to="route" class="hover:text-accent-primary duration-100 ease dark:text-white transition-color" @click="forceClosePNBIO">{{
                   link
                 }}</router-link>
               </div>
@@ -154,6 +161,7 @@ const lgAndLarger = breakpoints.greater('lg')
           :is-open="navBarsAnimation"
           :nav-items="navItems"
           :additional-nav-items="additionalNavItems"
+          @emit1="forceCloseNavBar"
         />
       </div>
     </div>
