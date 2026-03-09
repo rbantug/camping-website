@@ -40,7 +40,7 @@ const { isLoading } = useImage({
       alt=""
       class="object-cover blur-md animate-pulse"
     />
-    <img v-else :src="props.imgPath" :alt="props.altName" loading="lazy" />
+    <img v-else :src="props.imgPath" :alt="props.altName" />
   </transition>
 </template>
 
