@@ -55,8 +55,9 @@ const imgHoriz3 = {
             </TransitionScroll>
           </div>
           <div class="">
+            <TransitionScroll threshold :no-animation="true">
             <div
-              class="max-w-100 mx-auto pt-10 grid grid-cols-1 gap-y-5 md:gap-5 md:grid-cols-[40%_60%] md:max-w-300"
+              class="max-w-100 mx-auto pt-5 grid grid-cols-1 gap-y-5 md:gap-5 md:grid-cols-[40%_60%] md:max-w-300"
             >
               <div class="lg:max-w-140">
                 <LazyLoadImage alt-name="about-us-1" :img-path="imgVertical.img"
@@ -74,6 +75,7 @@ const imgHoriz3 = {
                 </div>
               </div>
             </div>
+            </TransitionScroll>
           </div>
         </div>
     </div>
