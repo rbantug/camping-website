@@ -7,6 +7,7 @@ interface Props {
     transitionDirection?: 'top-bottom' | 'bottom-top';
     zIndex?: number;
     relative?: boolean;
+    noAnimation?: boolean;
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -14,6 +15,7 @@ const props = withDefaults(defineProps<Props>(), {
     transitionDirection: 'bottom-top',
     zIndex: 0,
     relative: false,
+    noAnimation: false
 })
 
 const el = ref(null)
@@ -29,11 +31,11 @@ watchEffect(() => {
 const outputDir0 = computed(() => {
     let style = `opacity-0 z-${props.zIndex}`
 
-    if (props.transitionDirection === 'top-bottom') {
+    if (!props.noAnimation && props.transitionDirection === 'top-bottom') {
         style = style + ' translate-y-0'
     }
 
-    if (props.transitionDirection === 'bottom-top') {
+    if (!props.noAnimation && props.transitionDirection === 'bottom-top') {
         style = style + ' translate-y-8'
     }
 
@@ -47,11 +49,11 @@ const outputDir0 = computed(() => {
 const outputDir1 = computed(() => {
     let style = `opacity-100 z-${props.zIndex}`
 
-    if (props.transitionDirection === 'top-bottom') {
+    if (!props.noAnimation && props.transitionDirection === 'top-bottom') {
         style = style + ' translate-y-8'
     }
 
-    if (props.transitionDirection === 'bottom-top') {
+    if (!props.noAnimation && props.transitionDirection === 'bottom-top') {
         style = style + ' translate-y-0'
     }
 
