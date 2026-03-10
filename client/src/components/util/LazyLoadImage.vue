@@ -39,8 +39,9 @@ const { isLoading } = useImage({
       :src="props.blurryImgPath"
       alt=""
       class="object-cover blur-md animate-pulse"
+      loading="lazy"
     />
-    <img v-else :src="props.imgPath" :alt="props.altName" />
+    <img v-else :src="props.imgPath" :alt="props.altName" loading="lazy" />
   </transition>
 </template>
 
