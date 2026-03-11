@@ -3,6 +3,8 @@ import { useHead } from '@unhead/vue'
 
 import TransitionScroll from '../util/TransitionScroll.vue'
 import AboutUs from '../AboutPageComponents/AboutUs.vue'
+import CampValues from '../AboutPageComponents/CampValues.vue'
+import CallToAction from '../AboutPageComponents/CallToAction.vue'
 
 useHead({
   link: [
@@ -21,7 +23,7 @@ function goToTopAbout() {
 </script>
 
 <template>
-  <div class="h-1000 bg-neutral-100 dark:bg-neutral-900 transition-colors duration-300">
+  <div class="h-1340 bg-neutral-100 dark:bg-neutral-900 transition-colors duration-300 md:h-1100 lg:h-990">
     <div
       class="h-150 bg-[url('https://dl.dropboxusercontent.com/scl/fi/tayfsfnprltsz3x4ng9qs/title-2.avif?rlkey=9eyg687z0ds6nwc3dctnjic2e')] bg-cover bg-center bg-black/30 bg-blend-overlay"
     >
@@ -61,7 +63,8 @@ function goToTopAbout() {
       </TransitionScroll>
     </div>
     <AboutUs />
-    <div></div>
+    <CampValues />
+    <CallToAction />
   </div>
 </template>
 
