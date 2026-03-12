@@ -1,5 +1,6 @@
 export interface Camps {
     name: string;
+    slug: string;
     shortDescription: string;
     fullDescription: string;
     price: string;
