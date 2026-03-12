@@ -95,5 +95,11 @@ export const useMainStore = defineStore('main', () => {
   ])
 
   const getAllCamps = computed(() => allCamps)
-  return { getAllPages, getAllCamps }
+
+  const darkMode = ref(false)
+  function updateDarkMode(val:boolean) {
+    darkMode.value = val
+  }
+  const getDarkMode = computed(() => darkMode.value)
+  return { getAllPages, getAllCamps, updateDarkMode, getDarkMode }
 })
