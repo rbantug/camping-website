@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+import { useRouter } from 'vue-router'
 
 const props = defineProps({
   size: {
@@ -26,8 +27,15 @@ const props = defineProps({
     type: Boolean,
     required: false,
     default: false
+  },
+  routePath: {
+    type: String,
+    required: false,
+    default: '/'
   }
 })
+
+const router = useRouter()
 
 const rootStyling =
   'bg-accent-secondary rounded-full w-full cursor-pointer shadow hover:bg-accent-primary hover:-translate-y-1 duration-200 group'
@@ -88,11 +96,15 @@ const outputTxtStyle = computed(() => {
 
   return moreTxtStyling(txtStyle) + ' text-lg'
 })
+
+function gotoRoute() {
+  router.push(props.routePath)
+}
 </script>
 
 <template>
   <div>
-    <button :class="outputRootStyle" :disabled="props.disabled">
+    <button :class="outputRootStyle" :disabled="props.disabled" @click="gotoRoute">
       <span :class="outputTxtStyle">{{ props.label }}</span>
     </button>
   </div>
