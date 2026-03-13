@@ -1,11 +1,16 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue';
 
+import { useMainStore } from '@/stores/mainStore';
+
+const mainStore = useMainStore()
+
 const isDarkMode = ref(false)
 const showScrollToTopBtn = ref(false)
 
 function toggleDarkMode() {
     isDarkMode.value = !isDarkMode.value
+    mainStore.updateDarkMode(isDarkMode.value)
     document.documentElement.classList.toggle('dark')
 
     localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light')
