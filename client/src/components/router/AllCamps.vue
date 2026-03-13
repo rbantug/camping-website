@@ -110,7 +110,6 @@ onMounted(() => {
   itemsPerPage.value = md.value ? 6 : 3
   paginateList()
   createPageBtn()
-  console.log(refArray.value)
   refArray.value[0].classList.remove('bg-neutral-500')
   refArray.value[0].classList.add('bg-accent-secondary')
 })
@@ -152,6 +151,7 @@ onBeforeMount(() => {
             :blurryImg="camp.blurryImg"
             :status="camp.status"
             :amenities="camp.amenities"
+            :slug="camp.slug"
           />
         </div>
       </div>
