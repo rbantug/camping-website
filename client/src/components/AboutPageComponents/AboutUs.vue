@@ -55,7 +55,7 @@ const imgHoriz3 = {
             </TransitionScroll>
           </div>
           <div class="">
-            <TransitionScroll threshold :no-animation="true">
+            <TransitionScroll :no-animation="true">
             <div
               class="max-w-100 mx-auto pt-5 grid grid-cols-1 gap-y-5 md:gap-5 md:grid-cols-[40%_60%] md:max-w-300"
             >
