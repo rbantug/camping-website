@@ -66,7 +66,7 @@ const outputDir1 = computed(() => {
 </script>
 
 <template>
-    <div ref="el" class="mx-auto duration-900 delay-200" :class="{ [outputDir0]: trueCount < 1 && isVisible === false, [outputDir1]: trueCount >= 1 && isVisible === true }">
+    <div ref="el" class="duration-900 delay-200" :class="{ [outputDir0]: trueCount < 1 && isVisible === false, [outputDir1]: trueCount >= 1 && isVisible === true }">
         <slot />
     </div>
 </template>
