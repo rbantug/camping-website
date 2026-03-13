@@ -61,6 +61,7 @@ const props = defineProps<Camps>()
               :group-animate="true"
               class="mt-4 md:mt-0"
               :disabled="props.status === 'available' ? false : true"
+              :route-path="`/camps/${props.slug}`"
             />
           </div>
         </div>
