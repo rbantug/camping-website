@@ -6,9 +6,12 @@ interface Props {
   imgPath: string
   blurryImgPath: string
   altName?: string
+  notLazy?: boolean
 }
 
-const props = defineProps<Props>()
+const props = withDefaults(defineProps<Props>(), {
+  notLazy: false
+})
 
 useHead({
   link: [
@@ -28,7 +31,6 @@ useHead({
 const { isLoading } = useImage({
   src: props.imgPath,
   fetchPriority: 'high',
-  
 })
 </script>
 
@@ -39,9 +41,9 @@ const { isLoading } = useImage({
       :src="props.blurryImgPath"
       alt=""
       class="object-cover blur-md animate-pulse"
-      loading="lazy"
+      :loading="notLazy ? 'eager' : 'lazy'"
     />
-    <img v-else :src="props.imgPath" :alt="props.altName" loading="lazy" />
+    <img v-else :src="props.imgPath" :alt="props.altName" :loading="notLazy ? 'eager' : 'lazy'" />
   </transition>
 </template>
 
