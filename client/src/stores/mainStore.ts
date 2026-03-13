@@ -5,11 +5,11 @@ import type { Camps } from '../../interface.ts'
 
 export const useMainStore = defineStore('main', () => {
   const allPages = ref([
-    { link: 'Home', route: 'home' },
-    { link: 'About', route: 'about' },
-    { link: 'Contact', route: 'contact' },
-    { link: 'Camps', route: 'camps' },
-    { link: 'Login/Register', route: 'auth' },
+    { link: 'Home', route: '/home' },
+    { link: 'About', route: '/about' },
+    { link: 'Contact', route: '/contact' },
+    { link: 'Camps', route: '/camps' },
+    { link: 'Login/Register', route: '/auth' },
   ])
 
   const getAllPages = computed(() => allPages)
@@ -17,6 +17,7 @@ export const useMainStore = defineStore('main', () => {
   const allCamps = ref<Camps[]>([
     {
       name: 'Quiet Ember Campground',
+      slug: 'quiet-ember-campground',
       shortDescription: 'lorem something is flying over the chasm',
       fullDescription:
         "Quiet Ember Campground is a tucked-away forest retreat where slow mornings and crackling campfires set the pace. Surrounded by tall pines, soft moss trails, and the distant sound of a flowing creek, it's a place designed for people who come to the woods to truly unplug. Evenings glow with lantern light and warm embers, while the night sky opens wide above the treetops.",
@@ -30,6 +31,7 @@ export const useMainStore = defineStore('main', () => {
     },
     {
       name: 'Cedar Ridge Outpost',
+      slug: 'cedar-ridge-outpost',
       shortDescription: 'lorem something is flying over the chasm',
       fullDescription:
         'Nestled deep within a tranquil pine forest, Quiet Ember Campground offers peaceful campsites surrounded by tall trees and glowing evening campfires. Perfect for hikers, stargazers, and anyone looking to unplug from the noise of the city.',
@@ -43,6 +45,7 @@ export const useMainStore = defineStore('main', () => {
     },
     {
       name: 'Breakline Beach Camp',
+      slug: 'breakline-beach-camp',
       shortDescription: 'lorem something is flying over the chasm',
       fullDescription:
         'Set along a stretch of warm sandy coastline, Golden Dune Beach Camp combines ocean breezes with scenic sunset views. Fall asleep to the sound of waves and wake up to long beach walks and salty air.',
@@ -55,6 +58,7 @@ export const useMainStore = defineStore('main', () => {
     },
     {
       name: 'Highpass Outpost',
+      slug: 'highpass-outpost',
       shortDescription: 'lorem something is flying over the chasm',
       fullDescription:
         'Perched high in the mountains, Silver Ridge offers breathtaking panoramic views and crisp alpine air. Ideal for adventurous campers seeking scenic trails, cool evenings, and spectacular sunrises.',
@@ -68,6 +72,7 @@ export const useMainStore = defineStore('main', () => {
     },
     {
       name: 'North Summit Camp',
+      slug: 'north-summit-camp',
       shortDescription: 'lorem something is flying over the chasm',
       fullDescription:
         'Overlooking distant snowcapped peaks, Snowcap Vista Camp offers breathtaking views, cool mountain nights, and some of the best stargazing opportunities in the region.',
@@ -81,6 +86,7 @@ export const useMainStore = defineStore('main', () => {
     },
     {
       name: 'Cloudrest Campground',
+      slug: 'cloudrest-campground',
       shortDescription: 'lorem something is flying over the chasm',
       fullDescription:
         'High above the tree line, Cloudbreak Mountain Camp offers a truly unique camping experience where clouds drift below the surrounding peaks.',
