@@ -26,6 +26,8 @@ export const useMainStore = defineStore('main', () => {
         'https://dl.dropboxusercontent.com/scl/fi/b1w3ybugfyq8c9thb0si1/forest-1.avif?rlkey=gd4vdo8y30jpj3ics9uecxevd',
       blurryImg:
         'https://dl.dropboxusercontent.com/scl/fi/18wqydf0v7hu4i1tgldn7/forest-1.avif?rlkey=8kkubpmzyj0twcrc7yrapgmc7',
+      imageHires:
+        'https://dl.dropboxusercontent.com/scl/fi/l3s8l6u0j19a93wdywxgh/hires-forest-1.avif?rlkey=mrj6akvq95gspe66y5zcsb6zb',
       status: 'available',
       amenities: ['toilet', 'firePit', 'waterSupply', 'campStore'],
     },
@@ -40,6 +42,8 @@ export const useMainStore = defineStore('main', () => {
         'https://dl.dropboxusercontent.com/scl/fi/mlej6lktl7222u7yqt8xr/forest-2.avif?rlkey=c3kttwp5119rt1wu940hakfno',
       blurryImg:
         'https://dl.dropboxusercontent.com/scl/fi/7meuc2pir0mtsjp1e92lr/forest-2.avif?rlkey=ueavpt1nftp432cw20632jyy9',
+      imageHires:
+        'https://dl.dropboxusercontent.com/scl/fi/dteu6o8d6e6079mihkmx5/hires-forest-2.avif?rlkey=vqc62pt044jm7awa1uciq4tin',
       status: 'full',
       amenities: ['grill', 'trashBins', 'picnicTable'],
     },
@@ -52,7 +56,10 @@ export const useMainStore = defineStore('main', () => {
       price: '56',
       image:
         'https://dl.dropboxusercontent.com/scl/fi/xt0kr8kv85bgerfk6ohhh/beach-1.avif?rlkey=sxkf3kr4xdxze5byzvvzkb0ug',
-      blurryImg: '/client/src/assets/images/lowres/beach-1.avif',
+      blurryImg:
+        'https://dl.dropboxusercontent.com/scl/fi/3zr9owlo3pctzyvmnwj6f/beach-1.avif?rlkey=9btuwb6kzbtyhufqw3ulod6sw',
+      imageHires:
+        'https://dl.dropboxusercontent.com/scl/fi/a40cgsn5cuvdeapgi8ohj/hires-beach-1.avif?rlkey=i6dkleh49deuxmgi1r9gslvqb',
       status: 'available',
       amenities: ['shower', 'waterSupply', 'wifiAccess'],
     },
@@ -67,6 +74,8 @@ export const useMainStore = defineStore('main', () => {
         'https://dl.dropboxusercontent.com/scl/fi/s8q8u7tnnudy8j6ed5z75/mountain-1.avif?rlkey=u8724riknpoc464vekmk3xgqe',
       blurryImg:
         'https://dl.dropboxusercontent.com/scl/fi/5tkk1iht2isx7rqxwaroq/mountain-1.avif?rlkey=16v6idbvlocetszbq3hbuhw2g',
+      imageHires:
+        'https://dl.dropboxusercontent.com/scl/fi/piohy8uw9pqniy8xph5tf/hires-mountain-1.avif?rlkey=trsox280q72272xg6ikc5onpo',
       status: 'available',
       amenities: ['shower', 'waterSupply', 'wifiAccess'],
     },
@@ -81,6 +90,8 @@ export const useMainStore = defineStore('main', () => {
         'https://dl.dropboxusercontent.com/scl/fi/bxicpr9ysg35d6gc8cwh5/mountain-2.avif?rlkey=k0c890ridekn13qfgwi9j2ft7',
       blurryImg:
         'https://dl.dropboxusercontent.com/scl/fi/vvzdhi7m7cj8duk3qv14f/mountain-2.avif?rlkey=njz2ki0bnp6kepnev06rkisho',
+      imageHires:
+        'https://dl.dropboxusercontent.com/scl/fi/g3jpy3n5lec9m6wj3hmmx/hires-mountain-2.avif?rlkey=o3qsk6dp95l3g5dl36j4s9lqd',
       status: 'available',
       amenities: ['grill', 'trashBins', 'picnicTable'],
     },
@@ -95,6 +106,8 @@ export const useMainStore = defineStore('main', () => {
         'https://dl.dropboxusercontent.com/scl/fi/apars1hjdyqr5efk8myps/mountain-3.avif?rlkey=8dhggk1z3p0qevjgvig0a8w31',
       blurryImg:
         'https://dl.dropboxusercontent.com/scl/fi/j9opfda1c2szjcdq5qbeo/mountain-3.avif?rlkey=qwwery67yeedwvwd8wzglhx0u',
+      imageHires:
+        'https://dl.dropboxusercontent.com/scl/fi/fv1vpvq9pove2f4f38enm/hires-mountain-3.avif?rlkey=32o5cddvs5s2oa9v51oa2v25k',
       status: 'available',
       amenities: ['grill', 'trashBins', 'picnicTable'],
     },

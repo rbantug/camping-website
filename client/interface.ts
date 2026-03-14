@@ -5,6 +5,7 @@ export interface Camps {
     fullDescription: string;
     price: string;
     image: string;
+    imageHires: string;
     blurryImg: string;
     status: string;
     amenities: string[];
