@@ -58,6 +58,7 @@ const campList = mainStore.getAllCamps
                 :blurry-img="camp.blurryImg"
                 :status="camp.status"
                 :amenities="camp.amenities"
+                :slug="camp.slug"
               />
             </swiper-slide>
           </swiper>
