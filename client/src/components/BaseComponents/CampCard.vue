@@ -5,7 +5,9 @@ import BaseBadge from './Buttons/BaseBadge.vue';
 import PrimaryButton from './Buttons/PrimaryButton.vue';
 import LazyLoadImage from '../util/LazyLoadImage.vue';
 
-const props = defineProps<Camps>()
+type Prop = Omit<Camps, "imageHires">
+
+const props = defineProps<Prop>()
 </script>
 
 <template>
