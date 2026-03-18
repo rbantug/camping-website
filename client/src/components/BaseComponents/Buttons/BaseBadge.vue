@@ -4,8 +4,8 @@ import { ref, computed } from 'vue'
 interface Props {
   name: string;
   border?: boolean;
-  textSize: 'auto' | 'sm' | 'md';
-  increaseGap: boolean;
+  textSize?: 'auto' | 'sm' | 'md';
+  increaseGap?: boolean;
 }
 
 const props = withDefaults(defineProps<Props>(), {
