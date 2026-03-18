@@ -2,14 +2,18 @@
 import { ref, onMounted } from 'vue'
 
 interface Props {
-  imgPath: string
-  blurryImgPath: string
+  imgPath: string | undefined
+  blurryImgPath: string | undefined
   altName?: string
   notLazy?: boolean
+  class?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
   notLazy: false,
+  class: '',
+  imgPath: '',
+  blurryImgPath: ''
 })
 
 const loaded = ref(false)
@@ -53,8 +57,8 @@ onMounted(() => {
       :src="props.imgPath"
       :alt="props.altName"
       :class="[
-        'w-full h-full object-cover transition-all duration-700',
-        loaded ? 'opacity-100 blur-0 scale-100' : 'opacity-0 blur-md scale-105',
+        'object-cover transition-all duration-700',
+        loaded ? 'opacity-100 blur-0 scale-100' : 'opacity-0 blur-md scale-105', props.class
       ]"
       :loading="notLazy ? 'eager': 'lazy'"
     />
