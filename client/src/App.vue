@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { onBeforeMount } from 'vue'
+import { onBeforeMount, onMounted, watch } from 'vue'
 import { useHead } from '@unhead/vue'
+import { useRoute } from 'vue-router'
 
 import TransitionScroll from './components/util/TransitionScroll.vue'
 import TheHeader from './components/TheHeader.vue'
@@ -8,12 +9,24 @@ import TheFooter from './components/TheFooter.vue'
 import ScrollUpButton from './components/ScrollUpButton.vue'
 import ToggleDarkModeButton from './components/ToggleDarkModeButton.vue'
 
+import { useMainStore } from './stores/mainStore'
+
 useHead({
   link: [
     {
       rel: 'preload',
       as: 'image',
       href: 'https://dl.dropboxusercontent.com/scl/fi/a1q1m6i4529oba7ls4kh6/camping-stars-2.avif?rlkey=14kkjyab0xaii38ns6pz5f0jy',
+    },
+    {
+      rel: 'preload',
+      as: 'image',
+      href: 'https://dl.dropboxusercontent.com/scl/fi/tayfsfnprltsz3x4ng9qs/title-2.avif?rlkey=9eyg687z0ds6nwc3dctnjic2e',
+    },
+    {
+      rel: 'preload',
+      as: 'image',
+      href: 'https://dl.dropboxusercontent.com/scl/fi/26jjsubwisadujxc1ye60/title-1.avif?rlkey=6gxgj5ndtv8r7cg251ea3m5g9',
     },
   ],
 })
@@ -30,7 +43,7 @@ function setupY(path: string) {
     mainStore.updateBottomRightY(600)
   }
 
-  if (path === '/home') {
+  if (path === '/') {
     mainStore.updateBottomRightY(1000)
   }
 
