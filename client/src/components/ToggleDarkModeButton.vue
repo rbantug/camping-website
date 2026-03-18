@@ -17,7 +17,7 @@ function toggleDarkMode() {
 }
 
 function handleScroll() {
-  showScrollToTopBtn.value = window.scrollY > 800
+  showScrollToTopBtn.value = window.scrollY > mainStore.getBottomRightBtnY.value
 }
 
 onMounted(() => {

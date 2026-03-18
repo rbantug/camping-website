@@ -18,12 +18,37 @@ useHead({
   ],
 })
 
+const route = useRoute()
+
+const mainStore = useMainStore()
+
+watch(
+  () => route.path, setupY, { immediate: true })
+
+function setupY(path: string) {
+  if (path === '/about') {
+    mainStore.updateBottomRightY(600)
+  }
+
+  if (path === '/home') {
+    mainStore.updateBottomRightY(1000)
+  }
+
+  if (path === '/camps') {
+    mainStore.updateBottomRightY(550)
+  }
+}
+
 onBeforeMount(() => {
   const saved = localStorage.getItem('theme')
 
   if (saved === 'dark') {
     document.documentElement.classList.add('dark')
   }
+})
+
+onMounted(() => {
+  setupY(route.path)
 })
 </script>
 

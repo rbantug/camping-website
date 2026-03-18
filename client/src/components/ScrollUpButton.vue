@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from 'vue'
+import { useMainStore } from '@/stores/mainStore'
+
+const mainStore = useMainStore()
 
 const showScrollToTopBtn = ref(false)
 const notAtTopOfWebpage = ref(false)
@@ -12,12 +15,12 @@ function scrollToTop() {
 }
 
 function handleScroll() {
-  showScrollToTopBtn.value = window.scrollY > 800
+  showScrollToTopBtn.value = window.scrollY > mainStore.getBottomRightBtnY.value
 }
 
 onMounted(() => {
   window.addEventListener('scroll', handleScroll)
-  notAtTopOfWebpage.value = window.screenY > 800
+  notAtTopOfWebpage.value = window.screenY > mainStore.getBottomRightBtnY.value
 })
 onUnmounted(() => window.removeEventListener('scroll', handleScroll))
 </script>

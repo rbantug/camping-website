@@ -120,5 +120,13 @@ export const useMainStore = defineStore('main', () => {
     darkMode.value = val
   }
   const getDarkMode = computed(() => darkMode.value)
-  return { getAllPages, getAllCamps, updateDarkMode, getDarkMode }
+
+  // This is the window.screenY where the scrollUpButton will appear
+  const bottomRightBtnY = ref(0)
+  function updateBottomRightY(val:number) {
+    bottomRightBtnY.value = val
+  }
+  const getBottomRightBtnY = computed(() => bottomRightBtnY)
+
+  return { getAllPages, getAllCamps, updateDarkMode, getDarkMode, updateBottomRightY, getBottomRightBtnY }
 })
