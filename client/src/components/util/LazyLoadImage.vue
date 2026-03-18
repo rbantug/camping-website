@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { useImage } from '@vueuse/core'
-import { useHead } from '@unhead/vue'
+import { ref, onMounted } from 'vue'
 
 interface Props {
   imgPath: string
@@ -10,53 +9,63 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  notLazy: false
+  notLazy: false,
 })
 
-useHead({
-  link: [
-    {
-      rel: 'preload',
-      as: 'image',
-      href: props.imgPath,
-    },
-    {
-      rel: 'preload',
-      as: 'image',
-      href: props.blurryImgPath,
-    },
-  ],
-})
+const loaded = ref(false)
+const error = ref(false)
 
-const { isLoading } = useImage({
-  src: props.imgPath,
-  fetchPriority: 'high',
+onMounted(() => {
+  const img = new Image()
+  img.src = props.imgPath
+
+  img.onload = () => {
+    loaded.value = true
+  }
+
+  img.onerror = () => {
+    error.value = true
+  }
 })
 </script>
 
 <template>
-  <transition mode="out-in">
+  <div class="relative overflow-hidden">
+    
+    <!-- Skeleton -->
+    <div
+      v-if="!loaded && !error"
+      class="absolute inset-0 animate-pulse bg-gray-300/20"
+    ></div>
+
+    <!-- Placeholder (blurred) -->
     <img
-      v-if="isLoading"
+      v-if="props.blurryImgPath && !loaded"
       :src="props.blurryImgPath"
-      alt=""
-      class="object-cover blur-md animate-pulse"
-      :loading="notLazy ? 'eager' : 'lazy'"
+      :alt="props.altName"
+      class="absolute inset-0 w-full h-full object-cover blur-md scale-105"
+      :loading="notLazy ? 'eager': 'lazy'"
     />
-    <img v-else :src="props.imgPath" :alt="props.altName" :loading="notLazy ? 'eager' : 'lazy'" />
-  </transition>
+
+    <!-- Main Image -->
+    <img
+      v-if="!error"
+      :src="props.imgPath"
+      :alt="props.altName"
+      :class="[
+        'w-full h-full object-cover transition-all duration-700',
+        loaded ? 'opacity-100 blur-0 scale-100' : 'opacity-0 blur-md scale-105',
+      ]"
+      :loading="notLazy ? 'eager': 'lazy'"
+    />
+
+    <!-- Error Fallback -->
+    <div
+      v-if="error"
+      class="flex items-center justify-center w-full h-full bg-gray-200 text-gray-500 text-sm"
+    >
+      Image failed to load
+    </div>
+
+  </div>
 </template>
-
-<style scoped>
-.v-enter-from {
-  opacity: 0;
-}
-
-.v-enter-to {
-  opacity: 1;
-}
-
-.v-enter-active {
-  transition: all 2s ease;
-}
-</style>
