@@ -123,12 +123,9 @@ onBeforeMount(() => {
 <template>
   <div class="h-650 bg-neutral-100 dark:bg-neutral-900 lg:h-525 flex flex-col">
     <div
-      class="relative h-130 bg-bottom bg-cover flex flex-col md:h-140"
+      class="h-130 bg-[url('https://dl.dropboxusercontent.com/scl/fi/26jjsubwisadujxc1ye60/title-1.avif?rlkey=6gxgj5ndtv8r7cg251ea3m5g9')] bg-bottom bg-cover flex flex-col md:h-140"
     >
-      <div>
-        <LazyLoadImage imgPath="https://dl.dropboxusercontent.com/scl/fi/26jjsubwisadujxc1ye60/title-1.avif?rlkey=6gxgj5ndtv8r7cg251ea3m5g9" blurryImgPath="https://dl.dropboxusercontent.com/scl/fi/yzemt2osiqj28zit39dac/title-1.avif?rlkey=89p6e39cahig4ymilrkzwkmur" altName="about-us" class="h-130 w-full object-cover object-bottom md:h-140"/>
-      </div>
-      <TransitionScroll noAnimation class="absolute w-full">
+      <TransitionScroll noAnimation>
         <div
           class="w-[90%] h-10 pt-60 mx-auto flex flex-col justify-center text-center md:w-[85%] md:pt-80"
         >
