@@ -67,7 +67,7 @@ onMounted(() => {
 
 <template>
   <main class="font-DM-Sans transition-colors duration-300">
-    <TransitionScroll :z-index="1" :relative="true">
+    <TransitionScroll :z-index="1" :relative="true" no-animation>
       <TheHeader />
     </TransitionScroll>
     <!-- <RouterView /> -->
