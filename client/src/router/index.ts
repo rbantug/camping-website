@@ -15,7 +15,7 @@ const router = createRouter({
     { name: 'home', path: '/home', component: HomePage, alias: '/' },
     { name: 'about', path: '/about', component: AboutPage },
     { name: 'allCamps', path: '/camps', component: AllCamps },
-    { name: 'campDetails', path: '/camps/:slug', component: CampDetails },
+    { name: 'campDetails', path: '/camps/:slug', component: CampDetails, props: true },
     { name: 'contact', path: '/contact', component: ContactPage },
     { name: 'auth', path: '/auth', component: AuthPage },
     { name: 'convertUrl', path: '/convert', component: ConvertURL },
