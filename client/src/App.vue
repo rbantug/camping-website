@@ -71,7 +71,7 @@ onMounted(() => {
       <TheHeader />
     </TransitionScroll>
     <!-- <RouterView /> -->
-    <router-view v-slot="{ Component }">
+    <router-view :key="$route.params.slug" v-slot="{ Component }">
       <KeepAlive>
         <component :is="Component" />
       </KeepAlive>
