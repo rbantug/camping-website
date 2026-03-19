@@ -4,7 +4,7 @@ import { ref, computed } from 'vue'
 interface Props {
   name: string;
   border?: boolean;
-  textSize?: 'auto' | 'sm' | 'md';
+  textSize?: 'auto' | 'sm' | 'md' | 'lg'; // 'auto' is for camp carousel
   increaseGap?: boolean;
 }
 
@@ -32,6 +32,7 @@ const badgeIcons = ref({
 })
 
 const outputTextSize = computed(() => {
+  if (props.textSize === 'lg') return 'text-lg'
   if (props.textSize === 'md') return 'text-md'
   if (props.textSize === 'auto' && badgeIcons.value[props.name]['text'].length > 11) return 'text-xs'
   return 'text-sm'
