@@ -34,7 +34,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="relative overflow-hidden">
+  <div class="relative overflow-hidden" :class="props.class">
     
     <!-- Skeleton -->
     <div
