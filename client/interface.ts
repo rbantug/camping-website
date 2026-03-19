@@ -7,6 +7,6 @@ export interface Camps {
     image: string;
     imageHires: string;
     blurryImg: string;
-    status: string;
+    status: 'available' | 'full';
     amenities: string[];
 }
