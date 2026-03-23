@@ -29,7 +29,7 @@ export const useMainStore = defineStore('main', () => {
       imageHires:
         'https://dl.dropboxusercontent.com/scl/fi/l3s8l6u0j19a93wdywxgh/hires-forest-1.avif?rlkey=mrj6akvq95gspe66y5zcsb6zb',
       status: 'available',
-      amenities: ['toilet', 'firePit', 'waterSupply', 'campStore'],
+      amenities: ['toilet', 'firePit', 'waterSupply', 'campStore', 'electicHookup', 'wifiAccess'],
     },
     {
       name: 'Cedar Ridge Outpost',
