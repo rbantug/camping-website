@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useBreakpoints } from '@vueuse/core'
+
 import TransitionScroll from '../util/TransitionScroll.vue';
 import LazyLoadImage from '../util/LazyLoadImage.vue';
 
@@ -21,6 +23,13 @@ const imgHoriz3 = {
     img: 'https://dl.dropboxusercontent.com/scl/fi/b1w3ybugfyq8c9thb0si1/forest-1.avif?rlkey=gd4vdo8y30jpj3ics9uecxevd',
     blurryImg: 'https://dl.dropboxusercontent.com/scl/fi/18wqydf0v7hu4i1tgldn7/forest-1.avif?rlkey=8kkubpmzyj0twcrc7yrapgmc7'
 }
+
+const breakpoints = useBreakpoints({
+  md: 768,
+  lg: 994,
+})
+
+const md = breakpoints.isGreaterOrEqual('md')
 </script>
 
 <template>
@@ -54,8 +63,9 @@ const imgHoriz3 = {
               </div>
             </TransitionScroll>
           </div>
-          <div class="">
-            <TransitionScroll threshold :no-animation="true">
+          <!-- Images -->
+          <div>
+            <TransitionScroll :threshold="md" :no-animation="true">
             <div
               class="max-w-100 mx-auto pt-5 grid grid-cols-1 gap-y-5 md:gap-5 md:grid-cols-[40%_60%] md:max-w-300"
             >
