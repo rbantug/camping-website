@@ -22,7 +22,11 @@ const router = createRouter({
     { path: '/:anything(.*)', component: ErrorMessage },
   ],
   scrollBehavior (to, from, savedPosition) {
-    return { top: 0, left: 0 }
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      return { top: 0, left: 0 }
+    }
   }
 })
 
