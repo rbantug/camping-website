@@ -6,12 +6,13 @@ import { useMainStore } from '@/stores/mainStore'
 
 import TopTitle from '../CampDetailsComponents/TopTitle.vue'
 import DetailsAndAmenities from '../CampDetailsComponents/DetailsAndAmenities.vue'
+import ReservationForm from '../CampDetailsComponents/ReservationForm.vue'
 
 import type { Camps } from '../../../interface'
 
 // route param via props
 const props = defineProps({
-  slug: String
+  slug: String,
 })
 
 const router = useRouter()
@@ -28,21 +29,29 @@ watch(
     if (!newSlug) return
     updateCampDetail(newSlug)
   },
-  { immediate: true }
+  { immediate: true },
 )
 
-function updateCampDetail (slug:string) {
-  const campIndex = allCamps.findIndex(x => x.slug === slug)
+function updateCampDetail(slug: string) {
+  const campIndex = allCamps.findIndex((x) => x.slug === slug)
 
-  if(campIndex === -1) router.push('/error')
+  if (campIndex === -1) router.push('/error')
 
   camp.value = allCamps[campIndex]
 }
 </script>
 
 <template>
-  <div class="h-1340 bg-neutral-100 dark:bg-neutral-900 transition-colors duration-300">
-    <TopTitle :img-path="camp?.imageHires" :blurry-img="camp?.blurryImg" :name="camp?.name" :short-description="camp?.shortDescription"/>
-    <DetailsAndAmenities :full-description="camp?.fullDescription" :amenities="camp?.amenities" />
+  <div class="h-800 bg-neutral-100 dark:bg-neutral-900 transition-colors duration-300">
+    <TopTitle
+      :img-path="camp?.imageHires"
+      :blurry-img="camp?.blurryImg"
+      :name="camp?.name"
+      :short-description="camp?.shortDescription"
+    />
+    <div class="relative flex flex-col items-center lg:flex-row">
+      <DetailsAndAmenities :full-description="camp?.fullDescription" :amenities="camp?.amenities" class="lg:w-[70%]"/>
+      <ReservationForm :price="camp?.price"  class="lg:w-[30%] lg:sticky lg:top-0"/>
+    </div>
   </div>
 </template>
