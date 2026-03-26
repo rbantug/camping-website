@@ -16,12 +16,12 @@ const date = ref()
 </script>
 
 <template>
-  <div class="flex justify-center pt-10 lg:-mt-200">
+  <div class="flex justify-center items-center pt-10 lg:-mt-200">
     <TransitionScroll delay="1s">
       <div
-        class="bg-neutral-100 rounded-3xl border-2 border-neutral-500 h-135 w-full max-w-90 dark:bg-neutral-900 transition-color duration-300 dark:border-neutral-400 md:max-w-190 lg:max-w-100"
+        class="bg-neutral-100 rounded-3xl border-2 border-neutral-500 h-145 w-full max-w-90 dark:bg-neutral-900 transition-color duration-300 dark:border-neutral-400 md:max-w-190 lg:max-w-100"
       >
-        <div class="w-[85%] py-10 mx-auto">
+        <div class="w-[85%] pt-10 mx-auto">
           <div>
             <!-- Heading -->
             <h1 class="text-2xl font-bold text-neutral-900 dark:text-neutral-100">Reserve Camp</h1>
