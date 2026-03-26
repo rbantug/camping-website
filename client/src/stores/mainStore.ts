@@ -113,20 +113,71 @@ export const useMainStore = defineStore('main', () => {
     },
   ])
 
+  const galleryImage = {
+    forest: [
+      'https://dl.dropboxusercontent.com/scl/fi/xjqv33ygkw7ufaojeew9u/gallery-forest-1.avif?rlkey=u235ghlu0j347bhd7oi8ghlz9',
+      'https://dl.dropboxusercontent.com/scl/fi/cwiacpde2wl5ekctpu1dk/gallery-forest-2.avif?rlkey=csqp1suwkxklrib6k0fhwzbdb',
+      'https://dl.dropboxusercontent.com/scl/fi/hr22rispjiale36ucn3n5/gallery-forest-3.avif?rlkey=2dy29s1jnhmvf9d0v4cgez924',
+      'https://dl.dropboxusercontent.com/scl/fi/m9cdbce6bixxcwxlhxgh0/gallery-forest-4.avif?rlkey=k2c939jaqk221j0pbv6s69hsi',
+    ],
+    beach: [
+      'https://dl.dropboxusercontent.com/scl/fi/qe4h0j2g3gxiazaxvfgt4/gallery-beach-1.avif?rlkey=s0guh4nmofnsjnbjx30j2omz8',
+      'https://dl.dropboxusercontent.com/scl/fi/5nfqmn5p3gvaxz1j7fzf1/gallery-beach-2.avif?rlkey=m6rmsid7galu56hposlvtvkot',
+      'https://dl.dropboxusercontent.com/scl/fi/30l4lzm2ee9x8hj5parzt/gallery-beach-3.avif?rlkey=oj495y2pig4x1rq4fhd6hokn8',
+      'https://dl.dropboxusercontent.com/scl/fi/0nwag30v0hg16wogqot2b/gallery-beach-4.avif?rlkey=w97z41xpkw94fpf2roxnyrlsd',
+    ],
+    mountain: [
+      'https://dl.dropboxusercontent.com/scl/fi/2d04we4ywoi5i5dx8xkiu/gallery-mountain-1.avif?rlkey=obelhwb17doqjqwjb4im1jg9p',
+      'https://dl.dropboxusercontent.com/scl/fi/rr00qne70aly5rlhqp1b6/gallery-mountain-2.avif?rlkey=ilt3h276crux7k21l6x21ckgi',
+      'https://dl.dropboxusercontent.com/scl/fi/qoyqoua6j6bmelwva6e4s/gallery-mountain-3.avif?rlkey=50pcy4htsoz8gx186r67lrdse',
+      'https://dl.dropboxusercontent.com/scl/fi/xl0h1wil0dsk3605p98hh/gallery-mountain-4.avif?rlkey=kbg8q9l6fe5v848xlwzg0kugg',
+    ],
+  }
+
+  const galleryBlurryImg = {
+    forest: [
+      'https://dl.dropboxusercontent.com/scl/fi/bakzeginidsvunysekf4o/gallery-forest-1.avif?rlkey=4wcaelvoqmvgzus8kt62gnru2',
+      'https://dl.dropboxusercontent.com/scl/fi/yuzuzuj6wan6kq9mfkrl4/gallery-forest-2.avif?rlkey=jdq17hhd5uxj9idbepavtcar0',
+      'https://dl.dropboxusercontent.com/scl/fi/17mhvm493oltz3qamrfzt/gallery-forest-3.avif?rlkey=gojmenjbrja2c6g3jypfcsxkd',
+      'https://dl.dropboxusercontent.com/scl/fi/6hkmh47zn6dadxwgq4evb/gallery-forest-4.avif?rlkey=sxq1jqeu5mgj1ogz6siwwvz2x',
+    ],
+    beach: [
+      'https://dl.dropboxusercontent.com/scl/fi/czdt3vraejhqen1ekkoqu/gallery-beach-1.avif?rlkey=duadag72kr4aaj1i9oqk1rcp4',
+      'https://dl.dropboxusercontent.com/scl/fi/df6p89jradyenho4366tb/gallery-beach-2.avif?rlkey=pyy8ehzcdiiopxbexyhqse0q8',
+      'https://dl.dropboxusercontent.com/scl/fi/qk9148vo7grtoc02oyfwk/gallery-beach-3.avif?rlkey=qvw522w0kx1acqjre4g6qxvac',
+      'https://dl.dropboxusercontent.com/scl/fi/2zoe5hojrnjmxxhd33os6/gallery-beach-4.avif?rlkey=vky81sj308b7s2mzcdm4yacvq',
+    ],
+    mountain: [
+      'https://dl.dropboxusercontent.com/scl/fi/enhlrtl3j06zbn56m6h48/gallery-mountain-1.avif?rlkey=rd7yy36va5pm7w8iyi2dpntnr',
+      'https://dl.dropboxusercontent.com/scl/fi/k1nplv05r2xqhdkgcxu1x/gallery-mountain-2.avif?rlkey=xhnj9dsuc99eykb0lplhbtcj4',
+      'https://dl.dropboxusercontent.com/scl/fi/890d0uqnwtpn9ulwjy499/gallery-mountain-3.avif?rlkey=mxpeiyyme7ri4t12fr7rdy1p4',
+      'https://dl.dropboxusercontent.com/scl/fi/vemxqs8lp1eg2hgbndl8d/gallery-mountain-4.avif?rlkey=hccz18p26s6gg8jpu2z1ltcy9',
+    ],
+  }
+
   const getAllCamps = computed(() => allCamps)
 
   const darkMode = ref(false)
-  function updateDarkMode(val:boolean) {
+  function updateDarkMode(val: boolean) {
     darkMode.value = val
   }
   const getDarkMode = computed(() => darkMode.value)
 
   // This is the window.screenY where the scrollUpButton will appear
   const bottomRightBtnY = ref(0)
-  function updateBottomRightY(val:number) {
+  function updateBottomRightY(val: number) {
     bottomRightBtnY.value = val
   }
   const getBottomRightBtnY = computed(() => bottomRightBtnY)
 
-  return { getAllPages, getAllCamps, updateDarkMode, getDarkMode, updateBottomRightY, getBottomRightBtnY }
+  return {
+    getAllPages,
+    getAllCamps,
+    updateDarkMode,
+    getDarkMode,
+    updateBottomRightY,
+    getBottomRightBtnY,
+    galleryImage,
+    galleryBlurryImg,
+  }
 })
