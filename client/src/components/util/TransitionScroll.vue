@@ -8,6 +8,7 @@ interface Props {
     zIndex?: number;
     relative?: boolean;
     noAnimation?: boolean;
+    delay?: string; // it could be 1s, 2s or more
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -15,7 +16,8 @@ const props = withDefaults(defineProps<Props>(), {
     transitionDirection: 'bottom-top',
     zIndex: 0,
     relative: false,
-    noAnimation: false
+    noAnimation: false,
+    delay: '250ms'
 })
 
 const el = ref(null)
@@ -66,7 +68,7 @@ const outputDir1 = computed(() => {
 </script>
 
 <template>
-    <div ref="el" class="duration-900 delay-200" :class="{ [outputDir0]: trueCount < 1 && isVisible === false, [outputDir1]: trueCount >= 1 && isVisible === true }">
+    <div ref="el" :class="['duration-900', `delay-[${props.delay}]`, { [outputDir0]: trueCount < 1 && isVisible === false, [outputDir1]: trueCount >= 1 && isVisible === true }]">
         <slot />
     </div>
 </template>
