@@ -9,4 +9,5 @@ export interface Camps {
     blurryImg: string;
     status: 'available' | 'full';
     amenities: string[];
+    category: 'forest' | 'beach' | 'mountain'
 }
