@@ -119,6 +119,8 @@ export const useMainStore = defineStore('main', () => {
     },
   ])
 
+  const getAllCamps = computed(() => allCamps)
+
   const galleryImage = {
     forest: [
       'https://dl.dropboxusercontent.com/scl/fi/xjqv33ygkw7ufaojeew9u/gallery-forest-1.avif?rlkey=u235ghlu0j347bhd7oi8ghlz9',
@@ -161,7 +163,8 @@ export const useMainStore = defineStore('main', () => {
     ],
   }
 
-  const getAllCamps = computed(() => allCamps)
+  const getGalleryImage = computed(() => galleryImage)
+  const getGalleryBlurryImg = computed(() => galleryBlurryImg)
 
   const darkMode = ref(false)
   function updateDarkMode(val: boolean) {
@@ -183,7 +186,7 @@ export const useMainStore = defineStore('main', () => {
     getDarkMode,
     updateBottomRightY,
     getBottomRightBtnY,
-    galleryImage,
-    galleryBlurryImg,
+    getGalleryImage,
+    getGalleryBlurryImg,
   }
 })
