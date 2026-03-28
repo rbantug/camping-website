@@ -7,7 +7,7 @@ import BaseBadge from './Buttons/BaseBadge.vue'
 import PrimaryButton from './Buttons/PrimaryButton.vue'
 import LazyLoadImage from '../util/LazyLoadImage.vue'
 
-type Prop = Omit<Camps, 'imageHires'>
+type Prop = Omit<Camps, 'imageHires' | 'category'>
 
 const router = useRouter()
 
