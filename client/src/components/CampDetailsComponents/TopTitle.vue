@@ -19,13 +19,13 @@ const props = defineProps<Props>()
       :blurry-img-path="props.blurryImg"
       :alt-name="props.name"
       not-lazy
-      class="object-cover w-full h-120"
+      class="object-cover w-full h-120 md:h-150"
     />
-    <div class="absolute h-120 top-0 bg-black/20 w-full flex flex-col justify-end">
+    <div class="absolute h-120 top-0 bg-black/20 w-full flex flex-col justify-end md:h-150">
       <TransitionScroll threshold no-animation>
-        <div class="ml-10">
-          <h1 class="text-neutral-100 text-3xl font-bold tracking-wide mb-3">{{ props.name }}</h1>
-          <p class="text-neutral-100 leading-8 mb-10">{{ props.shortDescription }}</p>
+        <div class="ml-10 lg:w-150">
+          <h1 class="text-neutral-100 text-3xl font-bold tracking-wide mb-3 md:text-5xl lg:text-6xl">{{ props.name }}</h1>
+          <p class="text-neutral-100 leading-8 mb-10 md:text-lg">{{ props.shortDescription }}</p>
         </div>
       </TransitionScroll>
     </div>
