@@ -3,6 +3,7 @@ import { ref } from 'vue'
 
 import PrimaryButton from '../BaseComponents/Buttons/PrimaryButton.vue'
 import TransitionScroll from '../util/TransitionScroll.vue'
+import SecondaryButton from '../BaseComponents/Buttons/SecondaryButton.vue'
 
 const props = defineProps({
   price: {
@@ -16,10 +17,10 @@ const date = ref()
 </script>
 
 <template>
-  <div class="flex justify-center items-center pt-10 lg:-mt-200">
+  <div class="flex justify-center items-center pt-10 lg:-mt-230">
     <TransitionScroll delay="1s">
       <div
-        class="bg-neutral-100 rounded-3xl border-2 border-neutral-500 h-145 w-full max-w-90 dark:bg-neutral-900 transition-color duration-300 dark:border-neutral-400 md:max-w-190 lg:max-w-100"
+        class="bg-neutral-100 rounded-3xl border-2 border-neutral-500 h-175 w-full max-w-90 dark:bg-neutral-900 transition-color duration-300 dark:border-neutral-400 md:max-w-190 lg:max-w-100"
       >
         <div class="w-[85%] pt-10 mx-auto">
           <div>
@@ -58,8 +59,15 @@ const date = ref()
             </div>
           </div>
           <!-- buttons -->
-          <div class="mt-10">
-            <PrimaryButton label="Add to Cart" size="large" />
+          <div class="mt-10 flex flex-col items-center gap-y-5">
+            <PrimaryButton label="Add to Cart" size="large" class="w-full"/>
+            <div class="flex items-center gap-x-5">
+              <hr class="w-30 text-neutral-900 dark:text-neutral-400">
+              <div class="text-neutral-900 dark:text-neutral-400">OR</div>
+              <hr class="w-30 text-neutral-900 dark:text-neutral-400">
+            </div>
+            <!-- TODO: This is a placeholder for shopify instant checkout -->
+            <SecondaryButton label="Buy me" size="large" class="w-full"/>
           </div>
         </div>
       </div>
