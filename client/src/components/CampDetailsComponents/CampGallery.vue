@@ -1,6 +1,14 @@
 <script setup lang="ts">
 import { onBeforeMount, ref } from 'vue'
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import { Navigation, A11y } from 'swiper/modules'
 import { useMainStore } from '@/stores/mainStore'
+import { useBreakpoints } from '@vueuse/core'
+
+import type { Swiper as SwiperType } from 'swiper'
+
+import 'swiper/css'
+import 'swiper/css/navigation'
 
 import PrimaryButton from '../BaseComponents/Buttons/PrimaryButton.vue'
 import LazyLoadImage from '../util/LazyLoadImage.vue'
@@ -10,18 +18,18 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  category: 'forest'
+  category: 'forest',
 })
 
 const mainStore = useMainStore()
 
-let img:string[]
-let blurryImg:string[]
+let img: string[]
+let blurryImg: string[]
 const imgIndex = ref<number>(0)
 
 const overlayIsVisible = ref(false)
 
-function showOverlay(index:number) {
+function showOverlay(index: number) {
   overlayIsVisible.value = true
   document.body.style.overflow = 'hidden'
   imgIndex.value = index
@@ -33,11 +41,28 @@ function hideOverlay() {
   imgIndex.value = 0
 }
 
-function simpleCarousel() {
-  const imgLen = img.length
-  if (imgIndex.value < imgLen) imgIndex.value++
-  
-  if (imgIndex.value === imgLen) imgIndex.value = 0
+const breakpoints = useBreakpoints({
+  md: 768,
+  lg: 994,
+})
+
+const md = breakpoints.isGreaterOrEqual('md')
+
+///////////////////
+//// swiperjs code
+///////////////////
+
+const swiperRef = ref<SwiperType>()
+function onSwiper(swiper:SwiperType) {
+  swiperRef.value = swiper
+}
+
+function goToNextSlide() {
+  swiperRef.value?.slideNext()
+}
+
+function goToPrevSlide() {
+  swiperRef.value?.slidePrev()
 }
 
 onBeforeMount(() => {
@@ -49,30 +74,57 @@ onBeforeMount(() => {
 <template>
   <div class="relative pt-20 bg-neutral-200 transition-colors duration-300 dark:bg-neutral-800">
     <div class="h-400 w-[90%] mx-auto">
-      <div class="flex flex-col gap-y-5">
+      <div
+        class="mx-auto max-w-100 flex flex-col gap-y-5 md:flex-row md:max-w-400 md:justify-between md:items-center"
+      >
         <h1 class="text-2xl font-bold text-neutral-900 dark:text-neutral-100">Camp Gallery</h1>
-        <PrimaryButton label="Book room" size="default" />
+        <PrimaryButton label="Book room" :size="md ? 'large' : 'default'" class="md:w-60" />
       </div>
-      <div class="mt-10 flex flex-col items-center gap-y-5">
-        <div v-for="n in 4" :key="n - 1">
-          <div class="overflow-hidden w-80 h-80 rounded-xl object-cover hover:cursor-pointer" @click="showOverlay(n - 1)">
+      <div
+        class="mt-10 mx-auto grid grid-cols-1 items-center justify-center gap-y-5 md:grid-cols-2 md:max-w-200 lg:max-w-260"
+      >
+        <div v-for="n in 4" :key="n - 1" class="mx-auto">
+          <!-- TODO: fix height of images -->
+          <div
+            class="overflow-hidden w-80 h-50 rounded-xl hover:cursor-pointer md:w-90 md:h-60 lg:w-120 lg:h-80"
+            @click="showOverlay(n - 1)"
+          >
             <LazyLoadImage
               :img-path="img[n - 1]"
               :alt-name="`${props.category}-${n - 1}`"
               :blurry-img-path="blurryImg[n - 1]"
-              class="w-80 h-80 rounded-xl duration-300 hover:scale-110"
+              class="w-90 h-50 rounded-xl duration-300 hover:scale-110 md:w-100 md:h-70 lg:w-130 lg:h-80"
             />
           </div>
         </div>
       </div>
     </div>
-    <div v-if="overlayIsVisible" class="fixed inset-0 flex items-center justify-center bg-neutral-900/60 z-15" @click="hideOverlay">
-      <!-- <div class="absolute top-60 left-70 text-neutral-100 hover:cursor-pointer hover:text-accent-secondary duration-300" >
-        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="4"><path d="M24 44c11.046 0 20-8.954 20-20S35.046 4 24 4S4 12.954 4 24s8.954 20 20 20Z"/><path stroke-linecap="round" d="M29.657 18.343L18.343 29.657m0-11.314l11.314 11.314"/></g></svg>
-      </div> -->
-      <div class="max-w-200">
-        <LazyLoadImage :img-path="img[imgIndex]" :blurry-img-path="blurryImg[imgIndex]" :alt-name="`${props.category}-${imgIndex}`" @click.stop="simpleCarousel"/>
-      </div>
+    <!-- Overlay for image preview -->
+    <div
+      v-if="overlayIsVisible"
+      class="fixed inset-0 flex items-center justify-center bg-neutral-900/60 z-15"
+      @click="hideOverlay"
+    >
+      <swiper
+        :slides-per-view="1"
+        :modules="[Navigation, A11y]"
+        :loop="true"
+        :initial-slide="imgIndex"
+        @swiper="onSwiper"
+        class="mx-auto"
+      >
+        <swiper-slide v-for="n in 4" :key="n - 1">
+          <div class="relative max-w-200 mx-auto lg:max-w-300" @click.stop="goToNextSlide">
+            <LazyLoadImage
+              :img-path="img[n - 1]"
+              :blurry-img-path="blurryImg[n - 1]"
+              :alt-name="`${props.category}-${n - 1}`"
+            />
+            <div class="absolute top-0 left-0 bg-transparent h-100 w-45 z-20 md:h-150 md:w-100 lg:h-200 lg:w-150" @click.stop="goToPrevSlide"></div>
+            <div class="absolute top-0 right-0 bg-transparent h-100 w-45 md:h-150 md:w-100 lg:h-200 lg:w-150 z-20" @click.stop="goToNextSlide"></div>
+          </div>
+        </swiper-slide>
+      </swiper>
     </div>
   </div>
 </template>
