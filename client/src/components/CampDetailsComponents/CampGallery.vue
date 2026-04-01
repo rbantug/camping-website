@@ -12,6 +12,7 @@ import 'swiper/css/navigation'
 
 import PrimaryButton from '../BaseComponents/Buttons/PrimaryButton.vue'
 import LazyLoadImage from '../util/LazyLoadImage.vue'
+import TransitionScroll from '../util/TransitionScroll.vue'
 
 interface Props {
   category: 'forest' | 'beach' | 'mountain'
@@ -53,7 +54,7 @@ const md = breakpoints.isGreaterOrEqual('md')
 ///////////////////
 
 const swiperRef = ref<SwiperType>()
-function onSwiper(swiper:SwiperType) {
+function onSwiper(swiper: SwiperType) {
   swiperRef.value = swiper
 }
 
@@ -74,12 +75,14 @@ onBeforeMount(() => {
 <template>
   <div class="relative pt-20 bg-neutral-200 transition-colors duration-300 dark:bg-neutral-800">
     <div class="h-400 w-[90%] mx-auto">
-      <div
-        class="mx-auto max-w-100 flex flex-col gap-y-5 md:flex-row md:max-w-400 md:justify-between md:items-center"
-      >
-        <h1 class="text-2xl font-bold text-neutral-900 dark:text-neutral-100">Camp Gallery</h1>
-        <PrimaryButton label="Book room" :size="md ? 'large' : 'default'" class="md:w-60" />
-      </div>
+      <TransitionScroll>
+        <div
+          class="mx-auto max-w-100 flex flex-col gap-y-5 md:flex-row md:max-w-400 md:justify-between md:items-center"
+        >
+          <h1 class="text-2xl font-bold text-neutral-900 dark:text-neutral-100">Camp Gallery</h1>
+          <PrimaryButton label="Book room" :size="md ? 'large' : 'default'" class="md:w-60" />
+        </div>
+      </TransitionScroll>
       <div
         class="mt-10 mx-auto grid grid-cols-1 items-center justify-center gap-y-5 md:grid-cols-2 md:max-w-200 lg:max-w-260"
       >
@@ -120,8 +123,14 @@ onBeforeMount(() => {
               :blurry-img-path="blurryImg[n - 1]"
               :alt-name="`${props.category}-${n - 1}`"
             />
-            <div class="absolute top-0 left-0 bg-transparent h-100 w-45 z-20 md:h-150 md:w-100 lg:h-200 lg:w-150" @click.stop="goToPrevSlide"></div>
-            <div class="absolute top-0 right-0 bg-transparent h-100 w-45 md:h-150 md:w-100 lg:h-200 lg:w-150 z-20" @click.stop="goToNextSlide"></div>
+            <div
+              class="absolute top-0 left-0 bg-transparent h-100 w-45 z-20 md:h-150 md:w-100 lg:h-200 lg:w-150"
+              @click.stop="goToPrevSlide"
+            ></div>
+            <div
+              class="absolute top-0 right-0 bg-transparent h-100 w-45 md:h-150 md:w-100 lg:h-200 lg:w-150 z-20"
+              @click.stop="goToNextSlide"
+            ></div>
           </div>
         </swiper-slide>
       </swiper>
