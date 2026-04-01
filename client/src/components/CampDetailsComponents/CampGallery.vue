@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onBeforeMount, ref } from 'vue'
+import { onBeforeMount, onMounted, ref } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Navigation, A11y } from 'swiper/modules'
 import { useMainStore } from '@/stores/mainStore'
@@ -69,6 +69,14 @@ function goToPrevSlide() {
 onBeforeMount(() => {
   img = mainStore.getGalleryImage[props.category]
   blurryImg = mainStore.getGalleryBlurryImg[props.category]
+})
+
+onMounted(() => {
+  window.addEventListener('keydown', (e) => {
+    if (overlayIsVisible.value === true && e.key === 'Escape') {
+      hideOverlay()
+    }
+  })
 })
 </script>
 
