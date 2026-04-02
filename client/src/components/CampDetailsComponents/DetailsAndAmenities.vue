@@ -52,7 +52,7 @@ const md = breakpoints.isGreaterOrEqual('md')
         <h1 class="my-10 text-3xl font-bold text-neutral-900 dark:text-neutral-100">
           Camp Amenities
         </h1>
-        <div class="max-w-100 grid grid-cols-2 md:grid-cols-3 gap-5 md:max-w-150">
+        <div class="max-w-100 grid grid-cols-2 gap-y-8 md:grid-cols-3 md:max-w-150 md:gap-5">
           <div v-for="amenity in props.amenities" :key="amenity" class="">
             <BaseBadge :name="amenity" :border="false" :text-size="md ? 'lg' : 'md'" increase-gap />
           </div>
