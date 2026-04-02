@@ -185,7 +185,7 @@ const clientArr = [
           class="flex flex-col gap-y-5 pt-20 md:flex-row md:gap-y-0 md:gap-x-5 md:pt-0 md:justify-center"
         >
           <PrimaryButton label="Book now" :size="greaterEqualMD ? 'large' : 'default'" />
-          <SecondaryButton label="Explore cabins" :size="greaterEqualMD ? 'large' : 'default'" :white-ring="false" />
+          <SecondaryButton label="Explore camps" :size="greaterEqualMD ? 'large' : 'default'" :white-ring="false" />
         </div>
       </TransitionScroll>
     </div>
