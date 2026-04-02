@@ -56,7 +56,7 @@ const lgAndLarger = breakpoints.greater('lg')
           class="pl-6.5 pr-6.5 bg-white rounded-[132px] justify-between items-center pt-5.5 pb-5.5 flex dark:bg-neutral-900 transition-color duration-300"
         >
           <!-- Logo -->
-          <router-link to="home" class="p-0">
+          <router-link to="/home" class="p-0">
             <div class="flex justify-center items-center gap-x-2">
               <div class="text-accent-primary dark:text-accent-secondary transition-color duration-300">
                 <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
