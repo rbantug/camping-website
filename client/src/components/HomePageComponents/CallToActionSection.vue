@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { useBreakpoints } from '@vueuse/core'
+import { computed } from 'vue'
+import { useMainStore } from '@/stores/mainStore'
 
 import PrimaryButton from '../BaseComponents/Buttons/PrimaryButton.vue'
 import SecondaryButton from '../BaseComponents/Buttons/SecondaryButton.vue'
@@ -11,6 +13,16 @@ const breakpoints = useBreakpoints({
 })
 
 const greaterEqualMd = breakpoints.greaterOrEqual('md')
+
+const mainStore = useMainStore()
+
+const bg = computed(() => {
+  if (mainStore.getDarkMode) {
+    return 'bg-accent-outline'
+  } else {
+    return 'bg-accent-secondary'
+  }
+})
 </script>
 
 <template>
@@ -18,7 +30,7 @@ const greaterEqualMd = breakpoints.greaterOrEqual('md')
     <div class="relative h-200 w-[90%] mx-auto pt-40 md:w-[87%] md:pt-60 md:h-250 lg:w-[85%] lg:h-250">
       <TransitionScroll threshold class="relative">
         <div
-          class="h-115 bg-accent-secondary rounded-4xl bg-[url(@/assets/images/CTAPattern.avif)] bg-cover bg-blend-color-burn"
+          class="h-115 rounded-4xl bg-[url(https://dl.dropboxusercontent.com/scl/fi/ey7nsufyxq50dzygc4pbs/CTAPattern.avif?rlkey=cyld6es4yhh8i9v6m41iltxda)] bg-cover bg-blend-color-burn" :class="[bg]"
         >
           <div
             class="h-115 bg-accent-secondary rounded-4xl mask-y-from-90% mask-y-to-90% md:mask-y-from-80% md:mask-y-to-80%"
