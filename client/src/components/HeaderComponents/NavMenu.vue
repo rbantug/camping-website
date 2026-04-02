@@ -26,6 +26,7 @@ function toggleMoreNavItems() {
   moreNavItems.value = !moreNavItems.value
 }
 function closeNavMenu() {
+  moreNavItems.value = false
   emits('emit1')
 }
 </script>
