@@ -50,6 +50,8 @@ const lgAndLarger = breakpoints.greater('lg')
 
 <template>
   <div>
+    <div v-if="pagesNavBarIsOpen" class="fixed h-screen w-screen bg-transparent z-1" @click="forceClosePNBIO"></div>
+    <div v-if="navBarsAnimation" class="fixed h-screen w-screen bg-transparent z-1" @click="forceCloseNavBar"></div>
     <div class="z-6 bg-transparent absolute top-7.5 inset-x-0 bottom-auto pt-0 pb-0">
       <div class="pl-4 pr-4 max-w-317 ml-auto mr-auto flex flex-col gap-2">
         <div
