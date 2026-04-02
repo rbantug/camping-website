@@ -88,7 +88,7 @@ onMounted(() => {
           class="mx-auto max-w-100 flex flex-col gap-y-5 md:flex-row md:max-w-400 md:justify-between md:items-center"
         >
           <h1 class="text-2xl font-bold text-neutral-900 dark:text-neutral-100">Camp Gallery</h1>
-          <PrimaryButton label="Book room" :size="md ? 'large' : 'default'" class="md:w-60" />
+          <PrimaryButton label="Book camp" :size="md ? 'large' : 'default'" class="md:w-60" />
         </div>
       </TransitionScroll>
       <div

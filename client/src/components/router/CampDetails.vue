@@ -46,7 +46,7 @@ function updateCampDetail(slug:string) {
 </script>
 
 <template>
-  <div class="h-1000 bg-neutral-100 dark:bg-neutral-900 transition-colors duration-300 md:h-800 lg:h-635">
+  <div class="h-930 bg-neutral-100 dark:bg-neutral-900 transition-colors duration-300 md:h-800 lg:h-635">
     <TopTitle
       :img-path="camp?.imageHires"
       :blurry-img="camp?.blurryImg"
