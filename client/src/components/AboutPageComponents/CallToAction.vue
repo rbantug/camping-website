@@ -48,18 +48,18 @@ const outputBlurryImgPath = computed(() => {
 
 <template>
   <div
-    class="h-480 bg-neutral-100 transition-colors duration-300 md:h-370 lg:h-260 dark:bg-neutral-900"
+    class="h-480 bg-neutral-100 transition-colors duration-300 md:h-370 lg:h-280 dark:bg-neutral-900"
   >
     <div class="h-250 relative">
       <LazyLoadImage
         :img-path="outputImgPath"
         :blurry-img-path="outputBlurryImgPath"
         :alt-name="content.altName"
-        class="h-250 object-cover w-full lg:w-full"
+        class="h-300 object-cover w-full"
       />
-      <div class="absolute h-250 w-full top-0 bg-black/30 bg-blend-overlay">
+      <div class="absolute h-300 w-full top-0 bg-black/30 bg-blend-overlay">
         <TransitionScroll threshold no-animation>
-          <div class="flex flex-col items-center mt-85">
+          <div class="flex flex-col items-center mt-120">
             <h1
               class="font-bold text-4xl text-center mx-auto text-neutral-100 text-shadow-md tracking-wide md:text-5xl lg:text-6xl"
             >
