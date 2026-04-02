@@ -95,7 +95,6 @@ onMounted(() => {
         class="mt-10 mx-auto grid grid-cols-1 items-center justify-center gap-y-5 md:grid-cols-2 md:max-w-200 lg:max-w-260"
       >
         <div v-for="n in 4" :key="n - 1" class="mx-auto">
-          <!-- TODO: fix height of images -->
           <div
             class="overflow-hidden w-80 h-50 rounded-xl hover:cursor-pointer md:w-90 md:h-60 lg:w-120 lg:h-80"
             @click="showOverlay(n - 1)"
