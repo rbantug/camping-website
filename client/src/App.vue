@@ -57,6 +57,7 @@ onBeforeMount(() => {
 
   if (saved === 'dark') {
     document.documentElement.classList.add('dark')
+    mainStore.updateDarkMode(true)
   }
 })
 
