@@ -8,7 +8,7 @@ interface Props {
     zIndex?: number;
     relative?: boolean;
     noAnimation?: boolean;
-    delay?: string; // it could be 1s, 2s or more
+    delay?: string; // TailwindCSS delay classes only
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -17,7 +17,7 @@ const props = withDefaults(defineProps<Props>(), {
     zIndex: 0,
     relative: false,
     noAnimation: false,
-    delay: '250ms'
+    delay: 'delay-250'
 })
 
 const el = ref(null)
@@ -68,7 +68,7 @@ const outputDir1 = computed(() => {
 </script>
 
 <template>
-    <div ref="el" :class="['duration-900', `delay-[${props.delay}]`, { [outputDir0]: trueCount < 1 && isVisible === false, [outputDir1]: trueCount >= 1 && isVisible === true }]">
+    <div ref="el" :class="['duration-900', props.delay, { [outputDir0]: trueCount < 1 && isVisible === false, [outputDir1]: trueCount >= 1 && isVisible === true }]">
         <slot />
     </div>
 </template>
