@@ -52,10 +52,10 @@ const lgAndLarger = breakpoints.greater('lg')
   <div>
     <div v-if="pagesNavBarIsOpen" class="fixed h-screen w-screen bg-transparent z-1" @click="forceClosePNBIO"></div>
     <div v-if="navBarsAnimation" class="fixed h-screen w-screen bg-transparent z-1" @click="forceCloseNavBar"></div>
-    <div class="z-6 bg-transparent absolute top-7.5 inset-x-0 bottom-auto pt-0 pb-0">
-      <div class="pl-4 pr-4 max-w-317 ml-auto mr-auto flex flex-col gap-2">
+    <div class="z-6 bg-transparent absolute top-7.5 inset-x-0">
+      <div class="px-4 max-w-317 mx-auto flex flex-col gap-2">
         <div
-          class="pl-6.5 pr-6.5 bg-white rounded-[132px] justify-between items-center pt-5.5 pb-5.5 flex dark:bg-neutral-900 transition-color duration-300"
+          class="px-6.5 bg-white rounded-[132px] justify-between items-center py-5.5 flex dark:bg-neutral-900 transition-color duration-300"
         >
           <!-- Logo -->
           <router-link to="/home" class="p-0">
