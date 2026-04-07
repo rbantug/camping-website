@@ -14,7 +14,7 @@ import TransitionScroll from '../util/TransitionScroll.vue'
     />
     <div class="absolute h-150 top-0 bg-black/20 w-full flex flex-col justify-center items-center md:h-180">
       <TransitionScroll threshold no-animation>
-        <div class="w-[90%] mx-auto text-center md:w-[80%] lg:w-[70%]">
+        <div class="w-[90%] mx-auto text-center md:w-[80%] lg:w-[60%]">
           <h1
             class="text-neutral-100 text-5xl font-bold tracking-wide mb-3 md:text-6xl"
           >
