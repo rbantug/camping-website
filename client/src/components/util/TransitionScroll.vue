@@ -68,7 +68,7 @@ const outputDir1 = computed(() => {
 </script>
 
 <template>
-    <div ref="el" :class="['duration-900', props.delay, { [outputDir0]: trueCount < 1 && isVisible === false, [outputDir1]: trueCount >= 1 && isVisible === true }]">
+    <div ref="el" :class="['duration-500', props.delay, { [outputDir0]: trueCount < 1 && isVisible === false, [outputDir1]: trueCount >= 1 && isVisible === true }]">
         <slot />
     </div>
 </template>
