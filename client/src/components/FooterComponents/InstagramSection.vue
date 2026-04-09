@@ -10,12 +10,12 @@ const imgArr = [
 </script>
 
 <template>
-  <div class="mb-12 max-w-95 lg:max-w-90">
+  <div class="mb-12 max-w-85 md:max-w-100 lg:max-w-90">
     <div class="font-semibold mb-4 md:text-lg max-w-3xl dark:text-neutral-200">Follow on Instagram</div>
-    <div class="grid grid-cols-3 gap-y-1 lg:gap-x-6">
+    <div class="grid grid-cols-3 gap-y-1 lg:gap-x-8">
       <div v-for="img in imgArr" :key="img">
-        <div class="inline-block overflow-hidden w-30 h-30 rounded-xl">
-            <img :src="img" alt="" class="w-30 h-30 object-cover rounded-xl hover:cursor-pointer hover:scale-125 duration-300" />
+        <div class="inline-block overflow-hidden w-25 h-25 rounded-xl md:w-30 md:h-30">
+            <img :src="img" alt="" class="w-25 h-25 object-cover rounded-xl hover:cursor-pointer hover:scale-125 duration-300 md:w-30 md:h-30" />
         </div>
       </div>
     </div>
