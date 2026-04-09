@@ -21,7 +21,7 @@ import PrimaryButton from '../BaseComponents/Buttons/PrimaryButton.vue';
             <!-- input field -->
             <input type="email" placeholder="Enter your email" class="rounded-full w-full py-4 pl-6 mb-4 border-0 inset-shadow-sm shadow-lg focus:ring-2 focus:ring-accent-secondary md:mb-0 md:col-span-7 lg:col-start-4 lg:col-end-8 lg:mb-0 dark:bg-neutral-500 dark:ring-2 dark:ring-neutral-200 dark:placeholder:text-neutral-200 dark:shadow-none"/>
             <!-- btn -->
-            <PrimaryButton size="large" label="Subscribe" class="md:col-span-2"/>
+            <PrimaryButton size="large" label="Subscribe" class="w-fit md:col-span-2"/>
         </div>
     </div>
 </template>
