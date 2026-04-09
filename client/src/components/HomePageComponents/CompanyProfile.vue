@@ -75,7 +75,7 @@ const images = [
         </TransitionScroll>
       </div>
       <div class="lg:order-1">
-        <TransitionScroll :threshold="true">
+        <TransitionScroll :threshold="true" delay="1s">
           <div class="mt-12 h-80 max-w-100 mx-auto md:max-w-210 lg:mt-0 lg:h-160">
             <div class="grid grid-cols-2 justify-center gap-3 md:gap-6">
               <div class="grid grid-rows-6 justify-end">
