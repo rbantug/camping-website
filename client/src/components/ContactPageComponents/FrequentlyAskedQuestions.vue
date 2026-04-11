@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+
 import TransitionScroll from '../util/TransitionScroll.vue'
 
 const faqs = ref([
@@ -36,7 +37,9 @@ const faqs = ref([
 ])
 
 function toggleAnswer(index: number) {
-  faqs.value[index].open = !faqs.value[index].open
+  if (faqs.value[index]) {
+    faqs.value[index].open = !faqs.value[index].open
+  }
 }
 </script>
 
@@ -54,59 +57,58 @@ function toggleAnswer(index: number) {
           </p>
         </div>
       </TransitionScroll>
-      <div class="my-10 grid grid-cols-1 md:grid-cols-2">
-        <TransitionScroll>
-          <div
-            v-for="({ question, answer, open }, index) of faqs"
-            :key="question"
-            class="relative w-80 my-5 p-10 shadow-[0_0_10px_rgba(0,0,0,0.2)] border border-transparent rounded-2xl hover:cursor-pointer"
-            @click="toggleAnswer(index)"
-          >
-            <div class="flex gap-x-2">
-              <div class="w-[80%]">{{ question }}</div>
-              <div class="w-[20%]">
-                <button
-                  class="w-10 h-10 rounded-full flex justify-center items-center duration-300"
-                  :class="{ 'bg-neutral-300': !open, 'bg-accent-secondary': open }"
-                >
-                  <!-- iconamoon:arrow-down-2 -->
-                  <div
-                    :class="{
-                      'text-neutral-100 rotate-90 duration-200 ease': open,
-                      'duration-200 ease': !open,
-                    }"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="m10 17l5-5m0 0l-5-5"
-                      />
-                    </svg>
-                  </div>
-                </button>
-              </div>
-            </div>
-            <Transition
-              enter-active-class="transition-all duration-200 ease-out"
-              enter-from-class="opacity-0 max-h-0"
-              enter-to-class="opacity-100 max-h-40"
-              leave-active-class="transition-all duration-150 ease-in"
-              leave-from-class="opacity-100 max-h-40"
-              leave-to-class="opacity-0 max-h-0"
+      <div class="my-10 grid grid-cols-1">
+        <div v-for="({ question, answer, open }, index) of faqs" :key="question">
+          <TransitionScroll class="flex justify-center ">
+            <div
+              class="relative w-80 my-5 p-10 shadow-[0_0_10px_rgba(0,0,0,0.2)] border border-transparent rounded-2xl hover:cursor-pointer md:w-full lg:w-120 dark:shadow-none dark:border-neutral-300"
+              @click="toggleAnswer(index)"
             >
-              <div v-if="open" class="w-[80%] mt-5 text-neutral-700" >{{ answer }}</div>
-            </Transition>
-          </div>
-        </TransitionScroll>
+              <div class="flex items-center gap-x-2">
+                <div class="w-[80%] dark:text-neutral-100">{{ question }}</div>
+                <div class="w-[20%] flex justify-end">
+                  <button
+                    class="w-10 h-10 rounded-full flex justify-center items-center duration-300"
+                    :class="{ 'bg-neutral-300': !open, 'bg-accent-secondary': open }"
+                  >
+                    <div
+                      :class="{
+                        'text-neutral-100 rotate-90 duration-200 ease': open,
+                        'duration-200 ease': !open,
+                      }"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="m10 17l5-5m0 0l-5-5"
+                        />
+                      </svg>
+                    </div>
+                  </button>
+                </div>
+              </div>
+              <Transition
+                enter-active-class="transition-all duration-200 ease-out md:duration-300"
+                enter-from-class="opacity-0 max-h-0"
+                enter-to-class="opacity-100 max-h-40"
+                leave-active-class="transition-all duration-150 ease-in md:duration-200"
+                leave-from-class="opacity-100 max-h-40"
+                leave-to-class="opacity-0 max-h-0"
+              >
+                <div v-if="open" class="w-[80%] mt-5 text-neutral-700 dark:text-neutral-400">{{ answer }}</div>
+              </Transition>
+            </div>
+          </TransitionScroll>
+        </div>
       </div>
     </div>
   </div>
