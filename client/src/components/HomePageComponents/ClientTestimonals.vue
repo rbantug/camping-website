@@ -84,7 +84,7 @@ const clientArr = [
 
 <template>
   <div class="bg-white dark:bg-neutral-900 transition-colors duration-300">
-    <div class="h-330 w-[90%] pt-40 mb-70 mx-auto md:pt-40 md:h-260 lg:h-250 lg:w-full lg:pt-40">
+    <div class="h-fit w-[90%] py-40 mx-auto lg:w-full">
       <TransitionScroll threshold>
         <div class="flex flex-col items-center text-center gap-y-4 lg:px-20">
           <h2 class="font-bold text-2xl lg:text-4xl dark:text-white">What our past clients say</h2>

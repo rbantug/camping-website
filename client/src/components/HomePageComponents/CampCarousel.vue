@@ -25,7 +25,7 @@ const campList = mainStore.getAllCamps
 
 <template>
   <div class="dark:bg-neutral-900 transition-color duration-300">
-    <div class="h-280 w-[90%] pt-40 mx-auto md:w-[87%] lg:w-[85%]">
+    <div class="h-fit w-[90%] py-40 mx-auto md:w-[87%] lg:w-[85%]">
       <transition-scroll>
         <div class="flex flex-col justify-between w-full pb-10 md:flex-row md:items-center md:h-30">
           <h1

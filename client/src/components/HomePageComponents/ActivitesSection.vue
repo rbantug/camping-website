@@ -43,7 +43,7 @@ const mdAbove = breakpoints.greaterOrEqual('md')
 
 <template>
   <div class="bg-neutral-200 dark:bg-neutral-800 transition-colors duration-300">
-    <div class="h-520 max-w-200 w-[95%] mx-auto pt-40 md:h-260 lg:w-[85%] lg:h-265">
+    <div class="h-fit max-w-200 w-[95%] mx-auto py-40 lg:w-[85%]">
       <TransitionScroll>
         <div class="flex flex-col justify-center mb-10 md:mb-5 md:w-[90%] md:mx-auto">
           <h1 class="text-2xl font-bold text-center mb-4 md:text-3xl dark:text-white">Explore our activities</h1>

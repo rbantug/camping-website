@@ -41,7 +41,7 @@ const images = [
 
 <template>
   <div
-    class="bg-neutral-200 h-300 pt-40 dark:bg-neutral-800 transition-colors duration-300 md:h-350 lg:h-270 lg:pt-50"
+    class="bg-neutral-200 h-300 pt-40 dark:bg-neutral-800 transition-colors duration-300 md:h-330 lg:h-270 lg:pt-50"
   >
     <div
       class="w-[90%] mx-auto flex flex-col md:w-[92%] lg:w-[95%] lg:flex-row lg:gap-x-15 lg:items-center lg:max-w-300"
