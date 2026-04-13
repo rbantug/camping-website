@@ -33,8 +33,9 @@ const outputBtnSize = computed(() => {
       <PrimaryButton
         :size="outputBtnSize"
         label="Explore camps"
+        route-path="/camps"
       />
-      <SecondaryButton :size="outputBtnSize" label="About us" dark-mode-no-ring no-ring  />
+      <SecondaryButton :size="outputBtnSize" label="About us" dark-mode-no-ring no-ring route-path="/about" />
     </div>
   </div>
 </template>
