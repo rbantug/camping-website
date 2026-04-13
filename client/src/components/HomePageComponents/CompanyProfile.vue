@@ -69,6 +69,7 @@ const images = [
                 label="About us"
                 class="md:w-[20%] lg:w-[30%]"
                 :white-ring="false"
+                route-path="/about"
               />
             </div>
           </div>
