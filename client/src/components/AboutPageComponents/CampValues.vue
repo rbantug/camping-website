@@ -56,7 +56,7 @@ const content = [
 </script>
 
 <template>
-  <div class="h-480 bg-neutral-300 pt-40 transition-colors duration-300 md:h-370 lg:h-260 dark:bg-neutral-800">
+  <div class="h-fit bg-neutral-300 py-40 transition-colors duration-300 dark:bg-neutral-800">
     <div class="w-[95%] mx-auto md:w-[90%] lg:w-[95%]">
       <TransitionScroll>
         <div class="mx-auto text-center flex flex-col lg:max-w-200">

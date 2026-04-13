@@ -33,7 +33,7 @@ const md = breakpoints.isGreaterOrEqual('md')
 </script>
 
 <template>
-    <div class="h-460 mx-auto max-w-150 pt-40 bg-neutral-100 md:max-w-600 md:h-330 dark:bg-neutral-900 transition-colors duration-300">
+    <div class="h-fit mx-auto max-w-150 py-40 bg-neutral-100 md:max-w-600 dark:bg-neutral-900 transition-colors duration-300">
         <div class="w-[90%] max-w-350 mx-auto flex flex-col lg:w-[95%]">
           <div class="flex flex-col md:flex-row md:gap-x-5" id="topAbout">
             <TransitionScroll threshold>
