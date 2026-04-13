@@ -155,7 +155,7 @@ const lgAndLarger = breakpoints.greater('lg')
             </div>
             <!-- breakpoint "md" only, book now button -->
             <div v-if="mdAndLarger">
-              <primary-button label="Book now" size="default" />
+              <primary-button label="Book now" size="default" route-path="/camps" />
             </div>
           </div>
         </div>

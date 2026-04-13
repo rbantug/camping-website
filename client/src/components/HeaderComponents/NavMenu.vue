@@ -86,7 +86,7 @@ function closeNavMenu() {
         </div>
       </Transition>
       <div class="w-full md:w-[20%]">
-        <PrimaryButton size="default" label="Book now" />
+        <PrimaryButton size="default" label="Book now" route-path="/camps"/>
       </div>
     </div>
   </transition>
