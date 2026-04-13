@@ -21,12 +21,14 @@ const props = defineProps({
 
 const emits = defineEmits(['emit1'])
 
-const moreNavItems = ref(false)
+const mainStore = useMainStore()
+
+const moreNavItems = mainStore.getMoreNavItems
 function toggleMoreNavItems() {
-  moreNavItems.value = !moreNavItems.value
+  mainStore.updateMoreNavItems()
 }
 function closeNavMenu() {
-  moreNavItems.value = false
+  mainStore.updateMoreNavItems(false)
   emits('emit1')
 }
 </script>

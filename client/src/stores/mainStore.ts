@@ -30,7 +30,7 @@ export const useMainStore = defineStore('main', () => {
         'https://dl.dropboxusercontent.com/scl/fi/l3s8l6u0j19a93wdywxgh/hires-forest-1.avif?rlkey=mrj6akvq95gspe66y5zcsb6zb',
       status: 'available',
       amenities: ['toilet', 'firePit', 'waterSupply', 'campStore', 'electicHookup', 'wifiAccess'],
-      category: 'forest'
+      category: 'forest',
     },
     {
       name: 'Cedar Ridge Outpost',
@@ -47,7 +47,7 @@ export const useMainStore = defineStore('main', () => {
         'https://dl.dropboxusercontent.com/scl/fi/dteu6o8d6e6079mihkmx5/hires-forest-2.avif?rlkey=vqc62pt044jm7awa1uciq4tin',
       status: 'full',
       amenities: ['grill', 'trashBins', 'picnicTable'],
-      category: 'forest'
+      category: 'forest',
     },
     {
       name: 'Breakline Beach Camp',
@@ -64,7 +64,7 @@ export const useMainStore = defineStore('main', () => {
         'https://dl.dropboxusercontent.com/scl/fi/a40cgsn5cuvdeapgi8ohj/hires-beach-1.avif?rlkey=i6dkleh49deuxmgi1r9gslvqb',
       status: 'available',
       amenities: ['shower', 'waterSupply', 'wifiAccess'],
-      category: 'beach'
+      category: 'beach',
     },
     {
       name: 'Highpass Outpost',
@@ -81,7 +81,7 @@ export const useMainStore = defineStore('main', () => {
         'https://dl.dropboxusercontent.com/scl/fi/piohy8uw9pqniy8xph5tf/hires-mountain-1.avif?rlkey=trsox280q72272xg6ikc5onpo',
       status: 'available',
       amenities: ['shower', 'waterSupply', 'wifiAccess'],
-      category: 'mountain'
+      category: 'mountain',
     },
     {
       name: 'North Summit Camp',
@@ -98,7 +98,7 @@ export const useMainStore = defineStore('main', () => {
         'https://dl.dropboxusercontent.com/scl/fi/g3jpy3n5lec9m6wj3hmmx/hires-mountain-2.avif?rlkey=o3qsk6dp95l3g5dl36j4s9lqd',
       status: 'available',
       amenities: ['grill', 'trashBins', 'picnicTable'],
-      category: 'mountain'
+      category: 'mountain',
     },
     {
       name: 'Cloudrest Campground',
@@ -115,7 +115,7 @@ export const useMainStore = defineStore('main', () => {
         'https://dl.dropboxusercontent.com/scl/fi/fv1vpvq9pove2f4f38enm/hires-mountain-3.avif?rlkey=32o5cddvs5s2oa9v51oa2v25k',
       status: 'available',
       amenities: ['grill', 'trashBins', 'picnicTable'],
-      category: 'mountain'
+      category: 'mountain',
     },
   ])
 
@@ -198,7 +198,18 @@ export const useMainStore = defineStore('main', () => {
     },
   ])
 
-  const getIconArr = computed(() => iconArr) 
+  const getIconArr = computed(() => iconArr)
+
+  const moreNavItems = ref(false)
+
+  const getMoreNavItems = computed(() => moreNavItems)
+  function updateMoreNavItems(val?:boolean) {
+    if (val === null || val === undefined) {
+      moreNavItems.value = !moreNavItems.value
+    } else {
+      moreNavItems.value = val
+    }
+  }
 
   return {
     getAllPages,
@@ -209,6 +220,8 @@ export const useMainStore = defineStore('main', () => {
     getBottomRightBtnY,
     getGalleryImage,
     getGalleryBlurryImg,
-    getIconArr
+    getIconArr,
+    getMoreNavItems,
+    updateMoreNavItems,
   }
 })

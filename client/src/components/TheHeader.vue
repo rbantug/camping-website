@@ -21,6 +21,7 @@ function toggleNavBarsAnimation() {
 }
 function forceCloseNavBar() {
   navBarsAnimation.value = false
+  mainStore.updateMoreNavItems(false)
 }
 
 const pagesNavBarIsOpen = ref(false)
