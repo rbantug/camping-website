@@ -6,7 +6,6 @@ import { useBreakpoints } from '@vueuse/core'
 import { useMainStore } from '@/stores/mainStore'
 import TransitionScroll from '../util/TransitionScroll.vue'
 import CampCard from '../BaseComponents/CampCard.vue'
-import LazyLoadImage from '../util/LazyLoadImage.vue'
 
 import type { Camps } from '../../../interface'
 
@@ -49,12 +48,15 @@ function createPageBtn() {
   totalPages.value = Math.ceil(itemList.value.length / itemsPerPage.value)
 }
 
-function activeBtn(el: HTMLElement) {
+function activeBtn(el: HTMLElement | undefined) {
+  if (!el) return
   const currentBtnIndex = refArray.value.findIndex((x: HTMLElement) =>
     x.classList.contains('bg-accent-secondary'),
   )
-  refArray.value[currentBtnIndex].classList.remove('bg-accent-secondary')
-  refArray.value[currentBtnIndex].classList.add('bg-neutral-500')
+  if (refArray.value[currentBtnIndex]) {
+    refArray.value[currentBtnIndex].classList.remove('bg-accent-secondary')
+    refArray.value[currentBtnIndex].classList.add('bg-neutral-500')
+  }
 
   el.classList.remove('bg-neutral-500')
   el.classList.add('bg-accent-secondary')
@@ -111,8 +113,10 @@ onMounted(() => {
   itemsPerPage.value = md.value ? 6 : 3
   paginateList()
   createPageBtn()
-  refArray.value[0].classList.remove('bg-neutral-500')
-  refArray.value[0].classList.add('bg-accent-secondary')
+  if (refArray.value[0]) {
+    refArray.value[0].classList.remove('bg-neutral-500')
+    refArray.value[0].classList.add('bg-accent-secondary')
+  }
 })
 
 onBeforeMount(() => {
@@ -121,7 +125,7 @@ onBeforeMount(() => {
 </script>
 
 <template>
-  <div class="h-650 bg-neutral-100 dark:bg-neutral-900 lg:h-525 flex flex-col">
+  <div class="h-fit bg-neutral-100 dark:bg-neutral-900 flex flex-col">
     <div
       class="h-130 bg-[url('https://dl.dropboxusercontent.com/scl/fi/26jjsubwisadujxc1ye60/title-1.avif?rlkey=6gxgj5ndtv8r7cg251ea3m5g9')] bg-bottom bg-cover flex flex-col md:h-140"
     >
@@ -139,7 +143,7 @@ onBeforeMount(() => {
     </div>
     <div class="pt-10">
       <div
-        class="h-490 max-w-300 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-2 gap-y-2 lg:h-330"
+        class="h-fit max-w-300 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-2 gap-y-2"
         id="topCamp"
       >
         <div v-for="camp in currentList" :key="camp.name" class="pb-10">
