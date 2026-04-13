@@ -31,7 +31,7 @@ const breakpoints = useBreakpoints({
   lg: 994,
 })
 
-const lg = breakpoints.isGreaterOrEqual('lg')
+const lg = breakpoints.greaterOrEqual('lg')
 
 const content = {
   imgPath:
@@ -85,7 +85,7 @@ const outputBlurryImgPath = computed(() => {
               Placerat in id cursus mi pretium tellus duis. Pretium tellus duis convallis tempus leo
               eu aenean.
             </p>
-            <PrimaryButton :size="lg ? 'large' : 'default'" label="Check our camps" class="w-[60%] mt-10 md:w-[50%] lg:w-[30%]" />
+            <PrimaryButton :size="lg ? 'large' : 'default'" label="Check our camps" class="w-[60%] mt-10 md:w-[50%] lg:w-[30%]" route-path="/camps" />
           </div>
         </TransitionScroll>
       </div>

@@ -47,7 +47,7 @@ const breakpoints = useBreakpoints({
   lg: 994,
 })
 
-const md = breakpoints.isGreaterOrEqual('md')
+const md = breakpoints.greaterOrEqual('md')
 
 ///////////////////
 //// swiperjs code
