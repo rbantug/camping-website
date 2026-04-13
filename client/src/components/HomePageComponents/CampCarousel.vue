@@ -34,7 +34,7 @@ const campList = mainStore.getAllCamps
             Explore our camps
           </h1>
           <div class="w-full md:w-fit">
-            <secondary-button label="Browse all" size="large" :white-ring="false" />
+            <secondary-button label="Browse all" size="large" :white-ring="false" route-path="/camps" />
           </div>
         </div>
       </transition-scroll>
