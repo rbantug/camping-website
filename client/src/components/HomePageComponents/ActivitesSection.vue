@@ -79,14 +79,6 @@ const mdAbove = breakpoints.greaterOrEqual('md')
           </div>
         </div>
       </TransitionScroll>
-      <TransitionScroll>
-        <SecondaryButton
-          :size="mdAbove ? 'large' : 'default'"
-          label="More activities"
-          class="md:w-[30%] md:mx-auto"
-          :white-ring="false"
-        />
-      </TransitionScroll>
     </div>
   </div>
 </template>
