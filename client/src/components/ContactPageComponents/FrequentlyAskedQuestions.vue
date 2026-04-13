@@ -61,7 +61,7 @@ function toggleAnswer(index: number) {
         <div v-for="({ question, answer, open }, index) of faqs" :key="question">
           <TransitionScroll class="flex justify-center ">
             <div
-              class="relative w-80 my-5 p-10 shadow-[0_0_10px_rgba(0,0,0,0.2)] border border-transparent rounded-2xl hover:cursor-pointer md:w-full lg:w-120 dark:shadow-none dark:border-neutral-300"
+              class="w-80 my-5 p-10 shadow-[0_0_10px_rgba(0,0,0,0.2)] border border-transparent rounded-2xl hover:cursor-pointer md:w-full lg:w-120 dark:shadow-none dark:border-neutral-300"
               @click="toggleAnswer(index)"
             >
               <div class="flex items-center gap-x-2">
