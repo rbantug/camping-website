@@ -19,8 +19,8 @@ const props = withDefaults(defineProps<Props>(), {
 
 const rootStyling = 'bg-white rounded-full w-full cursor-pointer hover:bg-accent-secondary hover:ring-transparent hover:-translate-y-1 duration-200 group dark:bg-neutral-900 transition-color'
 
-function moreRootStyling(style:string) {
-  let newStyle = style
+const outputRootStyle = computed(() => {
+  let newStyle = rootStyling
 
    if (!props.darkModeNoRing) {
     newStyle = newStyle + ' dark:ring-2 dark:ring-white dark:hover:ring-transparent'
@@ -39,49 +39,25 @@ function moreRootStyling(style:string) {
   }
 
   return newStyle
-}
-
-const outputRootStyle = computed(() => {
-  if (props.size === 'small') {
-    return moreRootStyling(rootStyling) + ' px-3 py-2'
-  }
-
-  if (props.size === 'default') {
-    return moreRootStyling(rootStyling) + ' px-5 py-4'
-  }
-
-  return moreRootStyling(rootStyling) + ' px-7 py-5'
 })
 
 const txtStyle = 'text-neutral-800 group-hover:text-white dark:text-white dark:group-hover:text-neutral-900'
 
-function moreTxtStyling(style:string) {
-  let newStyle = style
+const outputTxtStyle = computed(() => {
+    const newStyle = txtStyle
 
   if (props.altColor) {
     return 'text-white group-hover:text-neutral-800'
   }
 
   return newStyle
-} 
-
-const outputTxtStyle = computed(() => {
-    if (props.size === 'small') {
-    return moreTxtStyling(txtStyle) + ' text-sm'
-  }
-
-  if (props.size === 'default') {
-    return moreTxtStyling(txtStyle) + ' text-md'
-  }
-
-  return moreTxtStyling(txtStyle) + ' text-lg'
 })
 </script>
 
 <template>
   <div>
-    <button :class="outputRootStyle">
-      <span :class="outputTxtStyle">{{ props.label }}</span>
+    <button :class="[outputRootStyle, { 'px-3 py-2': props.size === 'small', 'px-5 py-4': props.size === 'default', 'px-7 py-5': props.size === 'large' }]">
+      <span :class="[outputTxtStyle, { 'text-sm': props.size === 'small', 'text-md': props.size === 'default', 'text-lg': props.size === 'large' }]">{{ props.label }}</span>
     </button>
   </div>
 </template>
