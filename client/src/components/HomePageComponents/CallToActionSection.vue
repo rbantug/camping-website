@@ -51,12 +51,14 @@ const bg = computed(() => {
               :alt-color="true"
               label="Explore camps"
               :size="greaterEqualMd ? 'large' : 'default'"
+              route-path="/camps"
             />
             <SecondaryButton
               :alt-color="true"
               label="About us"
               :size="greaterEqualMd ? 'large' : 'default'"
               dark-mode-no-ring
+              route-path="/about"
             />
           </div>
         </div>
