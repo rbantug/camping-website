@@ -64,7 +64,7 @@ const outputBlurryImgPath = computed(() => {
 
 <template>
   <div
-    class="h-480 bg-neutral-100 transition-colors duration-300 md:h-370 lg:h-280 dark:bg-neutral-900"
+    class="h-300 bg-neutral-100 transition-colors duration-300 dark:bg-neutral-900"
   >
     <div class="h-250 relative">
       <LazyLoadImage
