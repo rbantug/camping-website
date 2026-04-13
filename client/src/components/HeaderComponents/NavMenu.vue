@@ -1,25 +1,16 @@
 <script setup lang="ts">
-import { ref, type PropType } from 'vue'
-
 import { useMainStore } from '@/stores/mainStore'
 
 import PrimaryButton from '../BaseComponents/Buttons/PrimaryButton.vue'
 import type { NavItems } from '../TheHeader.vue'
 
-const props = defineProps({
-  isOpen: {
-    required: true,
-    type: Boolean,
-  },
-  navItems: {
-    required: true,
-    type: Array as PropType<Array<NavItems>>,
-  },
-  additionalNavItems: {
-    required: true,
-    type: Array as PropType<Array<NavItems>>,
-  },
-})
+interface Props {
+  isOpen: boolean
+  navItems: NavItems[]
+  additionalNavItems: NavItems[]
+}
+
+const props = defineProps<Props>()
 
 const emits = defineEmits(['emit1'])
 
