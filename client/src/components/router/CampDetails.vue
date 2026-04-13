@@ -46,7 +46,8 @@ function updateCampDetail(slug:string) {
 </script>
 
 <template>
-  <div class="h-930 bg-neutral-100 dark:bg-neutral-900 transition-colors duration-300 md:h-800 lg:h-635">
+  <!-- TODO: add more height in mobile view OR use h-fit -->
+  <div class="h-fit bg-neutral-100 dark:bg-neutral-900 transition-colors duration-300">
     <TopTitle
       :img-path="camp?.imageHires"
       :blurry-img="camp?.blurryImg"

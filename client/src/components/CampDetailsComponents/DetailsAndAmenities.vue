@@ -30,7 +30,7 @@ const md = breakpoints.isGreaterOrEqual('md')
 </script>
 
 <template>
-  <div class="min-h-250 bg-neutral-100 dark:bg-neutral-900 transition-colors duration-300 md:min-h-200 lg:max-w-200">
+  <div class="h-fit bg-neutral-100 dark:bg-neutral-900 transition-colors duration-300 lg:max-w-200">
     <div class="w-[90%] mx-auto">
       <div>
         <h1 class="pt-10 text-3xl font-bold text-neutral-900 dark:text-neutral-100">

@@ -81,8 +81,8 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="relative pt-20 bg-neutral-200 transition-colors duration-300 dark:bg-neutral-800">
-    <div class="h-250 w-[90%] mx-auto md:h-180 lg:h-200">
+  <div class="relative py-20 bg-neutral-200 transition-colors duration-300 dark:bg-neutral-800">
+    <div class="h-fit w-[90%] mx-auto">
       <TransitionScroll>
         <div
           class="mx-auto max-w-100 flex flex-col gap-y-5 md:flex-row md:max-w-400 md:justify-between md:items-center"
