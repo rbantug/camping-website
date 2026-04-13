@@ -1,12 +1,28 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useBreakpoints } from '@vueuse/core'
+import { useHead } from '@unhead/vue'
 
 import { useMainStore } from '@/stores/mainStore'
 
 import LazyLoadImage from '../util/LazyLoadImage.vue'
 import TransitionScroll from '../util/TransitionScroll.vue'
 import PrimaryButton from '../BaseComponents/Buttons/PrimaryButton.vue'
+
+useHead({
+  link: [
+    {
+      rel: 'preload',
+      as: 'image',
+      href: 'https://dl.dropboxusercontent.com/scl/fi/6uamdsftzpf63p8ug50kr/about-us-cta.avif?rlkey=gc23e5jkqbzt4jlha4cp5sbbr',
+    },
+    {
+      rel: 'preload',
+      as: 'image',
+      href: 'https://dl.dropboxusercontent.com/scl/fi/c96dj743f2x8qvgrtlj7q/about-us-cta-2.avif?rlkey=a4uvfzuy6nmt1hkc4fhiaf0ks',
+    },
+  ],
+})
 
 const mainStore = useMainStore()
 
