@@ -4,6 +4,7 @@ import { Navigation, A11y } from 'swiper/modules'
 import { useBreakpoints } from '@vueuse/core'
 import { useMainStore } from '@/stores/mainStore'
 
+// do not delete
 import 'swiper/css'
 
 import SecondaryButton from '../BaseComponents/Buttons/SecondaryButton.vue'
