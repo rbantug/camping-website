@@ -50,6 +50,19 @@ const breakpoints = useBreakpoints({
 })
 
 const md = breakpoints.greaterOrEqual('md')
+const lg = breakpoints.greaterOrEqual('lg')
+
+function scrollToForm() {
+  let topPos = 0 
+  if (!md.value) topPos = 1780
+  if (md.value) topPos = 1460
+  if (lg.value) topPos = 0
+
+  window.scrollTo({
+    top: topPos,
+    behavior: 'smooth',
+  })
+}
 
 ///////////////////
 //// swiperjs code
@@ -91,7 +104,7 @@ onMounted(() => {
         >
           <h1 class="text-2xl font-bold text-neutral-900 dark:text-neutral-100">Camp Gallery</h1>
           <!-- TODO: clicking will shift the browser back to the reserve camp form -->
-          <PrimaryButton label="Book camp" :size="md ? 'large' : 'default'" class="md:w-60" />
+          <PrimaryButton label="Book camp" :size="md ? 'large' : 'default'" class="md:w-60" disable-btn @click="scrollToForm"/>
         </div>
       </TransitionScroll>
       <div
