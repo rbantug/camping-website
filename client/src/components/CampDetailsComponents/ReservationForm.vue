@@ -17,7 +17,7 @@ const date = ref()
 </script>
 
 <template>
-  <div class="flex justify-center items-center pt-10 lg:-mt-230">
+  <div class="flex justify-center items-center pt-10 lg:-mt-250">
     <TransitionScroll delay="delay-1000">
       <div
         class="bg-neutral-100 rounded-3xl border-2 border-neutral-500 h-175 w-full max-w-90 dark:bg-neutral-900 transition-color duration-300 dark:border-neutral-400 md:max-w-190 lg:max-w-100"
