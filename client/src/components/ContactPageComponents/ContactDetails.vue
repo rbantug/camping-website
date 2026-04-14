@@ -31,7 +31,7 @@ const content = [
         <div
           v-for="{ img, label, contactDetail, link } in content"
           :key="label"
-          class="flex flex-col items-center gap-y-2 md:even:justify-end md:flex-row md:gap-x-5 lg:even:justify-center lg:justify-center hover:-translate-y-2 duration-200 group"
+          class="flex flex-col items-center gap-y-2 md:even:justify-end md:flex-row md:gap-x-5 lg:even:justify-center lg:justify-center lg:w-100 hover:-translate-y-2 duration-200 group"
         >
           <div
             class="w-20 h-20 bg-accent-outline rounded-full outline-hidden flex items-center justify-center"
