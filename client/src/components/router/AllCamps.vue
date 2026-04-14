@@ -103,6 +103,7 @@ watch(
     } else {
       itemsPerPage.value = 3
     }
+    currentPage.value = 1
     paginateList()
     createPageBtn()
   },
