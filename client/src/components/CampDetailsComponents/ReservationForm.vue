@@ -60,6 +60,7 @@ const date = ref()
           </div>
           <!-- buttons -->
           <div class="mt-10 flex flex-col items-center gap-y-5">
+            <!-- TODO: Add to cart functionality -->
             <PrimaryButton label="Add to Cart" size="large" class="w-full"/>
             <div class="flex items-center gap-x-5">
               <hr class="w-30 text-neutral-900 dark:text-neutral-400">
