@@ -108,6 +108,7 @@ const subjectList = [
             <div class="w-full"></div>
           </form>
           <div class="my-10 flex flex-col md:flex-row justify-between items-center">
+            <!-- TODO: Submit message either to the database or a CRM -->
             <PrimaryButton
               label="Submit"
               :size="md ? 'large' : 'default'"
