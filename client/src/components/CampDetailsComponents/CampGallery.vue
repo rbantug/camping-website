@@ -104,7 +104,7 @@ onMounted(() => {
         >
           <h1 class="text-2xl font-bold text-neutral-900 dark:text-neutral-100">Camp Gallery</h1>
           <!-- TODO: clicking will shift the browser back to the reserve camp form -->
-          <PrimaryButton label="Book camp" :size="md ? 'large' : 'default'" class="md:w-60" disable-btn @click="scrollToForm"/>
+          <PrimaryButton label="Book camp" :size="md ? 'large' : 'default'" class="md:w-60" disable-route @click="scrollToForm"/>
         </div>
       </TransitionScroll>
       <div
