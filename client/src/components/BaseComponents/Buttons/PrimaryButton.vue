@@ -9,6 +9,7 @@ interface Props {
   disabled?: boolean
   altColor?: boolean
   routePath?: string
+  disableRoute?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -16,6 +17,7 @@ const props = withDefaults(defineProps<Props>(), {
   disabled: false,
   altColor: false,
   routePath: '/',
+  disableRoute: false,
 })
 
 const router = useRouter()
@@ -59,6 +61,7 @@ const outputTxtStyle = computed(() => {
 })
 
 function gotoRoute() {
+  if (props.disableRoute) return
   router.push(props.routePath)
 }
 </script>
