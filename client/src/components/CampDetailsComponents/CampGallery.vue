@@ -1,14 +1,16 @@
 <script setup lang="ts">
 import { onBeforeMount, onMounted, ref } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
-import { Navigation, A11y } from 'swiper/modules'
+import { Navigation, A11y, Pagination } from 'swiper/modules'
 import { useMainStore } from '@/stores/mainStore'
 import { useBreakpoints } from '@vueuse/core'
 
 import type { Swiper as SwiperType } from 'swiper'
 
+// do not delete
 import 'swiper/css'
 import 'swiper/css/navigation'
+import 'swiper/css/pagination'
 
 import PrimaryButton from '../BaseComponents/Buttons/PrimaryButton.vue'
 import LazyLoadImage from '../util/LazyLoadImage.vue'
@@ -88,6 +90,7 @@ onMounted(() => {
           class="mx-auto max-w-100 flex flex-col gap-y-5 md:flex-row md:max-w-400 md:justify-between md:items-center"
         >
           <h1 class="text-2xl font-bold text-neutral-900 dark:text-neutral-100">Camp Gallery</h1>
+          <!-- TODO: clicking will shift the browser back to the reserve camp form -->
           <PrimaryButton label="Book camp" :size="md ? 'large' : 'default'" class="md:w-60" />
         </div>
       </TransitionScroll>
@@ -117,9 +120,10 @@ onMounted(() => {
     >
       <swiper
         :slides-per-view="1"
-        :modules="[Navigation, A11y]"
+        :modules="[Navigation, A11y, Pagination]"
         :loop="true"
         :initial-slide="imgIndex"
+        :pagination="true"
         @swiper="onSwiper"
         class="mx-auto"
       >
@@ -144,3 +148,21 @@ onMounted(() => {
     </div>
   </div>
 </template>
+
+<style scoped>
+:deep(.swiper-pagination-bullet) {
+  background-color: rgb(190, 190, 190);
+  width: 10px;
+  height: 10px;
+  opacity: 1;
+}
+
+:deep(.swiper-pagination-bullet-active) {
+  background-color: oklch(62.7% 0.265 303.9);
+  transform: scale(1.5);
+}
+
+:deep(.swiper-pagination) {
+  bottom: 10px;
+}
+</style>
