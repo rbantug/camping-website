@@ -203,12 +203,94 @@ export const useMainStore = defineStore('main', () => {
   const moreNavItems = ref(false)
 
   const getMoreNavItems = computed(() => moreNavItems)
-  function updateMoreNavItems(val?:boolean) {
+  function updateMoreNavItems(val?: boolean) {
     if (val === null || val === undefined) {
       moreNavItems.value = !moreNavItems.value
     } else {
       moreNavItems.value = val
     }
+  }
+
+  ////////////////////////////
+  // Cart
+  ////////////////////////////
+
+  interface CartItem {
+    name: string
+    price: number
+    quantity: number
+    image: string
+  }
+
+  interface AddToCart {
+    name: string
+    price: number
+    image: string
+  }
+
+  interface UpdateCartQuantity {
+    name: string,
+    quantity: number
+  }
+
+  const cartData = ref<CartItem[]>([])
+
+  const getCart = computed(() => cartData)
+  
+  function addToCart(camp: AddToCart) {
+    const index = cartData.value.findIndex((x) => x.name === camp.name)
+
+    if (index === -1) {
+      cartData.value.push({
+        name: camp.name,
+        price: camp.price,
+        quantity: 1,
+        image: camp.image,
+      })
+    } else {
+      if (cartData.value[index]) cartData.value[index].quantity++
+    }
+
+    saveCart()
+  }
+
+  function updateCartQuantity(camp:UpdateCartQuantity) {
+    const index = cartData.value.findIndex((x) => x.name === camp.name)
+
+    if (index !== -1 && cartData.value[index]) {
+      cartData.value[index].quantity = camp.quantity
+    }
+
+    saveCart()
+  }
+
+  ///// Methods that interacts with the Local Storage
+
+  function saveCart() {
+    const now = Date.now()
+    const ttl = 604800000 // 1 week
+
+    const payload = { data: cartData.value, expire: now + ttl }
+
+    localStorage.setItem('cart', JSON.stringify(payload))
+  }
+
+  function retrieveCart() {
+    const itemString = localStorage.getItem('cart')
+    if (!itemString) return null
+
+    const parsedData = JSON.parse(itemString)
+    const now = Date.now()
+    if (now > parsedData.expire) {
+      clearCart()
+    } else {
+      cartData.value = parsedData.data
+    }
+  }
+
+  function clearCart() {
+    cartData.value = []
+    localStorage.removeItem('cart')
   }
 
   return {
@@ -223,5 +305,10 @@ export const useMainStore = defineStore('main', () => {
     getIconArr,
     getMoreNavItems,
     updateMoreNavItems,
+    getCart,
+    addToCart,
+    retrieveCart,
+    clearCart,
+    updateCartQuantity
   }
 })
