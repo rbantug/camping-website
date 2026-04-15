@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import { useBreakpoints } from '@vueuse/core'
 
 import PrimaryButton from './BaseComponents/Buttons/PrimaryButton.vue'
@@ -47,6 +47,10 @@ const breakpoints = useBreakpoints({
 
 const mdAndLarger = breakpoints.greater('md')
 const lgAndLarger = breakpoints.greater('lg')
+
+watch(mdAndLarger, () => {
+  forceCloseNavBar()
+})
 </script>
 
 <template>
