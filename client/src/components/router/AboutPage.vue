@@ -1,8 +1,20 @@
 <script setup lang="ts">
+import { useHead } from '@unhead/vue'
+
 import TransitionScroll from '../util/TransitionScroll.vue'
 import AboutUs from '../AboutPageComponents/AboutUs.vue'
 import CampValues from '../AboutPageComponents/CampValues.vue'
 import CallToAction from '../AboutPageComponents/CallToAction.vue'
+
+useHead({
+  link: [
+    {
+      rel: 'preload',
+      as: 'image',
+      href: 'https://dl.dropboxusercontent.com/scl/fi/tayfsfnprltsz3x4ng9qs/title-2.avif?rlkey=9eyg687z0ds6nwc3dctnjic2e',
+    },
+  ],
+})
 
 function goToTopAbout() {
   const el = document.getElementById('topAbout')
@@ -28,11 +40,10 @@ function goToTopAbout() {
           </p>
           <div class="mx-auto pt-5">
             <div
-              class="h-15 w-15 flex justify-center items-center rounded-full bg-transparent ring-1 ring-neutral-100 overflow-hidden group cursor-pointer" @click="goToTopAbout"
+              class="h-15 w-15 flex justify-center items-center rounded-full bg-transparent ring-1 ring-neutral-100 overflow-hidden group cursor-pointer"
+              @click="goToTopAbout"
             >
-              <div
-                class="text-neutral-100 scale-150 translate-y-1 animate-bounce"
-              >
+              <div class="text-neutral-100 scale-150 translate-y-1 animate-bounce">
                 <!-- iconamoon:arrow-down-2 -->
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                   <path
@@ -56,5 +67,4 @@ function goToTopAbout() {
   </div>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>
