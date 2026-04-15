@@ -3,7 +3,7 @@ import { ref, onMounted } from 'vue'
 
 interface Props {
   imgPath: string | undefined
-  blurryImgPath: string | undefined
+  blurryImgPath?: string | undefined
   altName?: string
   notLazy?: boolean
   class?: string
