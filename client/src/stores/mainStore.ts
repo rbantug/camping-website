@@ -222,21 +222,16 @@ export const useMainStore = defineStore('main', () => {
     image: string
   }
 
+  const cartData = ref<CartItem[]>([])
+
+  const getCart = computed(() => cartData)
+
   interface AddToCart {
     name: string
     price: number
     image: string
   }
 
-  interface UpdateCartQuantity {
-    name: string,
-    quantity: number
-  }
-
-  const cartData = ref<CartItem[]>([])
-
-  const getCart = computed(() => cartData)
-  
   function addToCart(camp: AddToCart) {
     const index = cartData.value.findIndex((x) => x.name === camp.name)
 
@@ -252,6 +247,11 @@ export const useMainStore = defineStore('main', () => {
     }
 
     saveCart()
+  }
+
+  interface UpdateCartQuantity {
+    name: string
+    quantity: number
   }
 
   function updateCartQuantity(camp:UpdateCartQuantity) {
