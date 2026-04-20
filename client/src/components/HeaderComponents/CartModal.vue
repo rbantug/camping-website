@@ -24,6 +24,7 @@ const mainStore = useMainStore()
 
 const cartData = mainStore.getCart
 
+// "price" is a string. It goes through type coercion into a number here. 
 const getSubTotal = computed(() => {
   return cartData.value.reduce((acc, { price, nights }) => acc + price * nights, 0)
 })
