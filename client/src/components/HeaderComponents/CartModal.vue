@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watch, computed } from 'vue'
+import { computed } from 'vue'
 import { useBreakpoints } from '@vueuse/core'
 
 import { useMainStore } from '@/stores/mainStore'
@@ -22,44 +22,19 @@ function closeModal() {
 
 const mainStore = useMainStore()
 
-const testData = ref([
-  {
-    name: 'Quiet Ember Campground',
-    moreInfo: 'lorem is not ipsuming',
-    price: 100,
-    quantity: 1,
-    image:
-      'https://dl.dropboxusercontent.com/scl/fi/b1w3ybugfyq8c9thb0si1/forest-1.avif?rlkey=gd4vdo8y30jpj3ics9uecxevd',
-  },
-  {
-    name: 'Quiet Ember Campground',
-    moreInfo: 'lorem is not ipsuming',
-    price: 100,
-    quantity: 1,
-    image:
-      'https://dl.dropboxusercontent.com/scl/fi/b1w3ybugfyq8c9thb0si1/forest-1.avif?rlkey=gd4vdo8y30jpj3ics9uecxevd',
-  },
-  {
-    name: 'Quiet Ember Campground',
-    moreInfo: 'lorem is not ipsuming',
-    price: 100,
-    quantity: 1,
-    image:
-      'https://dl.dropboxusercontent.com/scl/fi/b1w3ybugfyq8c9thb0si1/forest-1.avif?rlkey=gd4vdo8y30jpj3ics9uecxevd',
-  },
-])
+const cartData = mainStore.getCart
 
 const getSubTotal = computed(() => {
-  return testData.value.reduce((acc, { price, quantity }) => acc + (price * quantity), 0)
+  return cartData.value.reduce((acc, { price, nights }) => acc + (price * nights), 0)
 })
 
-function testRemoveItem() {
-  testData.value.pop()
+function updateNights(campName:string, nights:number) {
+  mainStore.updateCampNights({ name: campName, nights })
 }
 
-/* watch(testData, () => {
-
-}, { immediate: true }) */
+function removeCamp(campName:string) {
+  mainStore.deleteItemFromCart(campName)
+}
 
 const breakpoints = useBreakpoints({
   md: 768,
@@ -81,12 +56,12 @@ const md = breakpoints.greaterOrEqual('md')
         leave-to-class="opacity-0 md:scale-80"
       >
         <div
-          v-show="isOpen"
+          v-show="props.isOpen"
           class="fixed top-0 w-screen h-screen bg-neutral-900/50 z-6 flex justify-center items-center"
           @click="closeModal"
         >
           <div
-            class="fixed top-0 h-full w-full bg-neutral-100 z-7 md:top-50 md:rounded-3xl md:h-160 md:w-150 md:text-lg dark:bg-neutral-800"
+            class="fixed top-0 h-full w-full bg-neutral-100 z-7 md:top-50 md:rounded-3xl md:h-fit md:max-h-200 md:w-150 md:text-lg dark:bg-neutral-700"
             @click.stop
           >
             <div class="flex flex-col py-5">
@@ -113,7 +88,7 @@ const md = breakpoints.greaterOrEqual('md')
               </div>
               <!-- cart items -->
               <div class="flex flex-col w-[90%] mx-auto max-h-120 overflow-y-auto md:max-h-80 md:w-[85%]">
-                <div v-for="data in testData" class="my-5 flex gap-x-5 justify-between justify-items-start" :key="data.name">
+                <div v-for="data in cartData" class="my-5 flex gap-x-5 justify-between justify-items-start" :key="data.name">
                   <div class="w-[20%]">
                     <div class="w-15 h-15 rounded-lg overflow-hidden">
                       <LazyLoadImage :img-path="data.image" :alt-name="data.name" class="w-15 h-15" />
@@ -122,15 +97,16 @@ const md = breakpoints.greaterOrEqual('md')
                   </div>
                   <div class="w-[50%] flex flex-col items-start">
                     <span class="font-semibold leading-7 dark:text-neutral-100">{{ data.name }}</span>
-                    <span class="w-30 leading-7 text-neutral-700 md:w-full dark:text-neutral-400">Some text: {{ data.moreInfo }}</span>
-                    <span class="mt-2 font-bold text-neutral-700 dark:text-neutral-400">${{ data.price * data.quantity }}.00</span>
-                    <span class="mt-2 text-neutral-900 hover:cursor-pointer hover:text-accent-primary dark:text-neutral-100 dark:hover:text-accent-secondary" @click="testRemoveItem">Remove</span>
+                    <span class="w-30 leading-7 text-neutral-700 md:w-full dark:text-neutral-400">Start date: {{ data.startDate }}</span>
+                    <span class="mt-2 font-bold text-neutral-700 dark:text-neutral-400">${{ data.price * data.nights }}.00</span>
+                    <span class="mt-2 text-neutral-900 hover:cursor-pointer hover:text-accent-primary dark:text-neutral-100 dark:hover:text-accent-secondary" @click="removeCamp(data.name)">Remove</span>
                   </div>
-                  <div class="w-[30%]">
+                  <div class="w-[30%] flex flex-col items-center gap-y-2">
+                    <span class="dark:text-neutral-300">Nights:</span>
                     <input
                       type="number"
-                      class="w-20 h-10 pl-5 rounded-full shadow-[0_0_10px_rgba(0,0,0,0.2)] border-0 dark:shadow-none dark:border-neutral-400 dark:border-2 dark:bg-neutral-800 dark:text-neutral-100 dark:scheme-dark"
-                      v-model="data.quantity"
+                      class="w-20 h-10 pl-5 rounded-full shadow-[0_0_10px_rgba(0,0,0,0.2)] border-0 dark:shadow-none dark:border-neutral-400 dark:border-2 dark:bg-neutral-700 dark:text-neutral-100 dark:scheme-dark"
+                      v-model="data.nights" @input="updateNights(data.name, data.nights)"
                     />
                   </div>
                 </div>
