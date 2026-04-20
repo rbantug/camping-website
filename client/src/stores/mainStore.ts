@@ -218,8 +218,9 @@ export const useMainStore = defineStore('main', () => {
   interface CartItem {
     name: string
     price: number
-    quantity: number
+    nights: number
     image: string
+    startDate: string
   }
 
   const cartData = ref<CartItem[]>([])
@@ -230,35 +231,54 @@ export const useMainStore = defineStore('main', () => {
     name: string
     price: number
     image: string
+    startDate: string,
+    nights: number,
   }
 
   function addToCart(camp: AddToCart) {
+    retrieveCart()
+
     const index = cartData.value.findIndex((x) => x.name === camp.name)
 
     if (index === -1) {
       cartData.value.push({
         name: camp.name,
         price: camp.price,
-        quantity: 1,
+        nights: camp.nights,
         image: camp.image,
+        startDate: camp.startDate,
       })
     } else {
-      if (cartData.value[index]) cartData.value[index].quantity++
+      if (cartData.value[index]) cartData.value[index].nights++
     }
 
     saveCart()
   }
 
-  interface UpdateCartQuantity {
+  interface UpdateCampNights {
     name: string
-    quantity: number
+    nights: number
   }
 
-  function updateCartQuantity(camp:UpdateCartQuantity) {
+  function updateCampNights(camp: UpdateCampNights) {
+    retrieveCart()
+
     const index = cartData.value.findIndex((x) => x.name === camp.name)
 
     if (index !== -1 && cartData.value[index]) {
-      cartData.value[index].quantity = camp.quantity
+      cartData.value[index].nights = camp.nights
+    }
+
+    saveCart()
+  }
+
+  function deleteItemFromCart(campName:string) {
+    retrieveCart()
+
+    const index = cartData.value.findIndex((x) => x.name === campName)
+
+    if (index !== -1 && cartData.value[index]) {
+      cartData.value.splice(index, 1)
     }
 
     saveCart()
@@ -293,6 +313,14 @@ export const useMainStore = defineStore('main', () => {
     localStorage.removeItem('cart')
   }
 
+  ///// cart state
+
+  const cartModalIsOpen = ref(false)
+  const getCartModalIsOpen = computed(() => cartModalIsOpen)
+  function updateCartModalIsOpen() {
+    cartModalIsOpen.value = !cartModalIsOpen.value
+  } 
+
   return {
     getAllPages,
     getAllCamps,
@@ -309,6 +337,9 @@ export const useMainStore = defineStore('main', () => {
     addToCart,
     retrieveCart,
     clearCart,
-    updateCartQuantity
+    updateCampNights,
+    deleteItemFromCart,
+    getCartModalIsOpen,
+    updateCartModalIsOpen
   }
 })
