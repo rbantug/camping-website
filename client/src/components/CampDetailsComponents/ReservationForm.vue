@@ -1,19 +1,63 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
+
+import { useMainStore } from '@/stores/mainStore'
 
 import PrimaryButton from '../BaseComponents/Buttons/PrimaryButton.vue'
 import TransitionScroll from '../util/TransitionScroll.vue'
 import SecondaryButton from '../BaseComponents/Buttons/SecondaryButton.vue'
 
-const props = defineProps({
-  price: {
-    type: String,
-    required: true,
+interface Props {
+  name: string
+  price: number
+  image: string
+}
+
+const props = defineProps<Props>()
+
+const mainStore = useMainStore()
+
+const nights = ref(1)
+const date = ref(new Date())
+
+const formattedDate = computed({
+  get() {
+    return date.value.toISOString().split('T')[0]
+  },
+  set(value) {
+    date.value = new Date(value!)
   },
 })
 
-const nights = ref(1)
-const date = ref()
+const monthArr = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+]
+
+function addToCart() {
+  const month = monthArr[date.value.getMonth()]
+  const day = date.value.getDate()
+  const year = date.value.getFullYear()
+  mainStore.addToCart({
+    image: props.image,
+    name: props.name,
+    price: props.price,
+    startDate: `${month} ${day}, ${year}`,
+    nights: nights.value
+  })
+  
+  mainStore.updateCartModalIsOpen()
+}
 </script>
 
 <template>
@@ -47,6 +91,7 @@ const date = ref()
               <input
                 type="date"
                 class="w-full h-15 rounded-4xl text-neutral-900 border-2 focus:border-accent-primary hover:border-accent-primary dark:focus:border-accent-outline dark:hover:border-accent-outline dark:text-neutral-400 dark:border-neutral-400 dark:bg-neutral-900 dark:scheme-dark"
+                v-model="formattedDate"
               />
             </div>
             <div class="flex flex-col items-start gap-y-3 w-25">
@@ -61,14 +106,20 @@ const date = ref()
           <!-- buttons -->
           <div class="mt-10 flex flex-col items-center gap-y-5">
             <!-- TODO: Add to cart functionality -->
-            <PrimaryButton label="Add to Cart" size="large" class="w-full"/>
+            <PrimaryButton
+              label="Add to Cart"
+              size="large"
+              class="w-full"
+              disable-route
+              @click="addToCart"
+            />
             <div class="flex items-center gap-x-5">
-              <hr class="w-30 text-neutral-900 dark:text-neutral-400">
+              <hr class="w-30 text-neutral-900 dark:text-neutral-400" />
               <div class="text-neutral-900 dark:text-neutral-400">OR</div>
-              <hr class="w-30 text-neutral-900 dark:text-neutral-400">
+              <hr class="w-30 text-neutral-900 dark:text-neutral-400" />
             </div>
             <!-- TODO: This is a placeholder for shopify instant checkout -->
-            <SecondaryButton label="Buy me" size="large" class="w-full"/>
+            <SecondaryButton label="Buy me" size="large" class="w-full" />
           </div>
         </div>
       </div>
