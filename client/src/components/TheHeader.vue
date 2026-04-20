@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, Teleport, watch } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { useBreakpoints } from '@vueuse/core'
 
 import PrimaryButton from './BaseComponents/Buttons/PrimaryButton.vue'
@@ -53,10 +53,15 @@ watch(mdAndLarger, () => {
   forceCloseNavBar()
 })
 
-const cartModalIsOpen = ref(false)
+const cartModalIsOpen = mainStore.getCartModalIsOpen
 function toggleCartModal() {
-  cartModalIsOpen.value = !cartModalIsOpen.value
+  mainStore.updateCartModalIsOpen()
 }
+
+const getTotalCartItems = computed(() => {
+  return mainStore.getCart.value.length
+
+})
 </script>
 
 <template>
@@ -181,7 +186,7 @@ function toggleCartModal() {
               <div class="absolute top-3 -left-2">
                 <div class="p-2.5 bg-accent-secondary rounded-full">
                   <span class="absolute left-1.25 top-0.5 pb-1 text-xs text-white font-semibold"
-                    >0</span
+                    >{{ getTotalCartItems }}</span
                   >
                 </div>
               </div>
