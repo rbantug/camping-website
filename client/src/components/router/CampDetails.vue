@@ -55,7 +55,7 @@ function updateCampDetail(slug:string) {
     />
     <div class="relative pb-20 flex flex-col items-center lg:flex-row lg:justify-center">
       <DetailsAndAmenities :full-description="camp?.fullDescription" :amenities="camp?.amenities" class="lg:w-[60%]"/>
-      <ReservationForm :price="camp?.price"  class="lg:w-[40%] lg:sticky lg:top-0"/>
+      <ReservationForm :price="camp?.price" :name="camp?.name" :image="camp?.image" class="lg:w-[40%] lg:sticky lg:top-0"/>
     </div>
     <CampGallery :category="camp?.category"/>
   </div>
