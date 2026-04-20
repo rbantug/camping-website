@@ -3,11 +3,11 @@ import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Navigation, A11y } from 'swiper/modules'
 import { useBreakpoints } from '@vueuse/core'
 
+// do not delete
 import 'swiper/css'
 
 import LazyLoadImage from '../util/LazyLoadImage.vue'
 import TransitionScroll from '../util/TransitionScroll.vue'
-import PrimaryButton from '../BaseComponents/Buttons/PrimaryButton.vue'
 import SecondaryButton from '../BaseComponents/Buttons/SecondaryButton.vue'
 
 const breakpoints = useBreakpoints({
@@ -102,6 +102,11 @@ const clientArr = [
           :centered-slides="true"
           :navigation="{ nextEl: '.next-btn', prevEl: '.prev-btn' }"
           :loop="true"
+          :lazy="{
+            loadPrevNext: true,
+            loadPrevNextAmount: 2,
+          }"
+          :watch-slides-progress="true"
           class="md:max-w-250 lg:min-w-230 lg:max-w-400"
         >
           <swiper-slide
@@ -184,7 +189,12 @@ const clientArr = [
         <div
           class="flex flex-col gap-y-5 pt-20 md:flex-row md:gap-y-0 md:gap-x-5 md:pt-0 md:justify-center"
         >
-          <SecondaryButton label="Explore camps" :size="greaterEqualMD ? 'large' : 'default'" :white-ring="false" route-path="/camps" />
+          <SecondaryButton
+            label="Explore camps"
+            :size="greaterEqualMD ? 'large' : 'default'"
+            :white-ring="false"
+            route-path="/camps"
+          />
         </div>
       </TransitionScroll>
     </div>
