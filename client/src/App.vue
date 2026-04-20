@@ -42,6 +42,7 @@ onBeforeMount(() => {
 
 onMounted(() => {
   setupY(route.path)
+  mainStore.retrieveCart()
 })
 </script>
 
