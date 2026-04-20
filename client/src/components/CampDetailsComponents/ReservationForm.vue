@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, ref, onMounted } from 'vue'
 
 import { useMainStore } from '@/stores/mainStore'
 
@@ -9,7 +9,7 @@ import SecondaryButton from '../BaseComponents/Buttons/SecondaryButton.vue'
 
 interface Props {
   name: string
-  price: number
+  price: string
   image: string
 }
 
@@ -17,8 +17,9 @@ const props = defineProps<Props>()
 
 const mainStore = useMainStore()
 
+const tomorrowInMilliseconds = Date.now() + 86400000
 const nights = ref(1)
-const date = ref(new Date())
+const date = ref(new Date(tomorrowInMilliseconds))
 
 const formattedDate = computed({
   get() {
@@ -45,6 +46,17 @@ const monthArr = [
 ]
 
 function addToCart() {
+  if (typeof nights.value !== 'number' || nights.value < 1) {
+    nights.value = 1
+    updateInvalidNights(true)
+    return
+  }
+
+  if (date.value < new Date(tomorrowInMilliseconds)) {
+    updateInvalidDate(true)
+    return
+  }
+
   const month = monthArr[date.value.getMonth()]
   const day = date.value.getDate()
   const year = date.value.getFullYear()
@@ -58,6 +70,21 @@ function addToCart() {
   
   mainStore.updateCartModalIsOpen()
 }
+
+const invalidDate = ref(false)
+const invalidNights = ref(false)
+
+function updateInvalidDate(val:boolean) {
+    invalidDate.value = val
+}
+function updateInvalidNights(val:boolean) {
+    invalidNights.value = val
+}
+
+onMounted(() => {
+  invalidDate.value = false
+  invalidNights.value = false
+})
 </script>
 
 <template>
@@ -85,22 +112,29 @@ function addToCart() {
           </div>
           <hr class="my-8 text-neutral-700 dark:text-neutral-400" />
           <!-- Input boxes -->
-          <div class="w-full gap-x-3 grid grid-cols-[60%_40%] md:w-90 lg:gap-0">
+          <div class="w-full h-25 gap-x-3 grid grid-cols-[60%_40%] md:w-90 lg:gap-0">
             <div class="flex flex-col items-start gap-y-3 w-45">
               <span class="font-bold text-neutral-900 dark:text-neutral-100">Start Date</span>
               <input
                 type="date"
-                class="w-full h-15 rounded-4xl text-neutral-900 border-2 focus:border-accent-primary hover:border-accent-primary dark:focus:border-accent-outline dark:hover:border-accent-outline dark:text-neutral-400 dark:border-neutral-400 dark:bg-neutral-900 dark:scheme-dark"
+                class="w-full h-15 rounded-4xl text-neutral-900 border-2 focus:border-accent-primary hover:border-accent-primary dark:focus:border-accent-outline dark:hover:border-accent-outline dark:text-neutral-400 dark:border-neutral-400 dark:bg-neutral-900 dark:scheme-dark" :class="{ 'border-red-500 dark:border-red-500': invalidDate }"
                 v-model="formattedDate"
+                @click="updateInvalidDate(false)"
               />
+              <span v-if="invalidDate" class="text-red-400 font-semibold -mt-3 self-center">Invalid Date</span>
             </div>
-            <div class="flex flex-col items-start gap-y-3 w-25">
+            <div class="flex flex-col items-start gap-y-3 w-28">
               <span class="font-bold text-neutral-900 dark:text-neutral-100">Nights</span>
               <input
                 type="number"
+                min="1"
+                inputmode="numeric"
                 class="rounded-4xl w-full h-15 text-neutral-900 border-2 focus:border-accent-primary hover:border-accent-primary dark:focus:border-accent-outline dark:hover:border-accent-outline dark:text-neutral-400 dark:border-neutral-400 dark:bg-neutral-900 dark:scheme-dark"
+                :class="{ 'border-red-500 dark:border-red-500': invalidNights }"
                 v-model="nights"
+                @click="updateInvalidNights(false)"
               />
+              <span v-if="invalidNights" class="text-red-400 font-semibold -mt-3 self-center">Invalid Nights</span>
             </div>
           </div>
           <!-- buttons -->
