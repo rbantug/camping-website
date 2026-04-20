@@ -107,7 +107,7 @@ const getTotalCartItems = computed(() => {
               >
             </div>
           </router-link>
-          <div class="justify-end items-center flex gap-x-4">
+          <div class="ml-2 justify-end items-center flex gap-x-4">
             <!-- Hamburger menu -->
             <div v-if="!lgAndLarger" class="p-0 cursor-pointer" @click="toggleNavBarsAnimation">
               <hamburger-menu :is-open="navBarsAnimation" />
