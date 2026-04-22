@@ -63,7 +63,7 @@ function addToCart() {
   mainStore.addToCart({
     image: props.image,
     name: props.name,
-    price: props.price,
+    price: parseInt(props.price),
     startDate: `${month} ${day}, ${year}`,
     nights: nights.value
   })
