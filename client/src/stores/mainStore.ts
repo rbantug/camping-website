@@ -238,7 +238,13 @@ export const useMainStore = defineStore('main', () => {
   function addToCart(camp: AddToCart) {
     retrieveCart()
 
-    const index = cartData.value.findIndex((x) => x.name === camp.name)
+    const toAddCampDate = new Date(camp.startDate).getTime()
+
+    const index = cartData.value.findIndex((x) =>  {
+      const cartCampDate = new Date(x.startDate).getTime()
+      
+      return x.name === camp.name && cartCampDate === toAddCampDate
+    })
 
     if (index === -1) {
       cartData.value.push({
