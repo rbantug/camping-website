@@ -184,8 +184,8 @@ const getTotalCartItems = computed(() => {
                 </svg>
               </div>
               <div class="absolute top-3 -left-2">
-                <div class="p-2.5 bg-accent-secondary rounded-full">
-                  <span class="absolute left-1.25 top-0.5 pb-1 text-xs text-white font-semibold"
+                <div class="w-5 h-5 flex items-center justify-center bg-accent-secondary rounded-full">
+                  <span :class="['text-xs text-white font-semibold', { 'text-sm': getTotalCartItems < 10, 'test-xs': getTotalCartItems >= 10 }]"
                     >{{ getTotalCartItems }}</span
                   >
                 </div>
