@@ -47,6 +47,8 @@ function removeCamp(campName: string) {
   mainStore.deleteItemFromCart(campName)
 }
 
+const totalCartItems = computed(() => mainStore.getCart.value.length)
+
 const breakpoints = useBreakpoints({
   md: 768,
   lg: 994,
@@ -78,7 +80,12 @@ const md = breakpoints.greaterOrEqual('md')
             <div class="flex flex-col py-5">
               <!-- header -->
               <div class="w-[85%] mx-auto mb-5 flex justify-between">
-                <h3 class="font-semibold dark:text-neutral-100">Your Cart</h3>
+                <div class="flex items-center gap-x-2">
+                  <h3 class="font-semibold dark:text-neutral-100">Your Cart</h3>
+                  <div class="w-7 h-7 flex justify-center items-center rounded-full bg-accent-primary text-sm">
+                    <span class="font-semibold text-neutral-100 -ml-0.5 -mt-0.5">{{ totalCartItems }}</span>
+                  </div>
+                </div>
                 <div class="hover:cursor-pointer dark:text-neutral-100" @click="closeModal">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
