@@ -105,7 +105,7 @@ const md = breakpoints.greaterOrEqual('md')
                   <div
                     class="text-xl font-semibold flex justify-center items-center dark:text-neutral-100"
                   >
-                    Camps are nonexistent
+                    There are currently no camps
                   </div>
                 </div>
                 <div v-else>
