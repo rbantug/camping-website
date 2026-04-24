@@ -301,7 +301,11 @@ export const useMainStore = defineStore('main', () => {
     localStorage.setItem('cart', JSON.stringify(payload))
   }
 
-  function retrieveCart() {
+  /**
+   * Retrieves the cart data from the local storage. There is an option to check if any of the cart items have dates that have already passed and remove them.
+   * @param onStartUp 
+   */
+  function retrieveCart(onStartUp?:boolean) {
     const itemString = localStorage.getItem('cart')
     if (!itemString) return null
 
@@ -311,6 +315,17 @@ export const useMainStore = defineStore('main', () => {
       clearCart()
     } else {
       cartData.value = parsedData.data
+    }
+
+    // check if any of the cart items have start dates that have passed. If true, remove them.
+    if (onStartUp) {
+      const currDate = new Date().getTime()
+      const filteredArr = cartData.value.filter((x) => {
+        const cartItemDate = new Date(x.startDate).getTime()
+        return cartItemDate > currDate
+      })
+
+      cartData.value = filteredArr
     }
   }
 
