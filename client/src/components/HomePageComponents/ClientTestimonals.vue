@@ -187,7 +187,7 @@ const clientArr = [
       <!-- Buttons -->
       <TransitionScroll threshold>
         <div
-          class="flex flex-col gap-y-5 pt-20 md:flex-row md:gap-y-0 md:gap-x-5 md:pt-0 md:justify-center"
+          class="pt-20 md:flex-row md:gap-y-0 md:gap-x-5 md:pt-0 md:justify-center"
         >
           <SecondaryButton
             label="Explore camps"
