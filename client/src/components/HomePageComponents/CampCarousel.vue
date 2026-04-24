@@ -35,7 +35,12 @@ const campList = mainStore.getAllCamps
             Explore our camps
           </h1>
           <div class="w-full md:w-fit">
-            <secondary-button label="Browse all" size="large" :white-ring="false" route-path="/camps" />
+            <secondary-button
+              label="Browse all"
+              size="large"
+              :white-ring="false"
+              route-path="/camps"
+            />
           </div>
         </div>
       </transition-scroll>
@@ -47,6 +52,11 @@ const campList = mainStore.getAllCamps
             :space-between="20"
             :navigation="{ nextEl: '.next-btn', prevEl: '.prev-btn' }"
             :loop="true"
+            :lazy="{
+              loadPrevNext: true,
+              loadPrevNextAmount: 2,
+            }"
+            :watch-slides-progress="true"
             class="md:max-w-185 lg:min-w-230 lg:max-w-300"
           >
             <swiper-slide v-for="camp in campList" :key="camp.name">
