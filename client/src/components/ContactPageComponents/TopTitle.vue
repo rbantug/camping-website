@@ -1,17 +1,5 @@
 <script setup lang="ts">
-import { useHead } from '@unhead/vue'
-
 import TransitionScroll from '../util/TransitionScroll.vue'
-
-useHead({
-  link: [
-    {
-      rel: 'preload',
-      as: 'image',
-      href: 'https://dl.dropboxusercontent.com/scl/fi/2d04we4ywoi5i5dx8xkiu/gallery-mountain-1.avif?rlkey=obelhwb17doqjqwjb4im1jg9p',
-    },
-  ],
-})
 </script>
 
 <template>

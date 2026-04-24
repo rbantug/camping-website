@@ -3,7 +3,6 @@ import ContactDetails from '../ContactPageComponents/ContactDetails.vue';
 import FrequentlyAskedQuestions from '../ContactPageComponents/FrequentlyAskedQuestions.vue';
 import TheForm from '../ContactPageComponents/TheForm.vue';
 import TopTitle from '../ContactPageComponents/TopTitle.vue';
-
 </script>
 
 <template>

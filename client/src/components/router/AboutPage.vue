@@ -1,20 +1,8 @@
 <script setup lang="ts">
-import { useHead } from '@unhead/vue'
-
 import TransitionScroll from '../util/TransitionScroll.vue'
 import AboutUs from '../AboutPageComponents/AboutUs.vue'
 import CampValues from '../AboutPageComponents/CampValues.vue'
 import CallToAction from '../AboutPageComponents/CallToAction.vue'
-
-useHead({
-  link: [
-    {
-      rel: 'preload',
-      as: 'image',
-      href: 'https://dl.dropboxusercontent.com/scl/fi/tayfsfnprltsz3x4ng9qs/title-2.avif?rlkey=9eyg687z0ds6nwc3dctnjic2e',
-    },
-  ],
-})
 
 function goToTopAbout() {
   const el = document.getElementById('topAbout')

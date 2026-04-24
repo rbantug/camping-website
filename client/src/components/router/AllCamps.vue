@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref, onMounted, onBeforeMount, watch } from 'vue'
-import { useHead } from '@unhead/vue'
 import { useBreakpoints } from '@vueuse/core'
 
 import { useMainStore } from '@/stores/mainStore'
@@ -8,16 +7,6 @@ import TransitionScroll from '../util/TransitionScroll.vue'
 import CampCard from '../BaseComponents/CampCard.vue'
 
 import type { Camps } from '../../../interface'
-
-useHead({
-  link: [
-    {
-      rel: 'preload',
-      as: 'image',
-      href: 'https://dl.dropboxusercontent.com/scl/fi/26jjsubwisadujxc1ye60/title-1.avif?rlkey=6gxgj5ndtv8r7cg251ea3m5g9',
-    },
-  ],
-})
 
 const mainStore = useMainStore()
 
