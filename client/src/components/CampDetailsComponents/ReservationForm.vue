@@ -139,7 +139,6 @@ onMounted(() => {
           </div>
           <!-- buttons -->
           <div class="mt-10 flex flex-col items-center gap-y-5">
-            <!-- TODO: Add to cart functionality -->
             <PrimaryButton
               label="Add to Cart"
               size="large"
@@ -152,7 +151,7 @@ onMounted(() => {
               <div class="text-neutral-900 dark:text-neutral-400">OR</div>
               <hr class="w-30 text-neutral-900 dark:text-neutral-400" />
             </div>
-            <!-- TODO: This is a placeholder for shopify instant checkout -->
+            <!-- This is a placeholder for a stripe checkout -->
             <SecondaryButton label="Buy me" size="large" class="w-full" />
           </div>
         </div>
