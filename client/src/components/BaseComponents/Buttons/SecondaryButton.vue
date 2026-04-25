@@ -10,6 +10,7 @@ interface Props {
   noRing?: boolean
   whiteRing?: boolean
   routePath?: string
+  disableRoute?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -18,6 +19,7 @@ const props = withDefaults(defineProps<Props>(), {
   noRing: false,
   whiteRing: true,
   routePath: '/',
+  disableRoute: false
 })
 
 const rootStyling =
@@ -63,6 +65,7 @@ const outputTxtStyle = computed(() => {
 const router = useRouter()
 
 function gotoRoute() {
+  if (props.disableRoute) return
   router.push(props.routePath)
 }
 </script>
