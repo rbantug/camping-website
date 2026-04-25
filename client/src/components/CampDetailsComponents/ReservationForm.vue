@@ -2,7 +2,6 @@
 import { computed, ref, onMounted } from 'vue'
 
 import { useMainStore } from '@/stores/mainStore'
-import { useBreakpoints } from '@vueuse/core'
 
 import PrimaryButton from '../BaseComponents/Buttons/PrimaryButton.vue'
 import TransitionScroll from '../util/TransitionScroll.vue'
