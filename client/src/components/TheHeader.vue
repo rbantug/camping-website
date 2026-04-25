@@ -5,9 +5,12 @@ import { useBreakpoints } from '@vueuse/core'
 import PrimaryButton from './BaseComponents/Buttons/PrimaryButton.vue'
 import HamburgerMenu from './HeaderComponents/HamburgerMenu.vue'
 import NavMenu from './HeaderComponents/NavMenu.vue'
+import CartModal from './HeaderComponents/CartModal.vue'
 
 import { useMainStore } from '@/stores/mainStore'
-import CartModal from './HeaderComponents/CartModal.vue'
+import { useToast } from '@/composables/useToast'
+
+const { show, setPosition } = useToast()
 
 export interface NavItems {
   link: string
@@ -30,7 +33,11 @@ const pagesNavBarIsOpen = ref(false)
 function forceClosePNBIO() {
   pagesNavBarIsOpen.value = false
 }
-function togglePNBIO() {
+function togglePNBIO(route?: string) {
+  if (route === 'Login/Register') {
+    setPosition('bottom-left')
+    show('Sorry! This feature will be implemented in the future.', 'info', 5000)
+  }
   pagesNavBarIsOpen.value = !pagesNavBarIsOpen.value
 }
 
@@ -60,7 +67,6 @@ function toggleCartModal() {
 
 const getTotalCartItems = computed(() => {
   return mainStore.getCart.value.length
-
 })
 </script>
 
@@ -162,14 +168,15 @@ const getTotalCartItems = computed(() => {
                     :key="link"
                     class="justify-start hover:text-accent-primary duration-100 ease dark:text-white transition-color"
                   >
-                    <router-link :to="route" @click="togglePNBIO">{{ link }}</router-link>
+                    <router-link :to="route" @click="togglePNBIO(link)">{{ link }}</router-link>
                   </div>
                 </div>
               </transition>
             </div>
             <!-- Cart -->
             <div
-              class="relative cursor-pointer hover:scale-90 hover:bg-gray-200 hover:rounded-4xl duration-100 ease dark:hover:bg-black transition-color" @click="toggleCartModal"
+              class="relative cursor-pointer hover:scale-90 hover:bg-gray-200 hover:rounded-4xl duration-100 ease dark:hover:bg-black transition-color"
+              @click="toggleCartModal"
             >
               <div
                 class="text-neutral-800 scale-150 dark:text-neutral-200 transition-color duration-300"
@@ -184,14 +191,20 @@ const getTotalCartItems = computed(() => {
                 </svg>
               </div>
               <div class="absolute top-3 -left-2">
-                <div class="w-5 h-5 flex items-center justify-center bg-accent-secondary rounded-full">
-                  <span :class="['text-xs text-white font-semibold', { 'text-sm': getTotalCartItems < 10, 'test-xs': getTotalCartItems >= 10 }]"
+                <div
+                  class="w-5 h-5 flex items-center justify-center bg-accent-secondary rounded-full"
+                >
+                  <span
+                    :class="[
+                      'text-xs text-white font-semibold',
+                      { 'text-sm': getTotalCartItems < 10, 'test-xs': getTotalCartItems >= 10 },
+                    ]"
                     >{{ getTotalCartItems }}</span
                   >
                 </div>
               </div>
             </div>
-            <CartModal :is-open="cartModalIsOpen" @emit-close-modal="toggleCartModal"/>
+            <CartModal :is-open="cartModalIsOpen" @emit-close-modal="toggleCartModal" />
             <!-- breakpoint "md" only, book now button -->
             <div v-if="mdAndLarger">
               <primary-button label="Book now" size="default" route-path="/camps" />

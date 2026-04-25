@@ -6,6 +6,8 @@ import { useMainStore } from '@/stores/mainStore'
 import PrimaryButton from '../BaseComponents/Buttons/PrimaryButton.vue'
 import LazyLoadImage from '../util/LazyLoadImage.vue'
 
+import { useToast } from '@/composables/useToast'
+
 interface Props {
   isOpen: boolean
 }
@@ -55,6 +57,13 @@ const breakpoints = useBreakpoints({
 })
 
 const md = breakpoints.greaterOrEqual('md')
+
+const { show, setPosition } = useToast()
+
+function goToCheckout() {
+  setPosition('bottom-left')
+  show('Sorry! This feature will be implemented in the future.', 'info', 5000)
+}
 </script>
 
 <template>
@@ -174,6 +183,8 @@ const md = breakpoints.greaterOrEqual('md')
                   :size="md ? 'large' : 'default'"
                   class="mt-10"
                   :disabled="cartData.length === 0"
+                  disable-route
+                  @click="goToCheckout"
                 />
               </div>
             </div>
@@ -181,5 +192,6 @@ const md = breakpoints.greaterOrEqual('md')
         </div>
       </Transition>
     </Teleport>
+    <FeatureNotAvailableModal />
   </div>
 </template>

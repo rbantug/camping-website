@@ -7,6 +7,8 @@ import PrimaryButton from '../BaseComponents/Buttons/PrimaryButton.vue'
 import TransitionScroll from '../util/TransitionScroll.vue'
 import SecondaryButton from '../BaseComponents/Buttons/SecondaryButton.vue'
 
+import { useToast } from '@/composables/useToast'
+
 interface Props {
   name: string
   price: string
@@ -81,6 +83,13 @@ function updateInvalidNights(val:boolean) {
     invalidNights.value = val
 }
 
+const { show, setPosition } = useToast()
+
+function goToCheckout() {
+  setPosition('bottom-left')
+  show('Sorry! This feature will be implemented in the future.', 'info', 5000)
+}
+
 onMounted(() => {
   invalidDate.value = false
   invalidNights.value = false
@@ -152,7 +161,7 @@ onMounted(() => {
               <hr class="w-30 text-neutral-900 dark:text-neutral-400" />
             </div>
             <!-- This is a placeholder for a stripe checkout -->
-            <SecondaryButton label="Buy me" size="large" class="w-full" />
+            <SecondaryButton label="Buy me" size="large" class="w-full" @click="goToCheckout" disable-route/>
           </div>
         </div>
       </div>

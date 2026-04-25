@@ -8,6 +8,7 @@ import TheHeader from './components/TheHeader.vue'
 import TheFooter from './components/TheFooter.vue'
 import ScrollUpButton from './components/ScrollUpButton.vue'
 import ToggleDarkModeButton from './components/ToggleDarkModeButton.vue'
+import ToastContainer from './components/util/ToastContainer.vue'
 
 useHead({
   link: [
@@ -86,6 +87,7 @@ onMounted(() => {
 
     <ScrollUpButton />
     <ToggleDarkModeButton />
+    <ToastContainer />
   </main>
 </template>
 
