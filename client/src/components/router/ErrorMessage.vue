@@ -9,10 +9,10 @@
           <h1 class="h-40 flex items-center font-bold text-[10rem] dark:text-neutral-500">0</h1>
           <h1 class="h-40 flex items-center font-bold text-[10rem] dark:text-neutral-200">4</h1>
         </div>
-        <div class="h-150 flex flex-col justify-center">
-          <div class="flex  pb-5">
-            <div class="text-accent-primary dark:text-accent-outline">
-              <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 32 32">
+        <div class="h-150 flex flex-col justify-center md:">
+          <div class="flex flex-col md:flex-row md: gap-x-15 md:mb-8">
+            <div class="text-accent-primary dark:text-accent-outline md:scale-150">
+              <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 32 32">
                 <g fill="currentColor">
                   <path
                     d="M15 15.5a3.5 3.5 0 1 1-7 0a3.5 3.5 0 0 1 7 0m-.043 3.5h2.086a.5.5 0 0 1 .353.854l-1.042 1.042a.5.5 0 0 1-.708 0l-1.042-1.042a.5.5 0 0 1 .353-.854M16 22a2 2 0 0 0-2 2v1a2 2 0 1 0 4 0v-1a2 2 0 0 0-2-2m4.5-3a3.5 3.5 0 1 0 0-7a3.5 3.5 0 0 0 0 7"
@@ -23,8 +23,8 @@
                 </g>
               </svg>
             </div>
-            <div class="text-accent-primary/50 dark:text-amber-200">
-              <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 32 32">
+            <div class="text-accent-primary/50 dark:text-amber-200 md:scale-150">
+              <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 32 32">
                 <g fill="currentColor">
                   <path
                     d="M15 15.5a3.5 3.5 0 1 1-7 0a3.5 3.5 0 0 1 7 0m-.043 3.5h2.086a.5.5 0 0 1 .353.854l-1.042 1.042a.5.5 0 0 1-.708 0l-1.042-1.042a.5.5 0 0 1 .353-.854M16 22a2 2 0 0 0-2 2v1a2 2 0 1 0 4 0v-1a2 2 0 0 0-2-2m4.5-3a3.5 3.5 0 1 0 0-7a3.5 3.5 0 0 0 0 7"
@@ -35,8 +35,8 @@
                 </g>
               </svg>
             </div>
-            <div class="text-accent-primary/25 dark:text-accent-outline">
-              <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 32 32">
+            <div class="text-accent-primary/25 dark:text-accent-outline md:scale-150">
+              <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 32 32">
                 <g fill="currentColor">
                   <path
                     d="M15 15.5a3.5 3.5 0 1 1-7 0a3.5 3.5 0 0 1 7 0m-.043 3.5h2.086a.5.5 0 0 1 .353.854l-1.042 1.042a.5.5 0 0 1-.708 0l-1.042-1.042a.5.5 0 0 1 .353-.854M16 22a2 2 0 0 0-2 2v1a2 2 0 1 0 4 0v-1a2 2 0 0 0-2-2m4.5-3a3.5 3.5 0 1 0 0-7a3.5 3.5 0 0 0 0 7"
@@ -48,9 +48,9 @@
               </svg>
             </div>
           </div>
-          <div class="border-t-5 pb-5 dark:text-neutral-500"></div>
-          <div class="text-neutral-700 text-3xl dark:text-neutral-400">You aren't supposed to be here</div>
-          <div class="text-neutral-700 text-3xl dark:text-neutral-400">Go back 
+          <div class="border-t-5 my-5 dark:text-neutral-500" />
+            <div class="mb-2 text-neutral-700 text-3xl dark:text-neutral-400 md:mb-0">You aren't supposed to be here</div>
+            <div class="text-neutral-700 text-3xl dark:text-neutral-400">Go back 
             <router-link to="home" class="text-accent-primary dark:text-accent-outline">home</router-link>
           </div>
         </div>
