@@ -2,6 +2,7 @@
 import { computed, ref, onMounted } from 'vue'
 
 import { useMainStore } from '@/stores/mainStore'
+import { useBreakpoints } from '@vueuse/core'
 
 import PrimaryButton from '../BaseComponents/Buttons/PrimaryButton.vue'
 import TransitionScroll from '../util/TransitionScroll.vue'
@@ -86,7 +87,7 @@ function updateInvalidNights(val:boolean) {
 const { show, setPosition } = useToast()
 
 function goToCheckout() {
-  setPosition('bottom-left')
+  setPosition('bottom-center')
   show('Sorry! This feature will be implemented in the future.', 'info', 5000)
 }
 
