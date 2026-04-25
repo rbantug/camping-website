@@ -33,7 +33,7 @@ const pagesNavBarIsOpen = ref(false)
 function forceClosePNBIO() {
   pagesNavBarIsOpen.value = false
 }
-function togglePNBIO(route?: string) {
+function togglePNBIO(route?:PointerEvent | string) {
   if (route === 'Login/Register') {
     setPosition('bottom-center')
     show('Sorry! This feature will be implemented in the future.', 'info', 5000)
