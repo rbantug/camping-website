@@ -30,7 +30,7 @@ useHead({
     {
       rel: 'preload',
       as: 'image',
-      href: 'https://dl.dropboxusercontent.com/scl/fi/a1q1m6i4529oba7ls4kh6/camping-stars-2.avif?rlkey=14kkjyab0xaii38ns6pz5f0jy',
+      href: 'https://dl.dropboxusercontent.com/scl/fi/ion6jewkcufvpwm3upynj/camping-stars-2.avif?rlkey=oowzevuai5e7stxk3r5wdw8bl',
     },
   ],
 })

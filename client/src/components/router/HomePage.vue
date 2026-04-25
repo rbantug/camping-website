@@ -11,7 +11,7 @@ import ClientTestimonals from '../HomePageComponents/ClientTestimonals.vue'
 <template>
   <div class="max-w-screen h-fit bg-neutral-100 dark:bg-neutral-900">
     <div
-      class="flex items-center bg-[url(https://dl.dropboxusercontent.com/scl/fi/a1q1m6i4529oba7ls4kh6/camping-stars-2.avif?rlkey=14kkjyab0xaii38ns6pz5f0jy)] bg-cover bg-center h-200 md:h-screen"
+      class="flex items-center bg-[url(https://dl.dropboxusercontent.com/scl/fi/ion6jewkcufvpwm3upynj/camping-stars-2.avif?rlkey=oowzevuai5e7stxk3r5wdw8bl)] bg-cover bg-center h-200 md:h-screen"
     >
       <TransitionScroll>
         <HeroSection />
