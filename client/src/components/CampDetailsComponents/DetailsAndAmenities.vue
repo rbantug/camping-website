@@ -33,27 +33,27 @@ const md = breakpoints.greaterOrEqual('md')
   <div class="h-fit bg-neutral-100 dark:bg-neutral-900 transition-colors duration-300 lg:max-w-200">
     <div class="w-[90%] mx-auto">
       <div>
-        <h1 class="pt-10 text-3xl font-bold text-neutral-900 dark:text-neutral-100">
+        <h1 class="pt-10 text-3xl font-bold text-neutral-900 dark:text-neutral-100" data-test="headerMain">
           About the camp
         </h1>
-        <p class="mt-5 text-neutral-600 leading-7 dark:text-neutral-400 md:text-lg">
+        <p class="mt-5 text-neutral-600 leading-7 dark:text-neutral-400 md:text-lg" data-test="fullDescription">
           {{ props.fullDescription }}
         </p>
         <ul class="my-8 ml-4">
-          <li v-for="list in additionalContentList" :key="list" class="mt-3 flex gap-5 text-neutral-600 leading-7 dark:text-neutral-400 md:text-lg">
+          <li v-for="list in additionalContentList" :key="list" class="mt-3 flex gap-5 text-neutral-600 leading-7 dark:text-neutral-400 md:text-lg" data-test="listContent">
             <span>•</span>
             <span>{{ list }}</span>
           </li>
         </ul>
-        <p v-for="paragraph in additionalContentParagraph" :key="paragraph" class="mt-5 text-neutral-600 leading-7 dark:text-neutral-400 md:text-lg">{{ paragraph }}</p>
+        <p v-for="paragraph in additionalContentParagraph" :key="paragraph" class="mt-5 text-neutral-600 leading-7 dark:text-neutral-400 md:text-lg" data-test="paragraphContent">{{ paragraph }}</p>
       </div>
       <hr class="my-10 text-neutral-700 dark:text-neutral-400" />
       <div>
-        <h1 class="my-10 text-3xl font-bold text-neutral-900 dark:text-neutral-100">
+        <h1 class="my-10 text-3xl font-bold text-neutral-900 dark:text-neutral-100" data-test="headerAmenities">
           Camp Amenities
         </h1>
         <div class="max-w-100 grid grid-cols-2 gap-y-8 md:grid-cols-3 md:max-w-150 md:gap-5">
-          <div v-for="amenity in props.amenities" :key="amenity" class="">
+          <div v-for="amenity in props.amenities" :key="amenity" data-test="amenityBadge">
             <BaseBadge :name="amenity" :border="false" :text-size="md ? 'lg' : 'md'" increase-gap />
           </div>
         </div>
