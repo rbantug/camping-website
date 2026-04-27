@@ -9,13 +9,26 @@ import SecondaryButton from '../BaseComponents/Buttons/SecondaryButton.vue'
 
 import { useToast } from '@/composables/useToast'
 
-interface Props {
-  name: string
-  price: string
-  image: string
-}
-
-const props = defineProps<Props>()
+const props = defineProps({
+  name: {
+    type: String,
+    validator(val:string) {
+      return val.length >= 10
+    }
+  },
+  price: {
+    type: String,
+    validator(val:string) {
+      return /^\d*$/.test(val)
+    }
+  },
+  image: {
+    type: String,
+    validator(val:string) {
+      return /\.(jpg|jpeg|png|gif|webp|svg|avif)$/i.test(val)
+    }
+  }
+})
 
 const mainStore = useMainStore()
 
@@ -62,6 +75,9 @@ function addToCart() {
   const month = monthArr[date.value.getMonth()]
   const day = date.value.getDate()
   const year = date.value.getFullYear()
+
+  if (!props.image || !props.name || !props.price) return
+
   mainStore.addToCart({
     image: props.image,
     name: props.name,
@@ -100,9 +116,9 @@ onMounted(() => {
   <div class="flex justify-center items-center pt-10 lg:-mt-250">
     <TransitionScroll delay="delay-1000">
       <div
-        class="bg-neutral-100 rounded-3xl border-2 border-neutral-500 h-175 w-full max-w-90 dark:bg-neutral-900 transition-color duration-300 dark:border-neutral-400 md:max-w-190 lg:max-w-100"
+        class="bg-neutral-100 rounded-3xl border-2 border-neutral-500 h-fit w-full max-w-90 dark:bg-neutral-900 transition-color duration-300 dark:border-neutral-400 md:max-w-190 lg:max-w-100"
       >
-        <div class="w-[85%] pt-10 mx-auto">
+        <div class="w-[85%] pt-10 pb-12 mx-auto">
           <div>
             <!-- Heading -->
             <h1 data-test="header" class="text-2xl font-bold text-neutral-900 dark:text-neutral-100">Reserve Camp</h1>
@@ -113,7 +129,7 @@ onMounted(() => {
           </div>
           <!-- Price -->
           <div class="mt-5" data-test="priceContainer">
-            <span class="text-neutral-700 dark:text-neutral-400 text-lg">From</span>
+            <span class="mr-2 text-neutral-700 dark:text-neutral-400 text-lg">From</span>
             <span class="font-bold text-xl text-neutral-900 dark:text-neutral-100"
               >$ {{ props.price }} USD</span
             >
