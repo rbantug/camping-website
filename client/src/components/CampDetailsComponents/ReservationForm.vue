@@ -105,15 +105,15 @@ onMounted(() => {
         <div class="w-[85%] pt-10 mx-auto">
           <div>
             <!-- Heading -->
-            <h1 class="text-2xl font-bold text-neutral-900 dark:text-neutral-100">Reserve Camp</h1>
-            <p class="mt-2 text-neutral-700 dark:text-neutral-400 md:text-lg">
+            <h1 data-test="header" class="text-2xl font-bold text-neutral-900 dark:text-neutral-100">Reserve Camp</h1>
+            <p data-test="headerDescription" class="mt-2 text-neutral-700 dark:text-neutral-400 md:text-lg">
               Vitae pellentesque sem placerat in id cursus mi. Cursus mi pretium tellus duis
               convallis tempus leo.
             </p>
           </div>
           <!-- Price -->
-          <div class="mt-5">
-            <div class="text-neutral-700 dark:text-neutral-400 text-lg">From</div>
+          <div class="mt-5" data-test="priceContainer">
+            <span class="text-neutral-700 dark:text-neutral-400 text-lg">From</span>
             <span class="font-bold text-xl text-neutral-900 dark:text-neutral-100"
               >$ {{ props.price }} USD</span
             >
@@ -123,17 +123,18 @@ onMounted(() => {
           <!-- Input boxes -->
           <div class="w-full h-25 gap-x-3 grid grid-cols-[60%_40%] md:w-90 lg:gap-0">
             <div class="flex flex-col items-start gap-y-3 w-45">
-              <span class="font-bold text-neutral-900 dark:text-neutral-100">Start Date</span>
+              <span class="font-bold text-neutral-900 dark:text-neutral-100" data-test="startDateLabel">Start Date</span>
               <input
                 type="date"
                 class="w-full h-15 rounded-4xl text-neutral-900 border-2 focus:border-accent-primary hover:border-accent-primary dark:focus:border-accent-outline dark:hover:border-accent-outline dark:text-neutral-400 dark:border-neutral-400 dark:bg-neutral-900 dark:scheme-dark" :class="{ 'border-red-500 dark:border-red-500': invalidDate }"
                 v-model="formattedDate"
                 @click="updateInvalidDate(false)"
+                data-test="startDateInput"
               />
-              <span v-if="invalidDate" class="text-red-400 font-semibold -mt-3 self-center">Invalid Date</span>
+              <span v-show="invalidDate" class="text-red-400 font-semibold -mt-3 self-center" data-test="startDateError">Invalid Date</span>
             </div>
             <div class="flex flex-col items-start gap-y-3 w-28">
-              <span class="font-bold text-neutral-900 dark:text-neutral-100">Nights</span>
+              <span class="font-bold text-neutral-900 dark:text-neutral-100" data-test="nightsLabel">Nights</span>
               <input
                 type="number"
                 min="1"
@@ -142,8 +143,9 @@ onMounted(() => {
                 :class="{ 'border-red-500 dark:border-red-500': invalidNights }"
                 v-model="nights"
                 @click="updateInvalidNights(false)"
+                data-test="nightsInput"
               />
-              <span v-if="invalidNights" class="text-red-400 font-semibold -mt-3 self-center">Invalid Nights</span>
+              <span v-show="invalidNights" class="text-red-400 font-semibold -mt-3 self-center" data-test="nightsError">Invalid Nights</span>
             </div>
           </div>
           <!-- buttons -->
@@ -154,6 +156,7 @@ onMounted(() => {
               class="w-full"
               disable-route
               @click="addToCart"
+              data-test="addToCartBtn"
             />
             <div class="flex items-center gap-x-5">
               <hr class="w-30 text-neutral-900 dark:text-neutral-400" />
@@ -161,7 +164,7 @@ onMounted(() => {
               <hr class="w-30 text-neutral-900 dark:text-neutral-400" />
             </div>
             <!-- This is a placeholder for a stripe checkout -->
-            <SecondaryButton label="Buy me" size="large" class="w-full" @click="goToCheckout" disable-route/>
+            <SecondaryButton label="Buy me" size="large" class="w-full" @click="goToCheckout" disable-route data-test="buyMeBtn"/>
           </div>
         </div>
       </div>
