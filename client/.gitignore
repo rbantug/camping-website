@@ -36,3 +36,5 @@ coverage
 __screenshots__/
 
 /spec
+
+src/components/router/ConvertURL.vue
