@@ -102,14 +102,14 @@ onMounted(() => {
         <div
           class="mx-auto max-w-100 flex flex-col gap-y-5 md:flex-row md:max-w-400 md:justify-between md:items-center"
         >
-          <h1 class="text-2xl font-bold text-neutral-900 dark:text-neutral-100">Camp Gallery</h1>
-          <PrimaryButton label="Book camp" :size="md ? 'large' : 'default'" class="md:w-60" disable-route @click="scrollToForm"/>
+          <h1 class="text-2xl font-bold text-neutral-900 dark:text-neutral-100" data-test="header">Camp Gallery</h1>
+          <PrimaryButton label="Book camp" :size="md ? 'large' : 'default'" class="md:w-60" disable-route @click="scrollToForm" data-test="btn"/>
         </div>
       </TransitionScroll>
       <div
         class="mt-10 mx-auto grid grid-cols-1 items-center justify-center gap-y-5 md:grid-cols-2 md:max-w-200 lg:max-w-260"
       >
-        <div v-for="n in 4" :key="n - 1" class="mx-auto">
+        <div v-for="n in 4" :key="n - 1" class="mx-auto" >
           <div
             class="overflow-hidden w-80 h-50 rounded-xl hover:cursor-pointer md:w-90 md:h-60 lg:w-120 lg:h-80"
             @click="showOverlay(n - 1)"
@@ -118,7 +118,7 @@ onMounted(() => {
               :img-path="img[n - 1]"
               :alt-name="`${props.category}-${n - 1}`"
               :blurry-img-path="blurryImg[n - 1]"
-              class="w-90 h-50 rounded-xl duration-300 hover:scale-110 md:w-100 md:h-70 lg:w-130 lg:h-80"
+              class="w-90 h-50 rounded-xl duration-300 hover:scale-110 md:w-100 md:h-70 lg:w-130 lg:h-80" data-test="imageGroup"
             />
           </div>
         </div>
@@ -129,6 +129,7 @@ onMounted(() => {
       v-if="overlayIsVisible"
       class="fixed inset-0 flex items-center justify-center bg-neutral-900/60 z-15"
       @click="hideOverlay"
+      data-test="overlay"
     >
       <swiper
         :slides-per-view="1"
@@ -145,14 +146,17 @@ onMounted(() => {
               :img-path="img[n - 1]"
               :blurry-img-path="blurryImg[n - 1]"
               :alt-name="`${props.category}-${n - 1}`"
+              data-test="img-slider"
             />
             <div
               class="absolute top-0 left-0 bg-transparent h-100 w-45 z-20 md:h-150 md:w-100 lg:h-200 lg:w-150"
               @click.stop="goToPrevSlide"
+              data-test="swiperPrevBtn"
             ></div>
             <div
               class="absolute top-0 right-0 bg-transparent h-100 w-45 md:h-150 md:w-100 lg:h-200 lg:w-150 z-20"
               @click.stop="goToNextSlide"
+              data-test="swiperNextBtn"
             ></div>
           </div>
         </swiper-slide>
