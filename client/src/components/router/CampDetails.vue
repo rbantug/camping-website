@@ -48,15 +48,15 @@ function updateCampDetail(slug:string) {
 <template>
   <div class="h-fit bg-neutral-100 dark:bg-neutral-900 transition-colors duration-300">
     <TopTitle
-      :img-path="camp?.imageHires"
-      :blurry-img="camp?.blurryImg"
-      :name="camp?.name"
-      :short-description="camp?.shortDescription"
+      :img-path="camp!.imageHires"
+      :blurry-img="camp!.blurryImg"
+      :name="camp!.name"
+      :short-description="camp!.shortDescription"
     />
     <div class="relative pb-20 flex flex-col items-center lg:flex-row lg:justify-center">
-      <DetailsAndAmenities :full-description="camp?.fullDescription" :amenities="camp?.amenities" class="lg:w-[60%]"/>
-      <ReservationForm :price="camp?.price" :name="camp?.name" :image="camp?.image" class="lg:w-[40%] lg:sticky lg:top-0"/>
+      <DetailsAndAmenities :full-description="camp!.fullDescription" :amenities="camp!.amenities" class="lg:w-[60%]"/>
+      <ReservationForm :price="camp!.price" :name="camp!.name" :image="camp!.image" class="lg:w-[40%] lg:sticky lg:top-0"/>
     </div>
-    <CampGallery :category="camp?.category"/>
+    <CampGallery :category="camp!.category"/>
   </div>
 </template>
