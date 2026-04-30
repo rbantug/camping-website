@@ -6,7 +6,6 @@ const AllCamps = () => import('@/components/router/AllCamps.vue')
 const CampDetails = () => import('@/components/router/CampDetails.vue')
 const ContactPage = () => import('@/components/router/ContactPage.vue')
 const ErrorMessage = () => import('@/components/router/ErrorMessage.vue')
-const ConvertURL = () => import('@/components/router/ConvertURL.vue')
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -16,7 +15,6 @@ const router = createRouter({
     { name: 'allCamps', path: '/camps', component: AllCamps },
     { name: 'campDetails', path: '/camps/:slug', component: CampDetails, props: true },
     { name: 'contact', path: '/contact', component: ContactPage },
-    { name: 'convertUrl', path: '/convert', component: ConvertURL },
     { path: '/:anything(.*)', component: ErrorMessage },
   ],
   scrollBehavior (to, from, savedPosition) {
