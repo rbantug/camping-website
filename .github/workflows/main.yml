@@ -9,13 +9,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - run: cd ./client
       - uses: actions/checkout@v6
 
       - uses: actions/setup-node@v6
         with:
           node-version: 24
-
-      - run: cd ./client
+          
       - run: npm install
       - run: npm run test:unit
 
