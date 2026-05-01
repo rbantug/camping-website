@@ -1,5 +1,4 @@
 import './assets/css/main.css'
-import 'primeicons/primeicons.css'
 
 import { createHead } from '@unhead/vue/client'
 import { createApp } from 'vue'
