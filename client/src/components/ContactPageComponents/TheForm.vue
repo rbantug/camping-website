@@ -4,6 +4,7 @@ import { useBreakpoints } from '@vueuse/core'
 
 import PrimaryButton from '../BaseComponents/Buttons/PrimaryButton.vue'
 import TransitionScroll from '../util/TransitionScroll.vue'
+import { useToast } from '@/composables/useToast'
 
 const mainStore = useMainStore()
 
@@ -27,6 +28,18 @@ const subjectList = [
   'Complaint',
   'Order Issue / Refund Request',
 ]
+
+const { show, setPosition } = useToast()
+
+function runSubmitBtn() {
+  setPosition('bottom-center')
+  show('Sorry! This feature will be implemented in the future.', 'info', 5000)
+}
+
+function runSocialMediaBtn(socialMedia:string) {
+  setPosition('bottom-center')
+  show(`Yup, that is a button for ${socialMedia}`, 'success', 5000)
+}
 </script>
 
 <template>
@@ -113,11 +126,14 @@ const subjectList = [
               label="Submit"
               :size="md ? 'large' : 'default'"
               class="w-full md:w-fit"
+              disable-route
+              @click="runSubmitBtn"
             />
             <div class="mt-5 flex gap-x-2">
               <!-- social media buttons -->
               <div v-for="{ name, svg } in iconArr" :key="name">
-                <a href="/">
+                <!-- href attribute was deliberately removed -->
+                <a @click="runSocialMediaBtn(name)" class="hover:cursor-pointer">
                   <div
                     class="w-8 h-8 md:w-9 md:h-9 rounded-full bg-transparent shadow-md/20 flex items-center justify-center dark:shadow-none dark:ring-2 dark:ring-neutral-500"
                   >
