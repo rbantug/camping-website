@@ -1,9 +1,17 @@
 <script setup lang="ts">
-import { useMainStore } from '@/stores/mainStore';
+import { useMainStore } from '@/stores/mainStore'
+import { useToast } from '@/composables/useToast'
 
 const mainStore = useMainStore()
 
 const iconArr = mainStore.getIconArr
+
+const { show, setPosition } = useToast()
+
+function runSocialMediaBtn(socialMedia: string) {
+  setPosition('bottom-center')
+  show(`Yup, that is a button for ${socialMedia}`, 'success', 5000)
+}
 </script>
 
 <template>
@@ -34,11 +42,15 @@ const iconArr = mainStore.getIconArr
     </p>
     <div class="flex gap-x-4">
       <div v-for="{ name, svg } in iconArr" :key="name">
-        <a href="/">
+        <!-- href attribute was deliberately removed -->
+        <a @click="runSocialMediaBtn(name)" class="hover:cursor-pointer">
           <div
             class="w-8 h-8 md:w-9 md:h-9 rounded-full bg-transparent shadow-md/20 flex items-center justify-center dark:shadow-none dark:ring-2 dark:ring-neutral-500"
           >
-            <div v-html="svg" class="text-accent-primary md:scale-110 dark:text-accent-secondary"></div>
+            <div
+              v-html="svg"
+              class="text-accent-primary md:scale-110 dark:text-accent-secondary"
+            ></div>
           </div>
         </a>
       </div>
