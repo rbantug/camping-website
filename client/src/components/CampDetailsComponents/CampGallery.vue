@@ -100,7 +100,7 @@ onMounted(() => {
     <div class="h-fit w-[90%] mx-auto">
       <TransitionScroll>
         <div
-          class="mx-auto max-w-100 flex flex-col gap-y-5 md:flex-row md:max-w-400 md:justify-between md:items-center"
+          class="mx-auto max-w-100 flex flex-col gap-y-5 md:flex-row md:max-w-300 md:justify-between md:items-center"
         >
           <h1 class="text-2xl font-bold text-neutral-900 dark:text-neutral-100" data-test="header">Camp Gallery</h1>
           <PrimaryButton label="Book camp" :size="md ? 'large' : 'default'" class="md:w-60" disable-route @click="scrollToForm" data-test="btn"/>
