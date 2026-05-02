@@ -63,6 +63,7 @@ watch(mdAndLarger, () => {
 const cartModalIsOpen = mainStore.getCartModalIsOpen
 function toggleCartModal() {
   mainStore.updateCartModalIsOpen()
+  pagesNavBarIsOpen.value = false
 }
 
 const getTotalCartItems = computed(() => {
