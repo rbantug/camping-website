@@ -2,7 +2,7 @@
 
 Link to website: https://camping-website-pu0l.onrender.com/
 
-Status: Online but still Work In Progress. Currently focusing on completing the component tests.
+Status: Online but still a work in progress. Currently focusing on completing the component tests.
 
 Design was based on https://rentaltemplate.webflow.io/home. 
 
@@ -21,3 +21,9 @@ The website is responsive in mobile, tablet and desktop view. There is component
 * Swiper.js
 * Vitest
 * Vue/test-utils
+
+## What I learned from this project
+
+Using vitest + vue/test-utils for component testing was new to me. Mocking and stubbing components with their dependencies to test their behavior was what preoccupied me most of the time. It was confusing at first but using an AI coding agent made it easier to understand how component testing is properly implemented. The coding agent was not that helpful in creating whole blocks of code but it did provided me with answers when I encountered roadblocks.
+
+## Website Demo
