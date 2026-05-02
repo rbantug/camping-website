@@ -28,4 +28,6 @@ Using vitest + vue/test-utils for component testing was new to me. Mocking and s
 
 ## Website Demo
 
-Desktop view - [![Watch the video]()](https://www.youtube.com/watch?v=JtpiE0b6GAw)
+[![Desktop view]()](https://www.youtube.com/watch?v=JtpiE0b6GAw)
+[![Tablet view]()](https://www.youtube.com/watch?v=NzyWgNtN-qo)
+[![Mobile view]()](https://www.youtube.com/watch?v=kaAqrHhOlw0)
