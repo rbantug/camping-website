@@ -25,7 +25,7 @@ const props = defineProps({
   image: {
     type: String,
     validator(val:string) {
-      return /\.(jpg|jpeg|png|gif|webp|svg|avif)$/i.test(val)
+      return /\.(jpg|jpeg|png|gif|webp|svg|avif)\b/i.test(val)
     }
   }
 })
