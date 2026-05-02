@@ -39,13 +39,13 @@ const containerClasses = computed(() => {
         v-for="toast in toasts"
         :key="toast.id"
         :class="[
-          'pointer-events-auto px-20 py-8 rounded-lg shadow-lg cursor-pointer',
-          'min-w-55 max-w-sm flex items-center justify-between gap-3',
+          'pointer-events-auto px-15 py-8 rounded-lg shadow-lg cursor-pointer',
+          'min-w-55 max-w-sm flex items-center justify-between gap-3 lg:px-20',
           getToastClasses(toast.type)
         ]"
         @click="remove(toast.id)"
       >
-        <span class="text-2xl">{{ toast.message }}</span>
+        <span class="w-40 md:w-90 text-lg md:text-xl lg:text-2xl">{{ toast.message }}</span>
 
         <button
           class="text-neutral-900 hover:scale-120 text-xl duration-200"
