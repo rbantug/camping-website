@@ -37,7 +37,7 @@ const bg = computed(() => {
           ></div>
         </div>
       </TransitionScroll>
-      <TransitionScroll threshold class="absolute w-full top-56 h-150 md:top-88">
+      <TransitionScroll threshold class="absolute w-full top-56 h-150 md:top-88 lg:top-92">
         <div class="w-[80%] mx-auto flex flex-col">
           <h1 class="text-white text-2xl font-bold text-shadow-lg mb-4 md:text-3xl">
             Nature is the Ultimate Playground. Find a camp today!
