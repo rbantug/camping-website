@@ -119,7 +119,7 @@ const getTotalCartItems = computed(() => {
               <hamburger-menu :is-open="navBarsAnimation" />
             </div>
             <!-- Header links -->
-            <div v-else class="flex gap-x-8 text-lg">
+            <div v-else class="relative flex gap-x-8 text-lg">
               <div v-for="{ link, route } in navItems" :key="link">
                 <router-link
                   :to="route"
@@ -161,7 +161,7 @@ const getTotalCartItems = computed(() => {
               <transition name="pagesNav">
                 <div
                   v-show="pagesNavBarIsOpen"
-                  class="absolute top-17 right-60 bg-white px-10 py-2 shadow-lg shadow-neutral-800/50 rounded-xl z-2 flex flex-col gap-y-4 dark:bg-neutral-700 transition-color duration-300"
+                  class="absolute top-17 -right-15 bg-white px-10 py-2 shadow-lg shadow-neutral-800/50 rounded-xl z-2 flex flex-col gap-y-4 dark:bg-neutral-700 transition-color duration-300"
                 >
                   <div
                     v-for="{ link, route } in additionalNavItems"
