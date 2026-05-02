@@ -27,3 +27,5 @@ The website is responsive in mobile, tablet and desktop view. There is component
 Using vitest + vue/test-utils for component testing was new to me. Mocking and stubbing components with their dependencies to test their behavior was what preoccupied me most of the time. It was confusing at first but using an AI coding agent made it easier to understand how component testing is properly implemented. The coding agent was not that helpful in creating whole blocks of code but it did provided me with answers when I encountered roadblocks.
 
 ## Website Demo
+
+Desktop view - [![Watch the video]()](https://www.youtube.com/watch?v=JtpiE0b6GAw)
