@@ -26,7 +26,7 @@ const mainStore = useMainStore()
 
 const cartData = mainStore.getCart
 
-// "price" is a string. It goes through type coercion into a number here. 
+// "price" is a string. It goes through type coercion into a number here.
 const getSubTotal = computed(() => {
   return cartData.value.reduce((acc, { price, nights }) => acc + price * nights, 0)
 })
@@ -34,14 +34,15 @@ const getSubTotal = computed(() => {
 function updateNights(
   campName: string,
   nights: number,
+  startDate: string,
   event: Event & { target: HTMLInputElement },
 ) {
   const checkInput = event.target.value.search(/^\d+$/)
   if (checkInput !== -1) {
-    mainStore.updateCampNights({ name: campName, nights })
+    mainStore.updateCampNights({ name: campName, nights, startDate })
   } else {
     event.target.value = '1'
-    mainStore.updateCampNights({ name: campName, nights: 1 })
+    mainStore.updateCampNights({ name: campName, nights: 1, startDate })
   }
 }
 
@@ -92,8 +93,12 @@ function goToCheckout() {
                 <div class="w-[85%] mx-auto mb-5 flex justify-between">
                   <div class="flex items-center gap-x-2">
                     <h3 class="font-semibold dark:text-neutral-100">Your Cart</h3>
-                    <div class="w-7 h-7 flex justify-center items-center rounded-full bg-accent-primary text-sm">
-                      <span class="font-semibold text-neutral-100 -ml-0.5 -mt-0.5">{{ totalCartItems }}</span>
+                    <div
+                      class="w-7 h-7 flex justify-center items-center rounded-full bg-accent-primary text-sm"
+                    >
+                      <span class="font-semibold text-neutral-100 -ml-0.5 -mt-0.5">{{
+                        totalCartItems
+                      }}</span>
                     </div>
                   </div>
                   <div class="hover:cursor-pointer dark:text-neutral-100" @click="closeModal">
@@ -145,7 +150,8 @@ function goToCheckout() {
                         <span class="font-semibold leading-7 dark:text-neutral-100">{{
                           data.name
                         }}</span>
-                        <span class="w-30 leading-7 text-neutral-700 md:w-full dark:text-neutral-400"
+                        <span
+                          class="w-30 leading-7 text-neutral-700 md:w-full dark:text-neutral-400"
                           >Start date: {{ data.startDate }}</span
                         >
                         <span class="mt-2 font-bold text-neutral-700 dark:text-neutral-400"
@@ -164,7 +170,7 @@ function goToCheckout() {
                           min="1"
                           class="w-20 h-10 pl-5 rounded-full shadow-[0_0_10px_rgba(0,0,0,0.2)] border-0 dark:shadow-none dark:border-neutral-400 dark:border-2 dark:bg-neutral-700 dark:text-neutral-100 dark:scheme-dark"
                           v-model.number="data.nights"
-                          @input="updateNights(data.name, data.nights, $event)"
+                          @input="updateNights(data.name, data.nights, data.startDate, $event)"
                         />
                       </div>
                     </div>
@@ -194,6 +200,5 @@ function goToCheckout() {
         </div>
       </Transition>
     </Teleport>
-    <FeatureNotAvailableModal />
   </div>
 </template>

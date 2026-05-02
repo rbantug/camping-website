@@ -231,8 +231,8 @@ export const useMainStore = defineStore('main', () => {
     name: string
     price: number
     image: string
-    startDate: string,
-    nights: number,
+    startDate: string
+    nights: number
   }
 
   function addToCart(camp: AddToCart) {
@@ -240,9 +240,9 @@ export const useMainStore = defineStore('main', () => {
 
     const toAddCampDate = new Date(camp.startDate).getTime()
 
-    const index = cartData.value.findIndex((x) =>  {
+    const index = cartData.value.findIndex((x) => {
       const cartCampDate = new Date(x.startDate).getTime()
-      
+
       return x.name === camp.name && cartCampDate === toAddCampDate
     })
 
@@ -264,12 +264,19 @@ export const useMainStore = defineStore('main', () => {
   interface UpdateCampNights {
     name: string
     nights: number
+    startDate: string
   }
 
   function updateCampNights(camp: UpdateCampNights) {
     retrieveCart()
 
-    const index = cartData.value.findIndex((x) => x.name === camp.name)
+    const toUpdateCampDate = new Date(camp.startDate).getTime()
+
+    const index = cartData.value.findIndex((x) => {
+      const cartCampDate = new Date(x.startDate).getTime()
+
+      return x.name === camp.name && cartCampDate === toUpdateCampDate
+    })
 
     if (index !== -1 && cartData.value[index]) {
       cartData.value[index].nights = camp.nights
@@ -278,7 +285,7 @@ export const useMainStore = defineStore('main', () => {
     saveCart()
   }
 
-  function deleteItemFromCart(campName:string) {
+  function deleteItemFromCart(campName: string) {
     retrieveCart()
 
     const index = cartData.value.findIndex((x) => x.name === campName)
@@ -303,9 +310,9 @@ export const useMainStore = defineStore('main', () => {
 
   /**
    * Retrieves the cart data from the local storage. There is an option to check if any of the cart items have dates that have already passed and remove them.
-   * @param onStartUp 
+   * @param onStartUp
    */
-  function retrieveCart(onStartUp?:boolean) {
+  function retrieveCart(onStartUp?: boolean) {
     const itemString = localStorage.getItem('cart')
     if (!itemString) return null
 
@@ -340,7 +347,7 @@ export const useMainStore = defineStore('main', () => {
   const getCartModalIsOpen = computed(() => cartModalIsOpen)
   function updateCartModalIsOpen() {
     cartModalIsOpen.value = !cartModalIsOpen.value
-  } 
+  }
 
   return {
     getAllPages,
@@ -361,6 +368,6 @@ export const useMainStore = defineStore('main', () => {
     updateCampNights,
     deleteItemFromCart,
     getCartModalIsOpen,
-    updateCartModalIsOpen
+    updateCartModalIsOpen,
   }
 })
