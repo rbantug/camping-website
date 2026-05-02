@@ -3,6 +3,7 @@ import { useMainStore } from '@/stores/mainStore'
 
 import PrimaryButton from '../BaseComponents/Buttons/PrimaryButton.vue'
 import type { NavItems } from '../TheHeader.vue'
+import { useToast } from '@/composables/useToast'
 
 interface Props {
   isOpen: boolean
@@ -20,7 +21,14 @@ const moreNavItems = mainStore.getMoreNavItems
 function toggleMoreNavItems() {
   mainStore.updateMoreNavItems()
 }
-function closeNavMenu() {
+
+const { show, setPosition } = useToast()
+
+function closeNavMenu(route?:string) {
+  if (route === 'Login/Register') {
+    setPosition('bottom-center')
+    show('Sorry! This feature will be implemented in the future.', 'info', 5000)
+  }
   mainStore.updateMoreNavItems(false)
   emits('emit1')
 }
@@ -79,7 +87,7 @@ function closeNavMenu() {
             <router-link
               :to="route"
               class="text-black dark:text-white transition-color duration-300"
-              @click="closeNavMenu"
+              @click="closeNavMenu(link)"
               >{{ link }}</router-link
             >
           </div>
