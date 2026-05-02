@@ -85,7 +85,7 @@ function goToCheckout() {
         >
           <div class="fixed top-0 h-full w-full flex justify-center items-center">
             <div
-              class="bg-neutral-100 z-7 md:rounded-3xl md:h-fit md:max-h-200 md:w-150 md:text-lg dark:bg-neutral-700"
+              class="bg-neutral-100 w-100 z-7 md:rounded-3xl md:h-fit md:max-h-200 md:w-150 md:text-lg dark:bg-neutral-700"
               @click.stop
             >
               <div class="flex flex-col py-5">
