@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
-import { createPinia } from 'pinia'
-import { beforeAll, describe, it, expect, vi } from 'vitest'
+import { createPinia, setActivePinia } from 'pinia'
+import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { createRouter, createWebHistory } from 'vue-router'
 
 import CampGallery from '@/components/CampDetailsComponents/CampGallery.vue'
@@ -10,20 +10,21 @@ const router = createRouter({
   history: createWebHistory(),
   routes: [],
 })
-let mainStore
 
-beforeAll(() => {
-  mainStore = useMainStore(createPinia())
+beforeEach(() => {
+  setActivePinia(createPinia())
 })
 
 describe('CampGallery', () => {
-  it('should render all visible elements and have the correct text', () => {
+  it('should render all visible elements and have the correct text', async () => {
+    const mainStore = useMainStore()
+
     const wrapper = mount(CampGallery, {
       props: {
         category: 'beach'
       },
       global: {
-        plugins: [router]
+        plugins: [router],
       }
     })
 
@@ -64,6 +65,8 @@ describe('CampGallery', () => {
 
   describe('when clicking an image', () => {
     it('should render the overlay, the clicked image, the next button for swiper.js and previous button for swiper.js', async () => {
+      const mainStore = useMainStore()
+
       const wrapper = mount(CampGallery, {
         props: {
           category: 'beach',
