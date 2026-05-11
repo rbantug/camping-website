@@ -93,6 +93,7 @@ function goToCheckout() {
           v-show="props.isOpen"
           class="fixed top-0 w-screen h-screen bg-neutral-900/50 z-6 flex justify-center items-center"
           @click="closeModal"
+          data-test="overlay"
         >
           <div class="fixed top-0 h-full w-full flex justify-center items-center">
             <div
@@ -103,13 +104,17 @@ function goToCheckout() {
                 <!-- header -->
                 <div class="w-[85%] mx-auto mb-5 flex justify-between">
                   <div class="flex items-center gap-x-2">
-                    <h3 class="font-semibold dark:text-neutral-100">Your Cart</h3>
+                    <h3 class="font-semibold dark:text-neutral-100" data-test="header">
+                      Your Cart
+                    </h3>
                     <div
                       class="w-7 h-7 flex justify-center items-center rounded-full bg-accent-primary text-sm"
                     >
-                      <span class="font-semibold text-neutral-100 -ml-0.5 -mt-0.5">{{
-                        totalCartItems
-                      }}</span>
+                      <span
+                        class="font-semibold text-neutral-100 -ml-0.5 -mt-0.5"
+                        data-test="totalCartItems"
+                        >{{ totalCartItems }}</span
+                      >
                     </div>
                   </div>
                   <div class="hover:cursor-pointer dark:text-neutral-100" @click="closeModal">
@@ -137,6 +142,7 @@ function goToCheckout() {
                   <div v-if="cartData.length === 0">
                     <div
                       class="text-xl font-semibold flex justify-center items-center dark:text-neutral-100"
+                      data-test="cartItemsMsg"
                     >
                       There are currently no camps
                     </div>
@@ -146,6 +152,7 @@ function goToCheckout() {
                       v-for="data in cartData"
                       class="my-5 flex gap-x-5 justify-between justify-items-start"
                       :key="data.name"
+                      data-test="cartItemGroup"
                     >
                       <div class="w-[20%]">
                         <div class="w-15 h-15 rounded-lg overflow-hidden">
@@ -154,7 +161,6 @@ function goToCheckout() {
                             :alt-name="data.name"
                             class="w-15 h-15"
                           />
-                          image
                         </div>
                       </div>
                       <div class="w-[50%] flex flex-col items-start">
@@ -194,7 +200,9 @@ function goToCheckout() {
                 <div class="w-[85%] mx-auto">
                   <div class="mt-10 flex justify-between">
                     <span class="text-neutral-700 dark:text-neutral-400">Subtotal:</span>
-                    <span class="font-semibold tracking-wide dark:text-neutral-100"
+                    <span
+                      class="font-semibold tracking-wide dark:text-neutral-100"
+                      data-test="subtotal"
                       >$ {{ getSubTotal }}.00 USD</span
                     >
                   </div>
@@ -205,6 +213,7 @@ function goToCheckout() {
                     :disabled="cartData.length === 0"
                     disable-route
                     @click="goToCheckout"
+                    data-test="checkoutBtn"
                   />
                 </div>
               </div>
