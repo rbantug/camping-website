@@ -46,6 +46,17 @@ function updateNights(
   }
 }
 
+function checkNightsOnBlur(
+  campName: string,
+  startDate: string,
+  event: Event & { target: HTMLInputElement },
+) {
+  if (event.target.value === '0') {
+    event.target.value = '1'
+    mainStore.updateCampNights({ name: campName, nights: 1, startDate })
+  }
+}
+
 function removeCamp(campName: string) {
   mainStore.deleteItemFromCart(campName)
 }
@@ -171,6 +182,8 @@ function goToCheckout() {
                           class="w-20 h-10 pl-5 rounded-full shadow-[0_0_10px_rgba(0,0,0,0.2)] border-0 dark:shadow-none dark:border-neutral-400 dark:border-2 dark:bg-neutral-700 dark:text-neutral-100 dark:scheme-dark"
                           v-model.number="data.nights"
                           @input="updateNights(data.name, data.nights, data.startDate, $event)"
+                          @blur="checkNightsOnBlur(data.name, data.startDate, $event)"
+                          data-test="nightsInput"
                         />
                       </div>
                     </div>
