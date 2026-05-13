@@ -1,11 +1,11 @@
 name: CI/CD
 
 on:
-  pull_request:
+  push:
     branches: [main]
 
 jobs:
-  test-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
 
     defaults:
