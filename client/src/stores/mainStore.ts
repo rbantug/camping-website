@@ -362,6 +362,7 @@ export const useMainStore = defineStore('main', () => {
     getMoreNavItems,
     updateMoreNavItems,
     getCart,
+    cartData,
     addToCart,
     retrieveCart,
     clearCart,

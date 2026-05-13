@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import HomePage from '@/components/router/HomePage.vue'
 
-const HomePage = () => import('@/components/router/HomePage.vue')
 const AboutPage = () => import('@/components/router/AboutPage.vue')
 const AllCamps = () => import('@/components/router/AllCamps.vue')
 const CampDetails = () => import('@/components/router/CampDetails.vue')
